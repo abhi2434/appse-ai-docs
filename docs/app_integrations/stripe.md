@@ -71,13 +71,35 @@ Here is the list of available triggers for Stripe:
 | **New Dispute Created**        | Triggers when a dispute is opened on a charge.                 |
 
 
+## Tools
+
+Here is the list of available tools for Stripe:
+
+| Tool | Description |
+| ---- | ----------- |
+| **Customer Management** | Create, retrieve, update, and manage Stripe customers and their billing details. |
+| **Payment Intent Management** | Create and retrieve payment intents for one-time payments and checkout flows. |
+| **Charge Management** | Create and retrieve charges for completed payments. |
+| **Refund Management** | Create and retrieve refunds for existing charges. |
+| **Invoice Management** | Create, retrieve, and update invoices and invoice items for billing workflows. |
+| **Checkout Session Management** | Create and manage Stripe Checkout sessions for hosted payment experiences. |
+| **Product and Price Management** | Create and manage products, prices, and pricing plans for subscriptions and one-time purchases. |
+
 ## Actions
 
 Here is the list of available actions for Stripe:
 
-| Action              | Description                                                              |
-| ------------------- | ------------------------------------------------------------------------ |
-| **Get Record by ID** | Retrieve any Stripe record (customer, charge, invoice, payment intent, refund, or dispute) by its ID. |
+| Action | Description |
+| ------ | ----------- |
+| **Create Customer** | Create a new customer record in Stripe with billing and contact details. |
+| **Create Payment Intent** | Create a new payment intent to collect payment for an order or subscription. |
+| **Create Charge** | Create a charge against a customer for a completed payment. |
+| **Create Refund** | Issue a refund for an existing charge. |
+| **Create Invoice** | Create an invoice for a customer and send it through Stripe. |
+| **Create Checkout Session** | Create a hosted checkout session to collect payments securely. |
+| **Create Product** | Create a product object for use in Stripe billing and checkout flows. |
+| **Create Price** | Create a price object linked to a product for recurring or one-time billing. |
+| **Get Record by ID** | Retrieve any Stripe record (customer, charge, invoice, payment intent, refund, dispute, product, or price) by its ID. |
 
 ---
 
