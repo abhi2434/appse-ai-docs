@@ -59,31 +59,39 @@ Paste the copied **Secret Key** into the **Secret Key** field and click **Save**
 
 ## Triggers
 
+All Stripe triggers poll for newly created records and fire once per new record found. Every trigger below shares the same two parameters:
+
+| Field | Required | Description |
+| ----- | -------- | ----------- |
+| Fetch Data Since | Yes | The starting point in time to check for new records. Set this cautiously before activating the workflow — changes made after activation don't affect an already-running execution. |
+| Limit | Yes | The maximum number of records fetched per poll, bound by Stripe's API capacity. Defaults to 50. |
+
 Here is the list of available triggers for Stripe:
 
-| Trigger                        | Description                                                    |
-| ------------------------------ | -------------------------------------------------------------- |
-| **New Customer Created**       | Triggers when a new customer is created in Stripe.             |
-| **New Refund Created**         | Triggers when a refund is issued for a charge.                 |
-| **New Payment Intent Created** | Triggers when a new payment intent is created.                 |
-| **New Invoice Created**        | Triggers when a new invoice is generated.                      |
-| **New Charge Created**         | Triggers when a new charge is created.                         |
-| **New Dispute Created**        | Triggers when a dispute is opened on a charge.                 |
+| Trigger                        | Description                                                |
+| ------------------------------ | ----------------------------------------------------------- |
+| **New Customer Created**       | Triggers when a new customer is created in Stripe.         |
+| **New Charge Created**         | Triggers when a new charge is created in Stripe.           |
+| **New Payment Intent Created** | Triggers when a new payment intent is created in Stripe.   |
+| **New Invoice Created**        | Triggers when a new invoice is created in Stripe.           |
+| **New Refund Created**         | Triggers when a new refund is created in Stripe.           |
+| **New Dispute Created**        | Triggers when a new dispute is created in Stripe.           |
 
 
 ## Tools
+
+AI tools expose the same underlying operations as [Actions](#actions) below, but are written for an AI agent to call autonomously within an appse ai agentic workflow — the agent picks the tool and fills its parameters based on conversation context, rather than a workflow builder configuring it upfront.
 
 Here is the list of available tools for Stripe:
 
 | Tool | Description |
 | ---- | ----------- |
-| **Customer Management** | Create, retrieve, update, and manage Stripe customers and their billing details. |
-| **Payment Intent Management** | Create and retrieve payment intents for one-time payments and checkout flows. |
-| **Charge Management** | Create and retrieve charges for completed payments. |
-| **Refund Management** | Create and retrieve refunds for existing charges. |
-| **Invoice Management** | Create, retrieve, and update invoices and invoice items for billing workflows. |
-| **Checkout Session Management** | Create and manage Stripe Checkout sessions for hosted payment experiences. |
-| **Product and Price Management** | Create and manage products, prices, and pricing plans for subscriptions and one-time purchases. |
+| **Create Customer** | Registers a new person or business as a Stripe Customer. Use before creating charges, invoices, or subscriptions for them. |
+| **Create Invoice Draft** | Starts a new draft invoice for a customer. Use as the first step before adding invoice items and finalizing. |
+| **Create Invoice Item** | Adds a line item — a charge, fee, or credit — to a draft invoice, a subscription, or the customer's next invoice. |
+| **Finalize Invoice** | Locks a draft invoice by stamping it with a number, once an agent has finished populating it. May trigger automatic collection or send the invoice to the customer. |
+| **Search Records** | Finds Stripe records matching a filter (e.g. a customer by email, invoices by status) instead of a single known ID. |
+| **Get Record by ID** | Retrieves the full details of a single Stripe record when the agent already has its object ID. |
 
 ## Actions
 
@@ -91,15 +99,72 @@ Here is the list of available actions for Stripe:
 
 | Action | Description |
 | ------ | ----------- |
-| **Create Customer** | Create a new customer record in Stripe with billing and contact details. |
-| **Create Payment Intent** | Create a new payment intent to collect payment for an order or subscription. |
-| **Create Charge** | Create a charge against a customer for a completed payment. |
-| **Create Refund** | Issue a refund for an existing charge. |
-| **Create Invoice** | Create an invoice for a customer and send it through Stripe. |
-| **Create Checkout Session** | Create a hosted checkout session to collect payments securely. |
-| **Create Product** | Create a product object for use in Stripe billing and checkout flows. |
-| **Create Price** | Create a price object linked to a product for recurring or one-time billing. |
-| **Get Record by ID** | Retrieve any Stripe record (customer, charge, invoice, payment intent, refund, dispute, product, or price) by its ID. |
+| **Create Customer** | Create a new customer object in Stripe to track a person or business for one-off or recurring payments. |
+| **Create Invoice Draft** | Create a draft invoice for a customer. Once finalized, the invoice can be collected automatically or sent to the customer for manual payment. |
+| **Create Invoice Item** | Add a billable line item to an invoice — attached to a specific draft invoice or subscription, or queued for the customer's next invoice. |
+| **Finalize Invoice** | Stamp a draft invoice with a number, locking it from further edits. Depending on the invoice's collection method, this can also trigger automatic payment collection or send the invoice to the customer. |
+| **Search Records** | Search Stripe records of a selected object type using Stripe's Search Query Language. See the [Search Records query guide](#search-records-query-guide) below for supported object types, fields, and syntax. |
+| **Get Record by ID** | Retrieve any Stripe record — customer, charge, payment intent, payment method, invoice, subscription, product, price, refund, dispute, coupon, promotion code, checkout session, transfer, payout, balance transaction, or event — by its unique ID. |
+
+### Search Records Query Guide
+
+**Search Records** queries Stripe's Search API directly, so it only supports the object types and fields Stripe indexes for search — this is a smaller set than what **Get Record by ID** can retrieve.
+
+**Supported object types**
+
+| Object Type | Value |
+| ----------- | ----- |
+| Charge | `charges` |
+| Customer | `customers` |
+| Invoice | `invoices` |
+| Payment Intent | `payment_intents` |
+| Price | `prices` |
+| Product | `products` |
+| Subscription | `subscriptions` |
+
+**Searchable fields, by object type**
+
+| Object Type | Fields |
+| ----------- | ------ |
+| Charge | `amount`, `billing_details.address.postal_code`, `created`, `currency`, `customer`, `disputed`, `metadata`, `payment_method_details.card.last4`/`exp_month`/`exp_year`/`brand`/`fingerprint`, `refunded`, `status` |
+| Customer | `created`, `email`, `metadata`, `name`, `phone` |
+| Invoice | `created`, `currency`, `customer`, `last_finalization_error_code`, `last_finalization_error_type`, `metadata`, `number`, `receipt_number`, `status`, `subscription`, `total` |
+| Payment Intent | `amount`, `created`, `currency`, `customer`, `metadata`, `status` |
+| Price | `active`, `currency`, `lookup_key`, `metadata`, `product`, `type` |
+| Product | `active`, `description`, `metadata`, `name`, `shippable`, `url` |
+| Subscription | `created`, `metadata`, `status`, `canceled_at` |
+
+**Query syntax**
+
+| Operator | Meaning |
+| -------- | ------- |
+| `:` | Exact match |
+| `~` | Substring match — string fields only, minimum 3 characters |
+| `>`, `<`, `>=`, `<=` | Numeric or date comparison |
+| `AND`, `OR`, `-` | Combine or negate clauses — up to 10 clauses per query. `AND` and `OR` cannot be mixed in the same query. |
+
+**Parameters**
+
+| Field | Required | Description |
+| ----- | -------- | ----------- |
+| Object Type | Yes | The Stripe resource to search (see table above). |
+| Search Query | Yes | The query string, written in Stripe's Search Query Language, using the fields listed above for the selected Object Type. |
+| Limit | No | Number of records to return, from 1–100. Defaults to 10. |
+| Page | No | Pagination cursor. Pass the `next_page` value from a previous response to continue from where it left off; leave blank to fetch the first page. |
+
+**Example queries**
+
+| Example | Result |
+| ------- | ------ |
+| `email:'jenny@example.com'` | Customers with an exact email match |
+| `status:'active' AND metadata['foo']:'bar'` | Active subscriptions with a matching metadata key |
+| `created>1620310503` | Records created after a given Unix timestamp |
+
+:::note
+
+Search results are near-real-time, not immediately consistent — a record created moments ago may take a few seconds to appear in search results.
+
+:::
 
 ---
 
