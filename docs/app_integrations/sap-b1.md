@@ -13,11 +13,20 @@ SAP Business One (SAP B1) is an integrated enterprise resource planning (ERP) so
 
 ## Setup Credential
 
-Follow the steps below to quickly set up your credential.
+Follow the steps below to quickly set up your credential. SAP Business One Service Layer supports two authentication modes:
+
+- **Service Layer (Cloud)** — connect directly to a cloud-accessible SAP B1 Service Layer
+- **Service Layer (On-Premises Agent)** — connect through an active On-Prem Connector to SAP B1 Service Layer
+
+### Select Authentication
+
+When adding an SAP Business One credential, first choose your authentication type:
+
+<img src="/img/credentials/sap-b1/select-authentication.png" width="700" alt="Select Authentication screen showing Service Layer (Cloud) and Service Layer (On-Premises Agent) options" />
 
 ### Configuration Fields
 
-You will be asked to fill in the following details:
+Both authentication modes use the same Service Layer credential fields:
 
 | Field       | Description                                  |
 |-------------|----------------------------------------------|
@@ -27,6 +36,10 @@ You will be asked to fill in the following details:
 | Password    | Your SAP B1 password                         |
 | Company DB  | The company database name used in SAP B1     |
 | Additional Path | Provide Additional Path (Optional) |
+
+:::note
+For **Service Layer (On-Premises Agent)**, you must also select an active **On-Prem Connector** before the fields above appear. If you have not set up a connector yet, follow the [On-Prem Connector setup guide](/platform/key-concepts/on-premise-agent/on-premise-agent-setup) first.
+:::
 
 ### Step-by-Step Guide
 
@@ -72,14 +85,41 @@ Depending on your setup, you might see `https://insync.pro` instead of `https://
 
 ### Setup Credentials in Portal
 
-Go to Credentials Page and Click on **Select App**.
+Go to the **Credentials** page and click **Select App**, then choose **SAP Business One**.
 
-<img src="/img/credentials/sap-b1/Portal-AppSelect.jpg" width="700"  alt="SAP B1 Setup Credentials in Portal step 1 of 3 screenshot" />
+<img src="/img/credentials/sap-b1/Portal-AppSelect.jpg" width="700"  alt="SAP B1 Setup Credentials in Portal step 1 of 4 screenshot" />
 
-Configure the **Credentials** as mentioned above
+Next, select your authentication type on the **Select Authentication** screen, then configure credentials as shown below.
 
-<img src="/img/credentials/sap-b1/Portal-CredsConfig.jpg" width="700"  alt="SAP B1 Setup Credentials in Portal step 2 of 3 screenshot" />
-<img src="/img/credentials/sap-b1/Portal-CredConfig2.png" width="700"  alt="SAP B1 Setup Credentials in Portal step 3 of 3 screenshot" />
+<Tabs groupId="sap-b1-auth" queryString="sap-b1-auth">
+<TabItem value="cloud" label="Service Layer (Cloud)" default>
+
+#### Service Layer (Cloud)
+
+1. Select **Service Layer (Cloud)** on the Select Authentication screen.
+2. Fill in the credential fields described in [Configuration Fields](#configuration-fields).
+
+<img src="/img/credentials/sap-b1/Portal-CredsConfig.jpg" width="700"  alt="SAP B1 Cloud credential configuration form" />
+<img src="/img/credentials/sap-b1/Portal-CredConfig2.png" width="700"  alt="SAP B1 Cloud credential fields including Host URL, Port, Username, Password, and Company DB" />
+
+</TabItem>
+<TabItem value="on-prem" label="Service Layer (On-Premises Agent)">
+
+#### Service Layer (On-Premises Agent)
+
+1. Select **Service Layer (On-Premises Agent)** on the Select Authentication screen.
+2. On the **Configure Credentials** screen, select an active connector from the **On-Prem Connector** dropdown. The connector must be online before you can continue.
+
+<img src="/img/credentials/sap-b1/select-on-prem-connector.png" width="700" alt="Configure Credentials screen with On-Prem Connector dropdown" />
+
+3. After selecting a connector, fill in the same credential fields used for Cloud (Host URL, Port, Username, Password, Company DB, and optional Additional Path). See [Configuration Fields](#configuration-fields) and the [Step-by-Step Guide](#step-by-step-guide) for how to find each value.
+
+:::note
+Only active (online) On-Prem Connectors appear in the dropdown. If no connector is available, set one up first using the [On-Prem Connector setup guide](/platform/key-concepts/on-premise-agent/on-premise-agent-setup).
+:::
+
+</TabItem>
+</Tabs>
 
 ### Save Your Credential
 
