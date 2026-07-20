@@ -5190,5 +5190,4 @@ Click on the **Continue** button, then **Run** node
 
 ## Support
 
-If you are unsure about any field or face connection issues, reach out to our support team at [hello@appse.ai](mailto:hello@appse.ai)
-
+Need help? Contact the support team at [support@appse.ai](mailto:support@appse.ai)
