@@ -247,6 +247,7 @@ The On-Prem Agent supports connectivity for the following applications and syste
 | Application | Documentation |
 |---|---|
 | SAP Business One DIS | [View Documentation](/app-integrations/sap-business-one-dis/) |
+| SAP Business One | [View Documentation](/app-integrations/sap-b1/) |
 
 ---
 
