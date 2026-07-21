@@ -1,6 +1,6 @@
 ---
 title: "SAP Business One"
-slug: /app-integrations/sap-b1
+slug: /app-integrations/sap-b1/
 description: Step-by-step guide to set up SAP Business One credentials and automate business workflows in appse ai.
 ---
 
@@ -13,11 +13,33 @@ SAP Business One (SAP B1) is an integrated enterprise resource planning (ERP) so
 
 ## Setup Credential
 
-Follow the steps below to quickly set up your credential.
+### Setup Credentials in Portal
 
-### Configuration Fields
+Go to the **Credentials** page and click **Add Credentials**, then choose **SAP Business One** app.
 
-You will be asked to fill in the following details:
+<img src="/img/credentials/sap-b1/Portal-AppSelect.jpg" width="700"  alt="SAP B1 Setup Credentials in Portal — Select App screenshot" />
+
+### Select Authentication
+
+When adding an SAP Business One credential, first choose your authentication type:
+
+<img src="/img/credentials/sap-b1/select-authentication.png" width="700" alt="Select Authentication screen showing Service Layer (Cloud) and Service Layer (On-Premises Agent) options" />
+
+SAP Business One Service Layer supports two authentication modes:
+
+- **Service Layer (Cloud)** — connect directly to a cloud-accessible SAP B1 Service Layer
+- **Service Layer (On-Premises Agent)** — connect through an active On-Prem Connector to SAP B1 Service Layer
+
+Select your authentication type on the **Select Authentication** screen, then configure credentials as shown below.
+
+<Tabs groupId="sap-b1-auth" queryString="sap-b1-auth">
+<TabItem value="cloud" label="Service Layer (Cloud)" default>
+
+#### Service Layer (Cloud)
+
+If you have selected **Service Layer (Cloud)** on the Select Authentication screen, then configure the credential fields below.
+
+##### Configuration Fields
 
 | Field       | Description                                  |
 |-------------|----------------------------------------------|
@@ -28,13 +50,13 @@ You will be asked to fill in the following details:
 | Company DB  | The company database name used in SAP B1     |
 | Additional Path | Provide Additional Path (Optional) |
 
-### Step-by-Step Guide
+##### Step-by-Step Guide
 
-#### 1. Add Connection Name
+##### 1. Add Connection Name
 
 Provide a name for your credential in the `Connection Name` field. This will be showcased in the credential listing page.
 
-#### 2. Find Your Host URL and Port
+##### 2. Find Your Host URL and Port
 
 - Open the SAP Business One **Service Layer** configuration or ask your SAP B1 administrator.
    - It will look something like: `https://{localip}:50000/ControlCenter/`
@@ -50,7 +72,7 @@ Provide a name for your credential in the `Connection Name` field. This will be 
 > - **Host URL**: `https://10.0.2.68`
 > - **Port**: `50000`
 
-#### 3. Find Your Company DB Name
+##### 3. Find Your Company DB Name
 
 - In the same **System Landscape Directory**
 - Go to _DB Instances and Companies_ -> Click on Your Server Name
@@ -64,22 +86,96 @@ Copy the **Schema Name**, this is your `Database Name`
 Depending on your setup, you might see `https://insync.pro` instead of `https://10.0.2.68`. Either can be used as your Host URL input.
 :::
 
-#### 4. Get Your Username and Password
+##### 4. Get Your Username and Password
 <img src="/img/credentials/sap-b1/sap-b1-credentials.png" alt="SAP B1 Step-by-Step Guide step 5 of 5 screenshot" width="602" height="306" />
 
 - Use your **SAP B1 client login credentials**.
 - Make sure the user has sufficient API permissions for integration.
 
-### Setup Credentials in Portal
+##### Configure Credentials in Portal
 
-Go to Credentials Page and Click on **Select App**.
+<img src="/img/credentials/sap-b1/Portal-CredsConfig.jpg" width="700"  alt="SAP B1 Cloud credential configuration form" />
+<img src="/img/credentials/sap-b1/Portal-CredConfig2.png" width="700"  alt="SAP B1 Cloud credential fields including Host URL, Port, Username, Password, and Company DB" />
 
-<img src="/img/credentials/sap-b1/Portal-AppSelect.jpg" width="700"  alt="SAP B1 Setup Credentials in Portal step 1 of 3 screenshot" />
+</TabItem>
+<TabItem value="on-prem" label="Service Layer (On-Premises Agent)">
 
-Configure the **Credentials** as mentioned above
+#### Service Layer (On-Premises Agent)
 
-<img src="/img/credentials/sap-b1/Portal-CredsConfig.jpg" width="700"  alt="SAP B1 Setup Credentials in Portal step 2 of 3 screenshot" />
-<img src="/img/credentials/sap-b1/Portal-CredConfig2.png" width="700"  alt="SAP B1 Setup Credentials in Portal step 3 of 3 screenshot" />
+If you have selected **Service Layer (On-Premises Agent)** on the Select Authentication screen, then complete the steps below.
+
+:::note
+For **Service Layer (On-Premises Agent)**, you must also select an active **On-Prem Connector** before the credential fields appear. If you have not set up a connector yet, follow the [On-Prem Connector setup guide](/platform/key-concepts/on-premise-agent/on-premise-agent-setup) first.
+:::
+
+##### Select an On-Prem Connector
+
+On the **Configure Credentials** screen, select an active connector from the **On-Prem Connector** dropdown. The connector must be online before you can continue.
+
+<img src="/img/credentials/sap-b1/select-on-prem-connector.png" width="700" alt="Configure Credentials screen with On-Prem Connector dropdown" />
+
+##### Configuration Fields
+
+After selecting a connector, fill in the Service Layer credential fields:
+
+| Field       | Description                                  |
+|-------------|----------------------------------------------|
+| Host URL    | The server URL where your SAP B1 is hosted   |
+| Port        | The port number for the SAP B1 service layer |
+| Username    | Your SAP B1 username                         |
+| Password    | Your SAP B1 password                         |
+| Company DB  | The company database name used in SAP B1     |
+| Additional Path | Provide Additional Path (Optional) |
+
+##### Step-by-Step Guide
+
+##### 1. Add Connection Name
+
+Provide a name for your credential in the `Connection Name` field. This will be showcased in the credential listing page.
+
+##### 2. Find Your Host URL and Port
+
+- Open the SAP Business One **Service Layer** configuration or ask your SAP B1 administrator.
+   - It will look something like: `https://{localip}:50000/ControlCenter/`
+   - You should see page titled - `System Landscape Directory`
+
+- Login to the platform using your **System Landscape Directory Credentials**.
+<img src="/img/credentials/sap-b1/sap-b1-cred-sld-login.png" alt="SAP B1 Step-by-Step Guide step 1 of 5 screenshot" />
+
+- Locate the base URL used to access the Service Layer API. Go to _Services_ -> _Service Layer_
+<img src="/img/credentials/sap-b1/sap-b1-cred-host-url.png" alt="SAP B1 Step-by-Step Guide step 2 of 5 screenshot" />
+
+- Add your Host URL and Port. With respect to the image you will be adding:
+> - **Host URL**: `https://10.0.2.68`
+> - **Port**: `50000`
+
+##### 3. Find Your Company DB Name
+
+- In the same **System Landscape Directory**
+- Go to _DB Instances and Companies_ -> Click on Your Server Name
+<img src="/img/credentials/sap-b1/sap-b1-cred-db-name.png" alt="SAP B1 Step-by-Step Guide step 3 of 5 screenshot" />
+
+Copy the **Schema Name**, this is your `Database Name`
+
+<img src="/img/credentials/sap-b1/sap-b1-cred-db-name2.png" alt="SAP B1 Step-by-Step Guide step 4 of 5 screenshot" />
+
+:::note
+Depending on your setup, you might see `https://insync.pro` instead of `https://10.0.2.68`. Either can be used as your Host URL input.
+:::
+
+##### 4. Get Your Username and Password
+<img src="/img/credentials/sap-b1/sap-b1-credentials.png" alt="SAP B1 Step-by-Step Guide step 5 of 5 screenshot" width="602" height="306" />
+
+- Use your **SAP B1 client login credentials**.
+- Make sure the user has sufficient API permissions for integration.
+
+##### Configure Credentials in Portal
+
+<img src="/img/credentials/sap-b1/Portal-CredsConfig.jpg" width="700"  alt="SAP B1 On-Premises Agent credential configuration form" />
+<img src="/img/credentials/sap-b1/Portal-CredConfig2.png" width="700"  alt="SAP B1 On-Premises Agent credential fields including Host URL, Port, Username, Password, and Company DB" />
+
+</TabItem>
+</Tabs>
 
 ### Save Your Credential
 
@@ -809,7 +905,7 @@ The configuration fields are the same for all triggers - refer to the screenshot
 </TabItem>
 <TabItem value="actions" label="Action">
 
-## Actions
+### Actions
 
 **Actions** component represents a set of operations that are executed within a workflow after a trigger or condition is met. Actions perform specific tasks by processing input data and producing outputs that can be used in subsequent steps.
 
@@ -1024,7 +1120,7 @@ Click on the **Continue** button.
 | CardCode | Enter a unique identifier for the business partner (e.g., "STOP002"). |
 
 ##### Optional Fields
-###### Customer Details
+##### Customer Details
 
 | Field | Description |
 |---|---|
@@ -1032,7 +1128,7 @@ Click on the **Continue** button.
 | Phone1 | Enter required phone number (e.g., "9987654321") |
 | Email Address | Enter required mobile number (e.g., "config.co@yopmail.com") |
 
-###### BP Addresses
+##### BP Addresses
 
 | Field | Description |
 |---|---|
@@ -1045,7 +1141,7 @@ Click on the **Continue** button.
 | Country | Enter country (e.g., "India") |
 | State | Enter state (e.g., "Telangana") |
 
-###### Contact Employees
+##### Contact Employees
 
 | Field | Description |
 |---|---|
@@ -4533,11 +4629,6 @@ Click on the **Continue** button, then **Run** node
 
 <img src="/img/credentials/sap-b1/SAP-AR-USLSBLNKTAGREMENT260.jpg" width="700"  alt="SAP B1 Update Sales Blanket Agreement step 4 of 4 screenshot" />
 
-</TabItem>
-</Tabs>
-
-
-
 ### Serial Number Details Action
 
 #### Get Serial Number Details by serial number
@@ -5092,7 +5183,9 @@ Click on the **Continue** button, then **Run** node
 ]
 ```
 
+</TabItem>
+</Tabs>
+
 ## Support
 
-If you are unsure about any field or face connection issues, reach out to our support team at [hello@appse.ai](mailto:hello@appse.ai)
-
+Need help? Contact the support team at [support@appse.ai](mailto:support@appse.ai)
