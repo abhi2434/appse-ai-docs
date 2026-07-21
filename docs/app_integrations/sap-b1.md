@@ -1120,7 +1120,7 @@ Click on the **Continue** button.
 | CardCode | Enter a unique identifier for the business partner (e.g., "STOP002"). |
 
 ##### Optional Fields
-###### Customer Details
+##### Customer Details
 
 | Field | Description |
 |---|---|
@@ -1128,7 +1128,7 @@ Click on the **Continue** button.
 | Phone1 | Enter required phone number (e.g., "9987654321") |
 | Email Address | Enter required mobile number (e.g., "config.co@yopmail.com") |
 
-###### BP Addresses
+##### BP Addresses
 
 | Field | Description |
 |---|---|
@@ -1141,7 +1141,7 @@ Click on the **Continue** button.
 | Country | Enter country (e.g., "India") |
 | State | Enter state (e.g., "Telangana") |
 
-###### Contact Employees
+##### Contact Employees
 
 | Field | Description |
 |---|---|
