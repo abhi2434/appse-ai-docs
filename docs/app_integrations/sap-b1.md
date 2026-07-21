@@ -1,6 +1,6 @@
 ---
 title: "SAP Business One"
-slug: /app-integrations/sap-b1
+slug: /app-integrations/sap-b1/
 description: Step-by-step guide to set up SAP Business One credentials and automate business workflows in appse ai.
 ---
 
@@ -52,11 +52,11 @@ If you have selected **Service Layer (Cloud)** on the Select Authentication scre
 
 ##### Step-by-Step Guide
 
-###### 1. Add Connection Name
+##### 1. Add Connection Name
 
 Provide a name for your credential in the `Connection Name` field. This will be showcased in the credential listing page.
 
-###### 2. Find Your Host URL and Port
+##### 2. Find Your Host URL and Port
 
 - Open the SAP Business One **Service Layer** configuration or ask your SAP B1 administrator.
    - It will look something like: `https://{localip}:50000/ControlCenter/`
@@ -72,7 +72,7 @@ Provide a name for your credential in the `Connection Name` field. This will be 
 > - **Host URL**: `https://10.0.2.68`
 > - **Port**: `50000`
 
-###### 3. Find Your Company DB Name
+##### 3. Find Your Company DB Name
 
 - In the same **System Landscape Directory**
 - Go to _DB Instances and Companies_ -> Click on Your Server Name
@@ -86,7 +86,7 @@ Copy the **Schema Name**, this is your `Database Name`
 Depending on your setup, you might see `https://insync.pro` instead of `https://10.0.2.68`. Either can be used as your Host URL input.
 :::
 
-###### 4. Get Your Username and Password
+##### 4. Get Your Username and Password
 <img src="/img/credentials/sap-b1/sap-b1-credentials.png" alt="SAP B1 Step-by-Step Guide step 5 of 5 screenshot" width="602" height="306" />
 
 - Use your **SAP B1 client login credentials**.
@@ -129,11 +129,11 @@ After selecting a connector, fill in the Service Layer credential fields:
 
 ##### Step-by-Step Guide
 
-###### 1. Add Connection Name
+##### 1. Add Connection Name
 
 Provide a name for your credential in the `Connection Name` field. This will be showcased in the credential listing page.
 
-###### 2. Find Your Host URL and Port
+##### 2. Find Your Host URL and Port
 
 - Open the SAP Business One **Service Layer** configuration or ask your SAP B1 administrator.
    - It will look something like: `https://{localip}:50000/ControlCenter/`
@@ -149,7 +149,7 @@ Provide a name for your credential in the `Connection Name` field. This will be 
 > - **Host URL**: `https://10.0.2.68`
 > - **Port**: `50000`
 
-###### 3. Find Your Company DB Name
+##### 3. Find Your Company DB Name
 
 - In the same **System Landscape Directory**
 - Go to _DB Instances and Companies_ -> Click on Your Server Name
@@ -163,7 +163,7 @@ Copy the **Schema Name**, this is your `Database Name`
 Depending on your setup, you might see `https://insync.pro` instead of `https://10.0.2.68`. Either can be used as your Host URL input.
 :::
 
-###### 4. Get Your Username and Password
+##### 4. Get Your Username and Password
 <img src="/img/credentials/sap-b1/sap-b1-credentials.png" alt="SAP B1 Step-by-Step Guide step 5 of 5 screenshot" width="602" height="306" />
 
 - Use your **SAP B1 client login credentials**.
@@ -905,7 +905,7 @@ The configuration fields are the same for all triggers - refer to the screenshot
 </TabItem>
 <TabItem value="actions" label="Action">
 
-## Actions
+### Actions
 
 **Actions** component represents a set of operations that are executed within a workflow after a trigger or condition is met. Actions perform specific tasks by processing input data and producing outputs that can be used in subsequent steps.
 
@@ -4629,11 +4629,6 @@ Click on the **Continue** button, then **Run** node
 
 <img src="/img/credentials/sap-b1/SAP-AR-USLSBLNKTAGREMENT260.jpg" width="700"  alt="SAP B1 Update Sales Blanket Agreement step 4 of 4 screenshot" />
 
-</TabItem>
-</Tabs>
-
-
-
 ### Serial Number Details Action
 
 #### Get Serial Number Details by serial number
@@ -5187,6 +5182,9 @@ Click on the **Continue** button, then **Run** node
   }
 ]
 ```
+
+</TabItem>
+</Tabs>
 
 ## Support
 
