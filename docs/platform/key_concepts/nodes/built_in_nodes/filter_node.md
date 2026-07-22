@@ -1,6 +1,7 @@
 ---
 slug: /platform/key-concepts/nodes/built-in/filter
 title: Filter Node
+description: Step-by-step guide to configure the Filter Node in appse ai workflows.
 ---
 
 The Filter Node in appse ai allows you to selectively pass through only the data records that meet one or more defined conditions.
@@ -19,55 +20,51 @@ This is useful when you want to:
 
 The IF section is where you define the rules that determine whether an item is considered True or False.
 
-<img src="\img\platform\key-concepts\nodes\built-in\filter\if.png" alt="if" width="700"/>
+<img src="/img/platform/key-concepts/nodes/built-in/filter/if.png" alt="if" width="700"/>
 
 Each condition has three parts:
 
 1. **Field** → the data attribute to evaluate
-   <img src="\img\platform\key-concepts\nodes\built-in\filter\field-if-condition.png" alt="if field" width="700"/>
+   <img src="/img/platform/key-concepts/nodes/built-in/filter/field-if-condition.png" alt="if field" width="700"/>
 2. **Condition** → the comparison operator
-   <img src="\img\platform\key-concepts\nodes\built-in\filter\if-conditions.png" alt="if condition" width="700"/>
+   <img src="/img/platform/key-concepts/nodes/built-in/filter/if-conditions.png" alt="if condition" width="700"/>
 3. **Value** → the expected value
-   <img src="\img\platform\key-concepts\nodes\built-in\filter\value-if-condition.png" alt="value if condition" width="700"/>
+   <img src="/img/platform/key-concepts/nodes/built-in/filter/value-if-condition.png" alt="value if condition" width="700"/>
 
 ### Conditions
 
-| Category | Condition | Purpose (≤10 words) | Expected Data Type | Example Usage |
+| Category | Condition name | Description | Expected Data Type | Example Usage |
 | :--- | :--- | :--- | :--- | :--- |
-| **Basic** | Exists | Check if value is present | Any | "Email" exists |
-| **Basic** | Does not exist | Check if value is missing | Any | "MiddleName" does not exist |
-| **Text** | Equal to | Match exact text | String | "Status" equal to "Open" |
-| **Text** | Not equal to | Ensure value differs from text | String | "Country" not equal to "USA" |
-| **Text** | Contains | Check substring presence | String | "Name" contains "Inc" |
-| **Text** | Does not contain | Ensure substring absent | String | "Comment" does not contain "error" |
-| **Text** | Starts with | Validate text prefix | String | "ID" starts with "EMP-" |
-| **Text** | Does not start with | Ensure text does not start with prefix | String | "Tag" does not start with "tmp" |
-| **Text** | Ends with | Validate text suffix | String | "FileName" ends with ".pdf" |
-| **Text** | Does not end with | Ensure text does not end with suffix | String | "FileName" does not end with ".tmp" |
-| **Text** | Matches pattern | Validate regex pattern | String | "Email" matches pattern "^[^@]+@[^@]+$" |
-| **Text** | Does not match pattern | Ensure regex mismatch | String | "URL" does not match pattern "^https://" |
-| **Number** | Equal to | Match exact number | Number | "Score" equal to 10 |
-| **Number** | Not equal to | Ensure number differs | Number | "Quantity" not equal to 0 |
-| **Number** | Greater than | Check numeric higher value | Number | "Age" greater than 18 |
-| **Number** | Less than | Check numeric lower value | Number | "Price" less than 100 |
-| **Number** | Greater than or Equal to | Allow equal or higher | Number | "Hours" greater than or equal to 40 |
-| **Number** | Less than or Equal to | Allow equal or lower | Number | "Attempts" less than or equal to 3 |
-| **Date & Time** | Equal to | Match exact date/time | DateTime | "CreatedDate" equal to "2024-01-01" |
-| **Date & Time** | Not equal to | Ensure date differs | DateTime | "StartDate" not equal to "Today" |
-| | Later than | Occurs after target date/time | DateTime | "DueDate" later than "Now" |
-| **Date & Time** | Earlier than | Occurs before target date/time | DateTime | "EventDate" earlier than "Deadline" |
-| **Date & Time** | Later than or Equal to | Date/time is same or later | DateTime | "ValidFrom" later than or equal to "Today" |
-| **Date & Time** | Earlier than or Equal to | Date/time is same or earlier | DateTime | "ExpiryDate" earlier than or equal to "Now" |
-| **Time** | Equal to | Match exact time | Time | "StartTime" equal to "09:00" |
-| **Time** | Not equal to | Ensure time differs | Time | "MeetingTime" not equal to "12:00" |
-| **Time** | Greater than | Later in the day | Time | "ReminderTime" greater than "14:00" |
-| **Time** | Less than | Earlier in the day | Time | "StartTime" less than "08:00" |
-| **Time** | Greater than or Equal to | Allow same or later time | Time | "ShiftStart" greater than or equal to "06:00" |
-| **Time** | Less than or Equal to | Allow same or earlier time | Time | "CutoffTime" less than or equal to "17:00" |
+| **Basic** | Exists | Checks whether the field has a value and is present in the data. | Any | "Email" exists |
+| **Basic** | Does not exist | Checks whether the field is missing or undefined in the data. | Any | "MiddleName" does not exist |
+| **Basic** | Is empty | Checks whether the field is empty (for example, null, blank text, or an empty list). | Any | "Notes" is empty |
+| **Basic** | Is not empty | Checks whether the field contains a non-empty value. | Any | "Description" is not empty |
+| **Basic** | Is true | Checks whether a boolean field evaluates to true. | Boolean | "IsActive" is true |
+| **Basic** | Is false | Checks whether a boolean field evaluates to false. | Boolean | "IsDeleted" is false |
+| **Text** | Equal to | Compares the field value to the specified text for an exact match. | String | "Status" equal to "Open" |
+| **Text** | Not equal to | Passes when the field value does not match the specified text. | String | "Country" not equal to "USA" |
+| **Text** | Contains | Checks whether the field includes the specified substring anywhere in its value. | String | "Name" contains "Inc" |
+| **Text** | Does not contain | Passes when the field does not include the specified substring. | String | "Comment" does not contain "error" |
+| **Text** | Starts with | Checks whether the field value begins with the specified text. | String | "ID" starts with "EMP-" |
+| **Text** | Does not start with | Passes when the field value does not begin with the specified text. | String | "Tag" does not start with "tmp" |
+| **Text** | Ends with | Checks whether the field value ends with the specified text. | String | "FileName" ends with ".pdf" |
+| **Text** | Does not end with | Passes when the field value does not end with the specified text. | String | "FileName" does not end with ".tmp" |
+| **Number** | Equal to | Compares the field to the specified number for an exact match. | Number | "Score" equal to 10 |
+| **Number** | Not equal to | Passes when the field value is not equal to the specified number. | Number | "Quantity" not equal to 0 |
+| **Number** | Greater than | Passes when the field value is numerically greater than the specified value. | Number | "Age" greater than 18 |
+| **Number** | Less than | Passes when the field value is numerically less than the specified value. | Number | "Price" less than 100 |
+| **Number** | Greater than or Equal to | Passes when the field value is greater than or equal to the specified value. | Number | "Hours" greater than or equal to 40 |
+| **Number** | Less than or Equal to | Passes when the field value is less than or equal to the specified value. | Number | "Attempts" less than or equal to 3 |
+| **Date & Time** | Equal to | Compares the field to the specified date and time for an exact match. | DateTime | "CreatedDate" equal to "2024-01-01" |
+| **Date & Time** | Not equal to | Passes when the field date/time does not match the specified value. | DateTime | "StartDate" not equal to "Today" |
+| **Date & Time** | Later than | Passes when the field date/time occurs after the specified value. | DateTime | "DueDate" later than "Now" |
+| **Date & Time** | Earlier than | Passes when the field date/time occurs before the specified value. | DateTime | "EventDate" earlier than "Deadline" |
+| **Date & Time** | Later than or Equal to | Passes when the field date/time is on or after the specified value. | DateTime | "ValidFrom" later than or equal to "Today" |
+| **Date & Time** | Earlier than or Equal to | Passes when the field date/time is on or before the specified value. | DateTime | "ExpiryDate" earlier than or equal to "Now" |
 
 ## AND Conditions
 
-<img src="\img\platform\key-concepts\nodes\built-in\filter\and.png" alt="and" width="700"/>
+<img src="/img/platform/key-concepts/nodes/built-in/filter/and.png" alt="and" width="700"/>
 
 The AND button adds another condition inside the same rule group.
 
@@ -79,7 +76,7 @@ Use AND when every condition must be true at the same time.
 
 ## OR Conditions
 
-<img src="\img\platform\key-concepts\nodes\built-in\filter\or.png" alt="or" width="700"/>
+<img src="/img/platform/key-concepts/nodes/built-in/filter/or.png" alt="or" width="700"/>
 
 The OR button creates a separate rule group.
 
@@ -99,33 +96,72 @@ Use OR when multiple alternative criteria should qualify.
 
 ## Steps to Use the Filter Node
 
-1. Select the Filter node from the node selection screen.
-   <img src="\img\platform\key-concepts\nodes\built-in\filter\select-filter-node.png" alt="select filter node" width="700"/>
-2. Drag `order.status` from the Schema panel into the Field box. Confirm it appears as `{{$payload.order.status}}`.
-   <img src="\img\platform\key-concepts\nodes\built-in\filter\drag-param.png" alt="drag parameter" width="700"/>
-3. From the Condition dropdown (Text), select **Equal to**.
-   <img src="\img\platform\key-concepts\nodes\built-in\filter\select-condition.png" alt="select condition" width="700"/>
-4. In the Value box, enter `Shipped`.
-   <img src="\img\platform\key-concepts\nodes\built-in\filter\write-value.png" alt="set value" width="700"/>
+Use the **Field** box for the data you want to evaluate, the **Condition** dropdown for the operator, and the **Value** box for what you want to compare against.
 
-### Example with AND and OR
+### 1. Select the Filter node from the selection screen.
+    
+<img src="/img/platform/key-concepts/nodes/built-in/filter/select-filter-node.png" alt="select-filter-node" width="700"/>
 
-For this example, we have used AND and OR conditions in the Filter node like this:
+### 2. An empty configuration screen is displayed.
 
-First, we clicked **AND +** and added another rule where `order.status` is **Equal to** `Shipped` **AND** `customer.segment` is **Equal to** `Premium`.
+<img src="/img/platform/key-concepts/nodes/built-in/filter/empty-filter-node.png" alt="empty-filter-node" width="700"/>
 
-Then, we clicked **OR +** to create a second group, where `dates.orderDate` is **Later than** `01/02/2025 14:00`.
+### 3. Configuring the Field and Value boxes
 
-**Together, this means a record will pass the filter if it matches:**
+#### Field box
+
+The Field box defines the left side of the comparison. You can configure it in any of these ways:
+
+1. **Drag and drop** any field from the current node's input schema into the Field box.
+2. **Type the exact field name** from the input data (for example, `CardCode` or `BPAddresses[0].Street`).
+
+<img src="/img/platform/key-concepts/nodes/built-in/filter/field_mapped.png" alt="Field mapped" width="700"/>
+
+3. **Combine a field with supported functions** — use a field name together with [supported functions](/platform/key-concepts/expressions/using-functions) to transform the expression value before comparison (for example, `{{date_diff($payload.createdAt, now(), 'days')}}` or `{{mod($payload.id,`2`)}}` or `{{substringAfter($payload.email, '@')}}` ).
+
+<img src="/img/platform/key-concepts/nodes/built-in/filter/date_diff.png" alt="Date diff function" width="700"/>
+
+<img src="/img/platform/key-concepts/nodes/built-in/filter/mod.png" alt="Mod function" width="700"/>
+
+#### Value box
+
+The Value box defines the right side of the comparison. You can configure it in any of these ways:
+
+1. **Drag and drop** any field from the direct preceeding node (displayed in the current node's input schema) into the Value box.
+2. **Drag and drop** any field from a **prior node's** output in the workflow, say, data field displayed for an earlier node or trigger (displayed in the current node's input schema).
+
+<img src="/img/platform/key-concepts/nodes/built-in/filter/prior_node.png" alt="Prior Node" width="700"/>
+
+3. **Combine a field with expressions** — use a field name together with [supported functions](/platform/key-concepts/expressions/using-functions) to build the comparison value.
+
+You can mix these approaches across Field and Value as per your integration requirement.
+
+**Example with AND and OR**
+
+User can also use AND and OR conditions in the Filter node like this:
+
+- First, user clicked **AND +** and added another rule where `order.status` is **Equal to** `Shipped` **AND** `customer.segment` is **Equal to** `Premium`.
+
+- Then, user clicked **OR +** to create a second group, where `dates.orderDate` is **Later than** `01/02/2025 14:00`.
+
+- **Together, this means a record will pass the filter if it matches:**
 `(order.status = Shipped AND customer.segment = Premium) OR (orderDate > 01/02/2025 14:00)`.
 
-<img src="\img\platform\key-concepts\nodes\built-in\filter\or-condition.png" alt="and or condition" width="700"/>
+<img src="/img/platform/key-concepts/nodes/built-in/filter/or-condition.png" alt="and or condition" width="700"/>
 
-## Output Behavior
+### 4. Execute the Node and Check the Output
 
-<img src="\img\platform\key-concepts\nodes\built-in\filter\filtered-branch.png" alt="filtered branch" width="700"/>
+<img src="/img/platform/key-concepts/nodes/built-in/filter/execute.png" alt="Execute" width="700"/>
+
+### 5. Output Behavior
+
+<img src="/img/platform/key-concepts/nodes/built-in/filter/filtered-branch.png" alt="filtered branch" width="700"/>
 
 * All records that satisfy at least one of the above rule groups are passed to the next connected node (for example, a shipped order from a premium customer, or any order placed after the specified date).
 * Records that do not satisfy any of the configured groups are filtered out and will not be processed further.
 
 Use the Filter node when you want only matching records to continue in a single flow, without creating separate True or False branches.
+
+## Support
+
+Need help? Contact the support team at [support@appse.ai](mailto:support@appse.ai)

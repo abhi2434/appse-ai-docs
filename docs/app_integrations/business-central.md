@@ -22,10 +22,10 @@ Follow the steps below to quickly set up your credential.
 
 You’ll need to provide:
 
-| Field           | Description                                                |
-| --------------- | ---------------------------------------------------------- |
-| Connection Name | A name to identify the connection                          |
-| Tenant ID       | Your Azure Active Directory tenant ID                      |
+| Field           | Description       |
+| --------------- | ----------------- |
+| Connection Name | A name to identify the connection |
+| Tenant ID       | Your Azure Active Directory tenant ID |
 | Company ID      | The ID of the Business Central company you're working with |
 
 ---
@@ -87,7 +87,7 @@ Once you've filled in the necessary fields, click **"Save"** to store and verify
 - If successful, your credential will show a "✓" icon. Now you can use this application for your integrations.
 - If it fails, you will be displayed a "!" icon. In that case, please recheck your Connection Name, Tenant ID, and Company ID or contact support.
 
------------------
+---
 
 ## Triggers and Actions
 
@@ -98,34 +98,38 @@ Every application has a pre-defined set of triggers and actions that allow users
 
 ### Triggers
 
-#### New Customer Created
+#### New Customers Created
 
-New Customer Created trigger is used to fetch newly created customer records from Shopify based on a specified time and limit.
+New Customer Created trigger is used to fetch newly created customer records from Business Central based on a specified time and limit.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-NWCSTMRCRTD1.jpg" alt="Business Central New Customer Created - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Fetch Data Since | Specify the date and time to fetch new customer records. (e.g., "01/05/2024 09:32") |
 | Limit | Define the number of records to retrieve. (e.g., "10" or "1") |
 
-> **Note:** Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::note
+Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-NWCSTMRCRTD2.jpg" alt="Business Central New Customer Created - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -163,36 +167,42 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
------------------------
+---
 
-#### Customer Update
+#### Customers Update
 
-Customer Update trigger is used to fetch updated customer records from Shopify based on a specified time and limit.
+Customer Update trigger is used to fetch updated customer records from Business Central based on a specified time and limit.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-CSTMRUPDT3.jpg" alt="Business Central Customer Update - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Fetch Data Since | Specify the date and time to fetch updated customer records. (e.g., "01/05/2024 09:32") |
 | Limit | Define the number of records to retrieve. (e.g., "10" or "1") |
 
-> **Note:** Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::note
+Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
-> **Note:** The configuration fields are the same for all triggers - refer to the screenshot above.
 
--------------------------
+:::note
+The configuration fields are the same for all triggers - refer to the screenshot above.
+:::
+
+---
 
 ##### Result
 
@@ -230,36 +240,42 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
-------------------------
+---
 
 #### New Contacts Created
 
-New Contacts Created trigger is used to fetch newly created contact records from Shopify based on a specified time and limit.
+New Contacts Created trigger is used to fetch newly created contact records from Business Central based on a specified time and limit.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-NWCNTCTCRTD4.jpg" alt="Business Central New Contacts Created - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Fetch Data Since | Specify the date and time to fetch new contact records. (e.g., "01/05/2024 09:32") |
 | Limit | Define the number of records to retrieve. (e.g., "10" or "1") |
 
-> **Note:** Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::note
+Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
-> **Note:** The configuration fields are the same for all triggers - refer to the screenshot above.
 
--------------------------
+:::note
+The configuration fields are the same for all triggers - refer to the screenshot above.
+:::
+
+---
 
 ##### Result
 
@@ -293,36 +309,42 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
--------------------------
+---
 
 #### Contacts Updated
 
-Contacts Updated trigger is used to fetch updated contact records from Shopify based on a specified time and limit.
+Contacts Updated trigger is used to fetch updated contact records from Business Central based on a specified time and limit.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-CONTCTUPDT5.jpg" alt="Business Central Contacts Updated - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Fetch Data Since | Specify the date and time to fetch updated contact records. (e.g., "01/05/2024 09:32") |
 | Limit | Define the number of records to retrieve. (e.g., "10" or "1") |
 
-> **Note:** Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::note
+Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
-> **Note:** The configuration fields are the same for all triggers - refer to the screenshot above.
 
--------------------------
+:::note
+The configuration fields are the same for all triggers - refer to the screenshot above.
+:::
+
+---
 
 ##### Result
 
@@ -356,36 +378,42 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
--------------------------
+---
 
 #### New Items Created
 
-New Items Created trigger is used to fetch newly created item records from Shopify based on a specified time and limit.
+New Items Created trigger is used to fetch newly created item records from Business Central based on a specified time and limit.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-NWITMCRTD6.jpg" alt="Business Central New Items Created - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Fetch Data Since | Specify the date and time to fetch new item records. (e.g., "01/05/2024 09:32") |
 | Limit | Define the number of records to retrieve. (e.g., "10" or "1") |
 
-> **Note:** Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::note
+Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
-> **Note:** The configuration fields are the same for all triggers - refer to the screenshot above.
 
--------------------------
+:::note
+The configuration fields are the same for all triggers - refer to the screenshot above.
+:::
+
+---
 
 ##### Result
 
@@ -418,36 +446,42 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
--------------------------
+---
 
 #### Items Updated
 
-Items Updated trigger is used to fetch updated item records from Shopify based on a specified time and limit.
+Items Updated trigger is used to fetch updated item records from Business Central based on a specified time and limit.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-ITMSUPDT7.jpg" alt="Business Central Items Updated - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Fetch Data Since | Specify the date and time to fetch updated item records. (e.g., "01/05/2024 09:32") |
 | Limit | Define the number of records to retrieve. (e.g., "10" or "1") |
 
-> **Note:** Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::note
+Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
-> **Note:** The configuration fields are the same for all triggers - refer to the screenshot above.
 
--------------------------
+:::note
+The configuration fields are the same for all triggers - refer to the screenshot above.
+:::
+
+---
 
 ##### Result
 
@@ -480,36 +514,42 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
-----------------------
+---
 
 #### Opportunities Created
 
-Opportunities Created trigger is used to fetch newly created opportunity records from Shopify based on a specified time and limit.
+Opportunities Created trigger is used to fetch newly created opportunity records from Business Central based on a specified time and limit.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-OPPRTNTCRTD8.jpg" alt="Business Central Opportunities Created - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Fetch Data Since | Specify the date and time to fetch new opportunity records. (e.g., "01/05/2024 09:32") |
 | Limit | Define the number of records to retrieve. (e.g., "10" or "1") |
 
-> **Note:** Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::note
+Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
-> **Note:** The configuration fields are the same for all triggers - refer to the screenshot above.
 
--------------------------
+:::note
+The configuration fields are the same for all triggers - refer to the screenshot above.
+:::
+
+---
 
 ##### Result
 
@@ -538,36 +578,42 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
--------------------------
+---
 
 #### New SalesOrders Created
 
-New SalesOrders Created trigger is used to fetch newly created sales order records from Shopify based on a specified time and limit.
+New SalesOrders Created trigger is used to fetch newly created sales order records from Business Central based on a specified time and limit.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-NWSLSORDRCRTD9.jpg" alt="Business Central New SalesOrders Created - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Fetch Data Since | Specify the date and time to fetch new sales order records. (e.g., "01/05/2024 09:32") |
 | Limit | Define the number of records to retrieve. (e.g., "10" or "1") |
 
-> **Note:** Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::note
+Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
-> **Note:** The configuration fields are the same for all triggers - refer to the screenshot above.
 
--------------------------
+:::note
+The configuration fields are the same for all triggers - refer to the screenshot above.
+:::
+
+---
 
 ##### Result
 
@@ -736,36 +782,42 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
---------------------------
+---
 
 #### New Sales Invoices Created
 
-New Sales Invoices Created trigger is used to fetch newly created sales invoice records from Shopify based on a specified time and limit.
+New Sales Invoices Created trigger is used to fetch newly created sales invoice records from Business Central based on a specified time and limit.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/NWSLSINVCCRTD10.jpg" alt="Business Central New Sales Invoices Created - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Fetch Data Since | Specify the date and time to fetch new sales invoice records. (e.g., "01/05/2024 09:32") |
 | Limit | Define the number of records to retrieve. (e.g., "10" or "1") |
 
-> **Note:** Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::note
+Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
-> **Note:** The configuration fields are the same for all triggers - refer to the screenshot above.
 
--------------------------
+:::note
+The configuration fields are the same for all triggers - refer to the screenshot above.
+:::
+
+---
 
 ##### Result
 
@@ -865,36 +917,42 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
----------------------
+---
 
-#### New Sales Shipment Created
+#### New Sales Shipments Created
 
-New Sales Shipment Created trigger is used to fetch newly created sales shipment records from Shopify based on a specified time and limit.
+New Sales Shipment Created trigger is used to fetch newly created sales shipment records from Business Central based on a specified time and limit.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-NWSLSSHPMNTCRTD11.jpg" alt="Business Central New Sales Shipment Created - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Fetch Data Since | Specify the date and time to fetch new sales shipment records. (e.g., "01/05/2024 09:32") |
 | Limit | Define the number of records to retrieve. (e.g., "10" or "1") |
 
-> **Note:** Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::note
+Fetch Data Since is mandatory. Limit can be adjusted based on how many records you want to retrieve.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
-> **Note:** The configuration fields are the same for all triggers - refer to the screenshot above.
 
--------------------------
+:::note
+The configuration fields are the same for all triggers - refer to the screenshot above.
+:::
+
+---
 
 ##### Result
 
@@ -996,13 +1054,13 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
---------------------
+---
 
   </TabItem>
   <TabItem value="actions" label="Actions">
 
 
-### Actions
+## Actions
 
 ### Customer Action
 
@@ -1011,16 +1069,17 @@ Click on **Continue**, then **Run** node.
 Create a New Customer action is used to create a new customer record with personal and contact details.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-CRTNWCSTMR1.jpg" alt="Business Central Create a New Customer - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Customer Number | Enter the unique customer number. (e.g., "DEMO-888") |
 | Customer Name | Enter the customer name. (e.g., "Denna Josh") |
 | Customer Type | Specify the customer type. (e.g., "Person") |
@@ -1035,17 +1094,20 @@ Click on **Continue** button.
 | Email | Customer email address. (e.g., "denna.josh3@yopmail.com") |
 | Tax Liable | Specify tax applicability. (e.g., "True") |
 
-> **Note:** Customer Number, Customer Name, and Customer Type are mandatory. Other fields are optional and can be configured based on requirements.
+:::note
+Customer Number, Customer Name, and Customer Type are mandatory. Other fields are optional and can be configured based on requirements.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/C-AC-CRTNWCSTMR2.jpg" alt="Business Central Create a New Customer - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/C-AC-CRTNWCSTMR3.jpg" alt="Business Central Create a New Customer - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -1084,23 +1146,24 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
----------------------
+---
 
 #### Update a Customer
 
 Update a Customer action is used to modify an existing customer record with updated personal and contact details.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-UPDTCSTMR4.jpg" alt="Business Central Update a Customer - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Customer Id (Identifier) | Enter the unique customer identifier. (e.g., "a99e63e6-6b48-f111-a820-7ced8d9feb00") |
 | Customer Type | Specify the customer type. (e.g., "Company") |
 | Optional Fields | Additional customer details that can be updated. |
@@ -1111,16 +1174,19 @@ Click on **Continue** button.
 | State | State code. (e.g., "TS") |
 | Phone Number | Contact number. (e.g., "9098787653") |
 
-> **Note:** Customer Id and Customer Type are mandatory. Only the provided optional fields will be updated.
+:::note
+Customer Id and Customer Type are mandatory. Only the provided optional fields will be updated.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-UPDTCSTMR5.jpg" alt="Business Central Update a Customer - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -1159,35 +1225,39 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
-------------------- 
+---
 
 #### Get Customer by Email
 
 Get Customer by Email action is used to retrieve customer details using the customer's email address.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-GTCSTMRbyEML6.jpg" alt="Business Central Get Customer by Email - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Email | Enter the customer email address. (e.g., "denna.josh3@yopmail.com") |
 
-> **Note:** Email is mandatory. The action returns matching customer details for the specified email.
+:::note
+Email is mandatory. The action returns matching customer details for the specified email.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-GTCSTMRbyEML7.jpg" alt="Business Central Get Customer by Email - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -1225,7 +1295,7 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
----------------------
+---
 
 ### Contact Actions
 
@@ -1234,16 +1304,17 @@ Click on **Continue**, then **Run** node.
 Create a New Contact action is used to create a new contact record with personal, company, and communication details.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-NWCMPNYCRTD9.jpg" alt="Business Central Create a New Contact - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Full Name | Enter the full name of the contact. (e.g., "Merrie Josh") |
 | Optional Fields | Additional contact details that can be configured. |
 | Contact Number | Primary contact number. (e.g., "8767890987") |
@@ -1261,17 +1332,20 @@ Click on **Continue** button.
 | Job Title | Contact job role. (e.g., "Sales Marketing") |
 | Type | Contact type. (e.g., "Person") |
 
-> **Note:** Full Name is mandatory. Other fields are optional and can be configured based on requirements.
+:::note
+Full Name is mandatory. Other fields are optional and can be configured based on requirements.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-NWCMPNYCRTD10.jpg" alt="Business Central Create a New Contact - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-NWCMPNYCRTD11.jpg" alt="Business Central Create a New Contact - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -1306,23 +1380,24 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
--------------------------
+---
 
 #### Update a Contact
 
 Update a Contact action is used to modify an existing contact record with updated personal, company, and communication details.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-UPDTCONTCT21.jpg" alt="Business Central Update a Contact - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Contact Id (Identifier) | Enter the unique contact identifier. (e.g., "27423461-7648-f111-a820-7ced8d9feb00") |
 | Optional Fields | Additional contact details that can be updated. |
 | Full Name | Contact full name. (e.g., "Anne Josh") |
@@ -1335,17 +1410,20 @@ Click on **Continue** button.
 | Postal Code | ZIP / Postal code. (e.g., "500039") |
 | Phone Number | Contact number. (e.g., "7898012321") |
 
-> **Note:** Contact Id is mandatory. Only the provided optional fields will be updated.
+:::note
+Contact Id is mandatory. Only the provided optional fields will be updated.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-UPDTCONTCT22.jpg" alt="Business Central Update a Contact - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-UPDTCONTCT23.jpg" alt="Business Central Update a Contact - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -1380,35 +1458,39 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
----------------------
+---
 
 #### Get Contacts by Company Number
 
 Get Contacts by Company Number action is used to retrieve contact records associated with a specific company using the company number.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-GTCMPNYbyCMPNYID23.jpg" alt="Business Central Get Contacts by Company Number - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Company Number | Enter the unique company number. (e.g., "CT012194") |
 
-> **Note:** Company Number is mandatory. The action returns all contacts linked to the specified company.
+:::note
+Company Number is mandatory. The action returns all contacts linked to the specified company.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-GTCMPNYbyCMPNYID24.jpg" alt="Business Central Get Contacts by Company Number - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -1442,37 +1524,41 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
--------------------
+-----
 
 #### Get Contacts by Contact Type
 
 Get Contacts by Contact Type action is used to retrieve contact records based on the specified contact type.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-GTCOMPANYbyCMPNYTYPE25.jpg" alt="Business Central Get Contacts by Contact Type - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Contact Type | Specify the contact type (Company or Person). (e.g., "Company") |
 | Optional Fields | Additional parameters to filter results. |
 | Limit | Define the number of records to retrieve. (e.g., "1") |
 
-> **Note:** Contact Type is required to filter contacts. Limit can be used to restrict the number of records returned.
+:::note
+Contact Type is required to filter contacts. Limit can be used to restrict the number of records returned.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-GTCOMPANYbyCMPNYTYPE26.jpg" alt="Business Central Get Contacts by Contact Type - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -1506,35 +1592,39 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
--------------------
+---
 
 #### Get Company Number by Company Name
 
 Get Company Number by Company Name action is used to retrieve the company number using the company name.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-GTCMPNYNUMbyCMPNYNAM26.jpg" alt="Business Central Get Company Number by Company Name - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Company Name | Enter the company name. (e.g., "AZTECH COMPANY") |
 
-> **Note:** Company Name is mandatory. The action returns the corresponding company number for the specified company.
+:::note
+Company Name is mandatory. The action returns the corresponding company number for the specified company.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-GTCMPNYbyCMPNYNME27.jpg" alt="Business Central Get Company Number by Company Name - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -1568,7 +1658,7 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
-------------------------
+---
 
 ### Item Actions
 
@@ -1577,16 +1667,17 @@ Click on **Continue**, then **Run** node.
 Create a New Item action is used to create a new inventory item with pricing, unit, and posting group details.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-CRTNWITM28.jpg" alt="Business Central Create a New Item - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Item Number | Enter the unique item identifier. (e.g., "NAYASA") |
 | Display Name | Enter the primary display name of the item. (e.g., "ITSLLTLAPTOP") |
 | Item Type | Specify the item type. (e.g., "Inventory") |
@@ -1597,17 +1688,20 @@ Click on **Continue** button.
 | General Product Posting Group Code | Posting group for sales. (e.g., "RETAIL") |
 | Inventory Posting Group Code | Inventory classification group. (e.g., "RESALE") |
 
-> **Note:** Item Number, Display Name, Item Type, and Unit Price are mandatory. Other fields are optional and can be configured based on requirements.
+:::note
+Item Number, Display Name, Item Type, and Unit Price are mandatory. Other fields are optional and can be configured based on requirements.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-CRTNWITM29.jpg" alt="Business Central Create a New Item - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-CRTNWITM30.jpg" alt="Business Central Create a New Item - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -1641,23 +1735,24 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
-------------------------
+---
 
 #### Update an Existing Item
 
 Update an Existing Item action is used to modify an existing inventory item with updated details such as name, type, pricing, and tax configuration.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-UPDTITM31.jpg" alt="Business Central Update an Existing Item - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Item Id (Identifier) | Enter the unique item identifier. (e.g., "8495d7dc-2949-f111-a820-6045bdad25d1") |
 | Optional Fields | Additional item details that can be updated. |
 | Item Number | Unique item number. (e.g., "NAYASAAA") |
@@ -1666,16 +1761,19 @@ Click on **Continue** button.
 | Unit Price | Enter the updated unit price. (e.g., "30000") |
 | Price Includes Tax | Specify whether price includes tax. (e.g., "True") |
 
-> **Note:** Item Id is mandatory. Only the provided optional fields will be updated.
+:::note
+Item Id is mandatory. Only the provided optional fields will be updated.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-UPDTITM32.jpg" alt="Business Central Update an Existing Item - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -1709,7 +1807,7 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
-----------------------
+----
 
 ### Opportunity Actions
 
@@ -1718,32 +1816,36 @@ Click on **Continue**, then **Run** node.
 Create a New Opportunity action is used to create a new sales opportunity with contact, description, and salesperson details.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-CRTNWOPP33.jpg" alt="Business Central Create a New Opportunity - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Opportunity Number | Enter the unique opportunity identifier. (e.g., "DemoQuote") |
 | Optional Fields | Additional opportunity details that can be configured. |
 | Contact Number | Enter the associated contact number. (e.g., "CT012194") |
 | Description | Provide details about the opportunity. (e.g., "Demo Purpose Quote") |
 | Salesperson Code | Enter the salesperson code. (e.g., "BC") |
 
-> **Note:** Opportunity Number is required. Other fields are optional and can be configured based on business requirements.
+:::note
+Opportunity Number is required. Other fields are optional and can be configured based on business requirements.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-CRTNWOPP34.jpg" alt="Business Central Create a New Opportunity - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -1773,7 +1875,7 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
--------------------------
+---
 
 ### Sales Quote Actions
 
@@ -1782,16 +1884,17 @@ Click on **Continue**, then **Run** node.
 Create a New Sales Quote action is used to create a sales quotation for a customer with item details, pricing, and shipping information.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-CRTNWSLSQUTE35.jpg" alt="Business Central Create a New Sales Quote - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Document Date | Enter the document date. (e.g., "2026-05-06") |
 | Customer Number | Enter the customer number. (e.g., "DEMO-888") |
 | Sales Quote Lines | Add one or more line items for the quote. |
@@ -1814,19 +1917,22 @@ Click on **Continue** button.
 | Ship To State Code | State code. (e.g., "TS") |
 | Ship To Post Code | Postal code. (e.g., "500038") |
 
-> **Note:** Document Date, Customer Number, Line Type, Line Item No, Unit Price, and Quantity are mandatory. Additional fields can be configured as needed.
+:::note
+Document Date, Customer Number, Line Type, Line Item No, Unit Price, and Quantity are mandatory. Additional fields can be configured as needed.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-CRTNWSLSQUTE36.jpg" alt="Business Central Create a New Sales Quote - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-CRTNWSLSQUTE37.jpg" alt="Business Central Create a New Sales Quote - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-CRTNWSLSQUTE38.jpg" alt="Business Central Create a New Sales Quote - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-CRTNWSLSQUTE39.jpg" alt="Business Central Create a New Sales Quote - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -1888,7 +1994,7 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
--------------------------------
+---
 
 ### Sales Order Actions
 
@@ -1897,16 +2003,17 @@ Click on **Continue**, then **Run** node.
 Create a New Sales Order action is used to create a sales order for a customer with item details, pricing, discounts, and shipping information.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-CRTNWSLSORD40.jpg" alt="Business Central Create a New Sales Order - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Sales Order Number | Enter the unique sales order number. (e.g., "SLSORDNUM1") |
 | Order Date | Enter the order date. (e.g., "2026-05-06") |
 | Customer Number | Enter the customer number. (e.g., "DEMO-888") |
@@ -1936,20 +2043,23 @@ Click on **Continue** button.
 | Ship To State Code | State code. (e.g., "TS") |
 | Ship To Post Code | Postal code. (e.g., "500037") |
 
-> **Note:** Sales Order Number, Order Date, Customer Number, Line Item No, Line Type, Quantity, and Unit Price are mandatory. Other fields are optional and can be configured as needed.
+:::note
+Sales Order Number, Order Date, Customer Number, Line Item No, Line Type, Quantity, and Unit Price are mandatory. Other fields are optional and can be configured as needed.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-CRTNWSLSORD41.jpg" alt="Business Central Create a New Sales Order - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-CRTNWSLSORD42.jpg" alt="Business Central Create a New Sales Order - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-CRTNWSLSORD43.jpg" alt="Business Central Create a New Sales Order - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-CRTNWSLSORD44.jpg" alt="Business Central Create a New Sales Order - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-CRTNWSLSORD45.jpg" alt="Business Central Create a New Sales Order - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -2012,7 +2122,7 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
-------------------------------
+---
 
 ### Sales Invoice Actions
 
@@ -2021,16 +2131,17 @@ Click on **Continue**, then **Run** node.
 Create a New Sales Invoice action is used to generate a sales invoice for a customer with item details, pricing, and shipping information.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-CRTSLSINVC46.jpg" alt="Business Central Create a New Sales Invoice - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Customer Number | Enter the customer number. (e.g., "DEMO-888") |
 | Optional Fields | Additional invoice details that can be configured. |
 | External Document Number | External reference number. (e.g., "SLSORD1") |
@@ -2062,20 +2173,23 @@ Click on **Continue** button.
 | Unit of Measure ID (GUID) | UOM identifier. (e.g., "62dedcf8-b3d3-ee11-904f-6045bde9c6f5") |
 | Item ID (GUID) | Internal item identifier. (e.g., "8495d7dc-2949-f111-a820-6045bdad25d1") |
 
-> **Note:** Customer Number, Line Item No, Line Type, Quantity, and Unit Price are mandatory. Other fields are optional and can be configured based on requirements.
+:::note
+Customer Number, Line Item No, Line Type, Quantity, and Unit Price are mandatory. Other fields are optional and can be configured based on requirements.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-CRTSLSINVC47.jpg" alt="Business Central Create a New Sales Invoice - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-CRTSLSINVC48.jpg" alt="Business Central Create a New Sales Invoice - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-CRTSLSINVC49.jpg" alt="Business Central Create a New Sales Invoice - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-CRTSLSINVC50.jpg" alt="Business Central Create a New Sales Invoice - Example Configuration" width="700" />
 <img src="/img/credentials/business-central/AC-CRTSLSINVC51.jpg" alt="Business Central Create a New Sales Invoice - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -2143,7 +2257,7 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
-----------------------------
+----
 
 ### Sales InvoiceLine Actions
 
@@ -2152,30 +2266,34 @@ Click on **Continue**, then **Run** node.
 Get Sales Invoice Lines by SalesInvoice ID action is used to retrieve line item details associated with a specific sales invoice.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-GTSLSINVCLINbySLSINVID52.jpg" alt="Business Central Get Sales Invoice Lines by SalesInvoice ID - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | SalesInvoice ID | Enter the unique sales invoice identifier. (e.g., "e7048e16-3349-f111-a820-6045bdad25d1") |
 | Optional Fields | Additional parameters to filter results. |
 | Limit | Define the number of records to retrieve. (e.g., "1") |
 
-> **Note:** SalesInvoice ID is mandatory. Limit can be used to restrict the number of invoice lines returned.
+:::note
+SalesInvoice ID is mandatory. Limit can be used to restrict the number of invoice lines returned.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-GTSLSINVCLINbySLSINVID53.jpg" alt="Business Central Get Sales Invoice Lines by SalesInvoice ID - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -2214,39 +2332,43 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
-------------------------------
+---
 
 ### Generic Actions
 
 #### Search Records
 
-**Search Records** action is used to retrieve records from a selected object based on specified filter conditions.
+Search Records action is used to retrieve records from a selected object based on specified filter conditions.
 
 ##### Select Credentials and Action Events
+
 <img src="/img/credentials/business-central/C-AC-SRCHRCRDS54.jpg" alt="Business Central Search Records - Select Credentials and Action Events" width="700" />
 
 Click on **Continue** button.
 
----------------------------
+---
 
-##### Configuration
+##### Configuration Fields
 
 | Field | Description |
-|------|-------------|
+|-------|-------------|
 | Object Name | Select the object from the dropdown. (e.g., "Customers") |
 | Filter Value | Enter the filter condition to search records. (e.g., "number eq 'DEMO-888'") |
 | Limit of Records | Define the number of records to retrieve. (e.g., "1") |
 
-> **Note:** Object Name, Filter Value, and Limit of Records are mandatory. Ensure the filter condition follows the correct query format.
+:::note
+Object Name, Filter Value, and Limit of Records are mandatory. Ensure the filter condition follows the correct query format.
+:::
 
 Click on **Continue**, then **Run** node.
 
--------------------------
+---
 
 ##### Example Configuration
+
 <img src="/img/credentials/business-central/AC-SRCHRCRDS55.jpg" alt="Business Central Search Records - Example Configuration" width="700" />
 
--------------------------
+---
 
 ##### Result
 
@@ -2284,11 +2406,10 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
-------------------------------
+---
 
   </TabItem>
 </Tabs>
-
 
 ## Support
 

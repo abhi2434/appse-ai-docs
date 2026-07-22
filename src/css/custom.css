@@ -28,3 +28,33 @@
   --ifm-color-primary-lightest: #1f2937;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+.theme-code-block[class*="language-json"],
+.theme-code-block pre[class*="language-json"],
+.markdown pre[class*="language-json"] {
+  max-width: 100%;
+  max-height: 32rem;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(51, 149, 255, 0.45) transparent;
+}
+
+.theme-code-block[class*="language-json"]::-webkit-scrollbar,
+.theme-code-block pre[class*="language-json"]::-webkit-scrollbar,
+.markdown pre[class*="language-json"]::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.theme-code-block[class*="language-json"]::-webkit-scrollbar-thumb,
+.theme-code-block pre[class*="language-json"]::-webkit-scrollbar-thumb,
+.markdown pre[class*="language-json"]::-webkit-scrollbar-thumb {
+  background: rgba(51, 149, 255, 0.45);
+  border-radius: 999px;
+}
+
+.theme-code-block[class*="language-json"]::-webkit-scrollbar-track,
+.theme-code-block pre[class*="language-json"]::-webkit-scrollbar-track,
+.markdown pre[class*="language-json"]::-webkit-scrollbar-track {
+  background: transparent;
+}

@@ -126,7 +126,7 @@ Select based on your use case:
 | Query       | Read-only data access                |
 | Codeunit    | Custom logic or automation           |
 
-:::info
+:::note
 For integrations with **appse ai**, you should publish **Page** objects. Page web services support full CRUD operations, filtering, sorting, and pagination, making them the most flexible and widely supported option for external integrations such as APIs, middleware, and automation platforms.
 :::
 
@@ -1410,7 +1410,23 @@ Click on **Continue** button.
 `Object Name`, `Filter Value`, and `Limit of records` are mandatory fields. All other fields are optional and can be configured based on business requirements.
 :::
 
-Click on **Continue**, then **Run** node.
+##### Custom Object / Endpoint
+
+The Search Record action also supports searching records from a custom object/endpoint that is not listed in the supported options dropdown.
+
+To search records from a custom object:
+
+1. In the **Object Name** field, switch the field type from **dropdown** to **expression box**.
+
+<img src="/img/credentials/business-central-odata/generic_action_switchField.png" alt="switch field mode" width="700" />
+
+2. Manually type the custom object/endpoint name.
+
+<img src="/img/credentials/business-central-odata/fill_objectName.png" alt="Type custom endpoint name" width="700" />
+
+The other parameters — **Filter Value**, **Limit of records**, and **Select fields to fetch** — work the same as when using a supported object from the dropdown.
+
+Click on **Continue** after required configuration, then **Run** node.
 
 -----------------------------
 
@@ -1640,8 +1656,8 @@ Click on **Continue**, then **Run** node.
   }
 ]
 ```
------------------------
+---
 
 ## Support
 
-Need help? Contact our support team at [hello@appse.ai](mailto:hello@appse.ai)
+Need help? Contact our support team at [support@appse.ai](mailto:support@appse.ai)

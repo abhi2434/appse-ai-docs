@@ -26,9 +26,9 @@ Before setting up your Mailchimp credential in appse ai, ensure that you have ac
 
 #### 1. Log in to Mailchimp
 
-Log in to your Mailchimp account.
+- Log in to your Mailchimp account.
 
-<img src="/img/credentials/mailchimp/mailchimp-login.png" alt="Mailchimp Login" width="700"/>
+<img src="/img/credentials/mailchimp/mailchimp-login.png" alt="Mailchimp Login" width="700" height="500"/>
 
 ---
 
@@ -72,7 +72,9 @@ In the API Keys section:
 
 <img src="/img/credentials/mailchimp/mailchimp-copy-apikey.png" alt="Mailchimp copy API key screen" width="700"/>
 
-> **Note**: Store the API key securely. It provides access to your Mailchimp account APIs.
+:::info
+Store the API key securely. It provides access to your Mailchimp account APIs.
+:::
 
 ---
 
@@ -107,6 +109,34 @@ In appse ai, enter the following details:
 <img src="/img/credentials/mailchimp/mailchimp-configure-credential.png" alt="Save Mailchimp Credential" width="700" height="500"/>
 
 - Click **Save** to establish the connection.
+
+---
+
+## Find Audience ID
+
+Most Mailchimp actions in appse ai require an **Audience ID** to identify the target audience/list.
+
+To find your Audience ID in Mailchimp:
+
+- Navigate to **Audience** from the left sidebar.
+
+<img src="/img/credentials/mailchimp/audience-tab.png" alt="Mailchimp Audience menu" width="700"/>
+
+- Click on the **three-dot menu (...)**
+
+<img src="/img/credentials/mailchimp/audience-three-dot-menu.png" alt="Mailchimp Audience three dot menu" width="700"/>
+
+- Click on **Audience settings**
+
+<img src="/img/credentials/mailchimp/audience-settings.png" alt="Mailchimp Audience settings dropdown" width="700"/>
+
+- Locate and copy the **Audience ID**
+
+<img src="/img/credentials/mailchimp/audience-id.png" alt="Mailchimp Audience ID" width="700"/>
+
+:::info
+The Audience ID is required in most Mailchimp actions such as Create Contact and Add or Remove Contact Tags.
+:::
 
 ---
 
