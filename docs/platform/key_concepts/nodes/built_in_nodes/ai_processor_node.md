@@ -1,5 +1,5 @@
 ---
-slug: /platform/key-concepts/nodes/ai-processor
+slug: /platform/key-concepts/nodes/built-in/ai-processor
 title: AI Processor Node
 ---
 
@@ -11,6 +11,7 @@ The **AI Processor Node** is a built-in node that enables you to process data us
 It allows you to generate, transform, and structure responses using prompts, system instructions, and optional configurations like temperature and structured output format.
 
 This node is commonly used for:
+
 - Content generation
 - Data enrichment
 - Classification and analysis
@@ -61,12 +62,12 @@ In this step, select the AI provider, model, and credential type.
 
 #### Configure the following fields:
 
-#### **LLM Provider** *
+#### **LLM Provider** \*
 
 Select the AI provider:
 
-- OpenAI  
-- Anthropic Claude  
+- OpenAI
+- Anthropic Claude
 
 <img
   src="/img/platform/key-concepts/nodes/built-in/ai_processor_node/select-llm-provider.png"
@@ -76,7 +77,7 @@ Select the AI provider:
 
 ---
 
-#### **Model** *
+#### **Model** \*
 
 The available models depend on the selected provider.
 
@@ -86,10 +87,10 @@ The available models depend on the selected provider.
 
 Select one of the following models:
 
-- GPT-4o  
-- GPT-4o-mini  
-- GPT-4.1  
-- GPT-4.1-mini  
+- GPT-4o
+- GPT-4o-mini
+- GPT-4.1
+- GPT-4.1-mini
 
 <img
   src="/img/platform/key-concepts/nodes/built-in/ai_processor_node/ai-processor-llm-openai-model.png"
@@ -135,8 +136,8 @@ The AI Processor Node supports two ways to execute requests based on credential 
 
 The mode is controlled using the **BYOK toggle** in the Credential configuration step:
 
-- **BYOK ON** → Uses your own credential  
-- **BYOK OFF** → Uses platform-managed credential  
+- **BYOK ON** → Uses your own credential
+- **BYOK OFF** → Uses platform-managed credential
 
 ---
 
@@ -156,7 +157,7 @@ The mode is controlled using the **BYOK toggle** in the Credential configuration
 
 ---
 
-#### **Account** *
+#### **Account** \*
 
 - Required only when **BYOK is enabled**
 - Provide your own API key through a credential
@@ -174,8 +175,8 @@ You can select an existing credential or create a new one
 Credentials can be created either from the **Credentials** page or directly within the **Node**.
 :::
 
-- Use the **Credentials page** to manage and reuse credentials across workflows  
-- Use the **Create a new credential** option in the node  
+- Use the **Credentials page** to manage and reuse credentials across workflows
+- Use the **Create a new credential** option in the node
 
 ---
 
@@ -196,8 +197,8 @@ Credentials can be created either from the **Credentials** page or directly with
 />
 
 3. Enter the required details:
-   - **Connection Name**  
-   - **Secret Key (API Key)**  
+   - **Connection Name**
+   - **Secret Key (API Key)**
 
 <img
   src="/img/platform/key-concepts/nodes/built-in/ai_processor_node/provide-credential.png"
@@ -223,7 +224,7 @@ After a new credential is created, it will automatically be selected in the **Ac
 
 If a credential already exists:
 
-- Choose the credential from the **Account** dropdown  
+- Choose the credential from the **Account** dropdown
 - The selected credential will be used for execution
 
 ---
@@ -234,8 +235,8 @@ If a credential already exists:
 
 **Keep the BYOK toggle button OFF**
 
-- No API key required  
-- Uses **platform-managed credentials**  
+- No API key required
+- Uses **platform-managed credentials**
 
 <img
   src="/img/platform/key-concepts/nodes/built-in/ai_processor_node/ai-processor-byok-toggle.png"
@@ -261,11 +262,12 @@ Move to the **Configure** step.
 
 ---
 
-#### **Message** *
+#### **Message** \*
 
 The main prompt sent to the AI model.
 
 **Provide the prompt in the Message field**
+
 - Supports dynamic expressions (e.g., `{{$payload.field}}`)
 - Allows structured instructions and contextual data
 
@@ -317,11 +319,13 @@ The following fields are optional and can be configured based on your use case:
 />
 
 You may:
-- Provide all, some, or none of these fields  
-- Skip them entirely for basic prompt execution  
+
+- Provide all, some, or none of these fields
+- Skip them entirely for basic prompt execution
 
 If not provided:
-- Default model behavior will be used  
+
+- Default model behavior will be used
 - Output will be unstructured unless a schema is defined
 
 ---
@@ -331,6 +335,7 @@ If not provided:
 Defines AI behavior.
 
 #### Example
+
 ```text
 You are an advanced product intelligence assistant.
 - Ensure structured output
@@ -342,9 +347,9 @@ You are an advanced product intelligence assistant.
 
 Controls the randomness and creativity of the AI response.
 
-- `0.0` → Most consistent and deterministic output 
-- `1.0` → Noticeably more creative and varied responses 
-- `2.0` → Most creative and diverse output  
+- `0.0` → Most consistent and deterministic output
+- `1.0` → Noticeably more creative and varied responses
+- `2.0` → Most creative and diverse output
 
 :::info
 If not specified, the default value (`0.7`) is used.
@@ -357,8 +362,9 @@ If not specified, the default value (`0.7`) is used.
 Define a JSON schema to enforce structured output.
 
 You can either:
-- Manually define your own JSON schema  
-- Use predefined templates available in the node for quick reference  
+
+- Manually define your own JSON schema
+- Use predefined templates available in the node for quick reference
 
 #### Example
 
@@ -410,9 +416,9 @@ Click **Continue**, then **Run** to execute.
 
 After execution:
 
-- AI response is generated  
-- Structured output is returned (if schema is used)  
-- Output is available for downstream nodes  
+- AI response is generated
+- Structured output is returned (if schema is used)
+- Output is available for downstream nodes
 
 <div
   style={{
@@ -475,6 +481,7 @@ After execution:
   }
 ]
 ```
+
 </div>
 
 <img
@@ -486,6 +493,7 @@ After execution:
 ---
 
 ### Key Features
+
 - Multi-provider AI support
 - BYOK and appse ai-managed credentials
 - Dynamic expressions in prompts
@@ -496,6 +504,7 @@ After execution:
 ---
 
 ### Notes
+
 - Use System Message to guide AI behavior
 - Use JSON Schema for structured outputs
 - Ensure valid credentials when BYOK is ON
