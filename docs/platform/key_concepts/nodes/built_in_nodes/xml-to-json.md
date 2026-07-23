@@ -1,5 +1,6 @@
 ---
-title: "XML to JSON Node"
+slug: /platform/key-concepts/nodes/built-in/xml-to-json
+title: XML to JSON Node
 description: "Convert XML into clean, predictable JSON so you can map it with JMESPath — with a shape that stays stable whether an element appears once or many times."
 ---
 
@@ -15,7 +16,11 @@ Its most important job is keeping the JSON **shape predictable**. XML doesn't te
 - Reading XML from an **HTTP response**, a **file**, or any **upstream node**.
 - Any workflow where a source speaks XML but your mappings need JSON.
 
-> ℹ️ **Every example on this page uses the same sample** — a two-line order document. See [Sample XML](#sample-xml) below.
+:::info
+
+**Every example on this page uses the same sample** — a two-line order document. See [Sample XML](#sample-xml) below.
+
+:::
 
 <img src="/img/platform/key-concepts/nodes/built-in/xml_to_json/canvas.png" alt="The XML to JSON node in the node menu, under Action Nodes" width="700"/>
 *Add the **XML to JSON** node from the node menu (Action → Action Nodes).*
@@ -208,7 +213,11 @@ Notice `IDOC`, `EDI_DC40`, `E1EDP01`, `E1EDP19` — all arrays, even the ones th
 }
 ```
 
-> ✅ **Recommended when a document can carry one _or_ many records.** With _Always an array_ you don't need a schema or a field list — the shape is stable out of the box.
+:::tip
+
+**Recommended when a document can carry one _or_ many records.** With _Always an array_ you don't need a schema or a field list — the shape is stable out of the box.
+
+:::
 
 ---
 
@@ -273,7 +282,11 @@ Here an element is an array **only when it repeats**. `E1EDP01` appears twice, s
 }
 ```
 
-> ⚠️ **The single-line trap.** If an order arrives with only **one** `E1EDP01`, this mode makes it an **object**, not an array — and `E1EDP01[*]` mappings quietly return nothing. Protect the fields that can repeat with **Always-Array Elements**.
+:::warning
+
+**The single-line trap.** If an order arrives with only **one** `E1EDP01`, this mode makes it an **object**, not an array — and `E1EDP01[*]` mappings quietly return nothing. Protect the fields that can repeat with **Always-Array Elements**.
+
+:::
 
 **Fix it with Always-Array Elements.** Set:
 
@@ -436,7 +449,11 @@ Result — `E1EDP01` and `E1EDP19` are arrays (from `maxOccurs`), `MENGE`/`NETPR
 }
 ```
 
-> ℹ️ **Partial schemas are fine.** The schema is a hint, never a gatekeeper — your XML is never rejected for not matching it. Any element you didn't declare still converts normally.
+:::info
+
+**Partial schemas are fine.** The schema is a hint, never a gatekeeper — your XML is never rejected for not matching it. Any element you didn't declare still converts normally.
+
+:::
 
 ---
 
