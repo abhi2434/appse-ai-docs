@@ -123,37 +123,80 @@ If you followed all the steps correctly, your Zoho Projects credential should be
 
 ---
 
-## Triggers and Actions
+## Triggers
 
-Every application has a pre-defined set of triggers and actions that allow users to perform application specific activities within the platform. Here is a list of all the actions and triggers available:
+All Zoho Projects triggers poll for newly created records and fire once per new record found.
 
-### Actions
+Project-scoped triggers additionally require a **Project** to monitor within the selected portal.
 
-> Projects Actions
+Here is the list of available triggers for Zoho Projects:
 
-- Get Projects
-- Get a Project
-- Create a Project
-- Update a Project
+| Trigger | Description |
+| ------- | ----------- |
+| **On New Project Created** | Triggers when a new project is created in a Zoho Projects portal. |
+| **On New Task Created - Any Project** | Triggers when a new task is created anywhere in a Zoho Projects portal. |
+| **On New Task Created** | Triggers when a new task is created in a specific Zoho Projects project. |
+| **On New Issue Created - Any Project** | Triggers when a new issue is created anywhere in a Zoho Projects portal. |
+| **On New Issue Created** | Triggers when a new issue is created in a specific Zoho Projects project. |
 
-> Tasks Actions
+## Actions
 
-- Get Tasks
-- Get a Task
-- Create a Task
-- Update a Task
+Here is the list of available actions for Zoho Projects:
 
-> Milestones Actions
+### Projects
 
-- Get Milestones
-- Get a Milestone
-- Create a Milestone
-- Update a Milestone
+| Action | Description |
+| ------ | ----------- |
+| **Add a Project** | Creates a new project in a specific portal in Zoho Projects. |
+| **Update a Project** | Updates an existing project in a specific portal in Zoho Projects. |
+| **Apply Template to Project** | Applies a tasklist template to a specific project in Zoho Projects. |
+| **Search Items** | Searches for items across different modules in a Zoho Projects portal, including projects, milestones, tasklists, tasks, bugs, forums, and events. |
+| **Search Items by Project** | Searches for items within a specific project in Zoho Projects. |
 
-> Users Actions
+### Tasks
 
-- Get Users
-- Get a User
+| Action | Description |
+| ------ | ----------- |
+| **Add a Task** | Creates a new task in a specific project in Zoho Projects. |
+| **Update a Task** | Updates an existing task in a specific project in Zoho Projects. |
+| **Update a Task Status** | Updates the status of an existing task in a specific project in Zoho Projects. |
+| **Add a Task Comment** | Adds a comment to a specific task in Zoho Projects. |
+| **Get Task Documents** | Retrieves all documents attached to a specific task in Zoho Projects. |
+
+### Milestones
+
+| Action | Description |
+| ------ | ----------- |
+| **Add a Milestone** | Creates a new milestone (phase) in a specific project in Zoho Projects. |
+| **Update a Milestone** | Updates an existing milestone (phase) in a specific project in Zoho Projects. |
+
+### Issues (Bugs)
+
+| Action | Description |
+| ------ | ----------- |
+| **Get Issue by ID** | Retrieves the details of a specific issue in a project in Zoho Projects. |
+| **Get Issues by Filter** | Retrieves a list of issues (bugs) for a specific project, with optional filtering, sorting, and pagination. |
+| **Update an Issue** | Updates an existing issue (bug) in a specific project in Zoho Projects. |
+| **Add Comment to Issue** | Adds a comment to a specific issue (bug) in a project in Zoho Projects. |
+| **Get Comments from Issue** | Retrieves the comments of a specific issue (bug) in a project in Zoho Projects. |
+| **Update Issue Comment** | Updates an existing comment on a specific issue (bug) in a project in Zoho Projects. |
+| **Add Issue Resolution** | Adds a resolution to a specific issue (bug) in a project in Zoho Projects. |
+| **Update Issue Resolution** | Updates the resolution of a specific issue (bug) in a project in Zoho Projects. |
+
+### Events
+
+| Action | Description |
+| ------ | ----------- |
+| **Add an Event** | Creates a new event in a specific project in Zoho Projects. |
+| **Update an Event** | Updates an existing event in a specific project in Zoho Projects. |
+| **Add a Content to an Event** | Adds a comment/content to a specific event in Zoho Projects. |
+| **Get All Comments from Event** | Retrieves all comments from a specific event in Zoho Projects. |
+
+### Users
+
+| Action | Description |
+| ------ | ----------- |
+| **Get a User by Email** | Retrieves a user by their email address from a specific portal in Zoho Projects. |
 
 ---
 
