@@ -1,7 +1,7 @@
 ---
 title: "SAP ECC"
 description: Step-by-step guide to set up SAP ECC (RFC) credentials for appse ai integration
-slug: /app-integrations/sap-ecc-rfc
+slug: /app-integrations/sap-ecc-rfc/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -11,18 +11,20 @@ SAP ECC (ERP Central Component) is SAP's on-premise ERP suite that runs an organ
 
 ---
 
-## Authentication Methods
+## Setup Credential
+
+### Authentication Methods
 
 **appse ai** supports two connection modes for SAP ECC: **Connect to one server (Direct)** and **Load balance across servers (Message Server)**. Choose the one that matches the details your SAP/Basis administrator gave you — if you were handed an _application server host + system number_, use **Direct**; if you were handed a _message server host + logon group_, use **Load Balancing**.
 
 <Tabs>
   <TabItem value="direct" label="Connect to one server (Direct)" default>
 
-## Setup Credential
+### Connect to one server (Direct)
 
 Connect directly to a single SAP application server. Best for a single-server system, dev/test, or demos.
 
-### Prerequisites
+#### Prerequisites
 
 Before starting, make sure:
 
@@ -30,7 +32,7 @@ Before starting, make sure:
 - Your **On-Prem Connector** is created, installed, and showing an **Online** status. If not, follow the [On-Prem Connector setup guide](/platform/key-concepts/on-premise-agent/on-premise-agent-setup) first.
 - The connector host can reach the SAP server on the RFC gateway port **3300 + system number** (for system number `11`, that is port `3311`).
 
-### Required Fields
+#### Required Fields
 
 You'll be asked to fill in the following details:
 
@@ -47,13 +49,13 @@ You'll be asked to fill in the following details:
 
 ---
 
-### Step-by-Step Guide
+#### Step-by-Step Guide
 
-#### Step 1: Set up and verify the On-Prem Connector
+##### Step 1: Set up and verify the On-Prem Connector
 
 Create, download, and install an On-Prem Connector on a machine that can reach your SAP server and the internet ([setup guide](/platform/key-concepts/on-premise-agent/on-premise-agent-setup)). On the **On-Prem Connectors** page, confirm the connector status shows **Online** before continuing.
 
-#### Step 2: Open the Credentials page and select the connector
+##### Step 2: Open the Credentials page and select the connector
 
 - In the appse ai portal, go to the **Credentials** page and select **SAP ECC** from the application list. When the **Select Authentication** dialog opens, choose **Connect to one server (Direct)**.
   <img src="/img/credentials/sap-ecc-rfc/direct/select-authentication.png" alt="select authentication type" width="420"/>
@@ -61,14 +63,14 @@ Create, download, and install an On-Prem Connector on a machine that can reach y
 - Use the **On-Prem Connector** dropdown to choose the connector you installed. Only after selecting an active, online connector will the remaining fields appear.
   <img src="/img/credentials/sap-ecc-rfc/direct/select-connector.png" alt="select connector" width="420"/>
 
-#### Step 3: Enter the connection details
+##### Step 3: Enter the connection details
 
 With **Connect to one server (Direct)** selected, fill in the fields from the [Required Fields](#required-fields) table above.
 <img src="/img/credentials/sap-ecc-rfc/direct/direct-credential.png" alt="direct connection credential form" width="420"/>
 <img src="/img/credentials/sap-ecc-rfc/direct/direct-credential-fields.png" alt="direct connection client and user fields" width="420"/>
 <img src="/img/credentials/sap-ecc-rfc/direct/direct-credential-options.png" alt="direct connection language and pool options" width="420"/>
 
-#### Step 4: Save and validate
+##### Step 4: Save and validate
 
 - Click **Save**. A “Connection Data Saved” message confirms the values are accepted.
 - Click **Validate**. A “Test Connection Successful” message confirms the connector can authenticate to SAP. The credential is saved with a green tick and ready to use in workflows.
@@ -76,11 +78,11 @@ With **Connect to one server (Direct)** selected, fill in the fields from the [R
 </TabItem>
 <TabItem value="loadbalanced" label="Load balance across servers (Message Server)">
 
-## Setup Credential
+### Load balance across servers (Message Server)
 
 Connect through the SAP message server with a logon group — load is balanced and failed over across multiple application servers. Recommended for production.
 
-### Prerequisites
+#### Prerequisites
 
 Before starting, make sure:
 
@@ -88,7 +90,7 @@ Before starting, make sure:
 - Your **On-Prem Connector** is created, installed, and showing an **Online** status. If not, follow the [On-Prem Connector setup guide](/platform/key-concepts/on-premise-agent/on-premise-agent-setup) first.
 - The connector host can reach the SAP **message server** port **3600 + system number** (for system number `11`, that is port `3611`).
 
-### Required Fields
+#### Required Fields
 
 You'll be asked to fill in the following details:
 
@@ -111,13 +113,13 @@ You'll be asked to fill in the following details:
 
 ---
 
-### Step-by-Step Guide
+#### Step-by-Step Guide
 
-#### Step 1: Set up and verify the On-Prem Connector
+##### Step 1: Set up and verify the On-Prem Connector
 
 Create, download, and install an On-Prem Connector on a machine that can reach your SAP message server and the internet ([setup guide](/platform/key-concepts/on-premise-agent/on-premise-agent-setup)). On the **On-Prem Connectors** page, confirm the connector status shows **Online** before continuing.
 
-#### Step 2: Open the Credentials page and select the connector
+##### Step 2: Open the Credentials page and select the connector
 
 - In the appse ai portal, go to the **Credentials** page and select **SAP ECC** from the application list. When the **Select Authentication** dialog opens, choose **Load balance across servers (Message Server)**.
   <img src="/img/credentials/sap-ecc-rfc/load-balance/select-authentication.png" alt="select authentication type" width="420"/>
@@ -125,7 +127,7 @@ Create, download, and install an On-Prem Connector on a machine that can reach y
 - Use the **On-Prem Connector** dropdown to choose the connector you installed. Only after selecting an active, online connector will the remaining fields appear.
   <img src="/img/credentials/sap-ecc-rfc/load-balance/select-connector.png" alt="select connector" width="420"/>
 
-#### Step 3: Enter the connection details
+##### Step 3: Enter the connection details
 
 With **Load balance across servers (Message Server)** selected, fill in the fields from the [Required Fields](#required-fields-1) table above.
 <img src="/img/credentials/sap-ecc-rfc/load-balance/load-balanced-credential.png" alt="load balanced credential form" width="420"/>
@@ -133,7 +135,7 @@ With **Load balance across servers (Message Server)** selected, fill in the fiel
 <img src="/img/credentials/sap-ecc-rfc/load-balance/load-balanced-credential-user.png" alt="load balanced user and password fields" width="420"/>
 <img src="/img/credentials/sap-ecc-rfc/load-balance/load-balanced-credential-options.png" alt="load balanced language and pool options" width="420"/>
 
-#### Step 4: Save and validate
+##### Step 4: Save and validate
 
 - Click **Save**. A “Connection Data Saved” message confirms the values are accepted.
 - Click **Validate**. A “Test Connection Successful” message confirms the connector can authenticate to SAP through the message server. The credential is saved with a green tick and ready to use in workflows.
