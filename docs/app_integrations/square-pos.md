@@ -177,6 +177,10 @@ Here is the list of available actions for Square POS:
 | **Get customer by ID**      | Retrieves a specific Square customer by their unique customer ID. If no ID is provided, Square returns up to 100 customer profiles instead of a single record. |
 | **Update customer**          | Updates an existing Square customer’s profile.           |
 | **Upsert catalog object**    | Creates a new catalog object or updates an existing one in Square (items, variations). |
+| **Create customer group**    | Creates a new customer group in Square for organizing customers by segment, campaign, or reporting needs. |
+| **Get catalog object**       | Retrieves a specific Square catalog object by its ID (for example an item, variation). |
+| **Get customer groups**      | Returns the list of customer groups for the connected Square merchant. |
+| **Search customers**         | Searches Square customers using defined criteria to find matching customer profiles. |
 
 Ensure your Square OAuth scopes include the permissions required for each action or trigger you use. If a workflow fails with an authorization error, add the corresponding scope in the Square Developer Dashboard and in the **OAuth Scopes** field on your appse ai credential.
 
@@ -184,4 +188,4 @@ Ensure your Square OAuth scopes include the permissions required for each action
 
 ## Support
 
-Need help? Contact the support team at [hello@appse.ai](mailto:hello@appse.ai)
+Need help? Contact the support team at [support@appse.ai](mailto:support@appse.ai)
