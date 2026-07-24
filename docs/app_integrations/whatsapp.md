@@ -169,13 +169,44 @@ Still on **Step 2. Production setup**, finish in order:
 
 Webhooks allow Meta to send real-time events (incoming messages, status updates) to your appse ai workflows.
 
-#### Step-by-Step Guide
+### WhatsApp Webhook Verification
+
+WhatsApp Cloud API (Meta) requires your callback URL to:
+- Prove ownership when you register the URL (one-time GET handshake)
+- Authenticate every event so only Meta-signed payloads run your workflow (HMAC on each POST)
+
+In appse ai, that is handled by attaching a Webhook Verification credential to a Webhook trigger. You do not write verification code: the platform answers Meta’s challenge and checks signatures before the workflow runs.
+
+:::note
+Verification is optional. Webhooks without it keep existing POST-only behaviour. For WhatsApp, you should always enable it so Meta can register the URL and forged events are rejected.
+:::
+
+### Add WhatsApp Webhook (Meta Cloud API) Credential in appse ai
+
+#### Required Fields
+
+You'll be asked to fill in the following details:
+
+| Field              | Description                                                                  |
+| ------------------ | ---------------------------------------------------------------------------- |
+| Verify Token         | A token you set when subscribing the webhook in Meta; matched during the GET verification handshake                    |
+| App Secret      | Your Meta App Secret from the Meta Developer Console; used to validate inbound webhook signatures (HMAC over the raw body)                |
+
+1. Navigate to [workflow.appse.ai](https://workflow.appse.ai/) → **Credentials** → **Add Credentials** → **WhatsApp** → Select **WhatsApp Webhook (Meta Cloud API)** authentication type
+
+<img src="/img/credentials/whatsapp/webhook_verification/choose_authentication_type.png" alt="Choose Authentication screen" width="700"/>
+
+2. Provide **Verify Token** and **App Secret** → Click on **Save**
+
+<img src="/img/credentials/whatsapp/webhook_verification/verify_token_app_secret_click_save.png" alt="Configure Credentials screen" width="700"/>
+
+### Webhook Node Configuration
 
 **1. Get Your Webhook URL from appse ai**
 
-In your appse ai workflow, add an **On webhook** trigger. Under **Verification**, select **WhatsApp Webhook (Meta Cloud API)** and choose your WhatsApp credential under **Verification credential**. Copy the **Production URL** shown in the **Preview URLs** section — you'll paste this into Meta in the next step.
+In your appse ai workflow, add an **On webhook** trigger. Under **Verification**, select **WhatsApp Webhook (Meta Cloud API)** and choose your WhatsApp credential under **Verification credential**. Copy the **Production URL** shown in the **Preview URLs** section — you'll paste this into Meta in the next step. Click on **Continue**.
 
-<img src="/img/credentials/whatsapp/whatsapp-webhook-config-appseai.png" alt="appse ai WhatsApp On Webhook Trigger Configuration" width="700"/>
+<img src="/img/credentials/whatsapp/webhook_verification/whatsapp-webhook-config-appseai.png" alt="appse ai WhatsApp On Webhook Trigger Configuration" width="700"/>
 
 **2. Open Webhook Configuration in Meta**
 
