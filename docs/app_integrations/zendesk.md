@@ -20,7 +20,7 @@ You'll be asked to fill in the following details:
 |------------|--------------------------------------------------------------------------------------------------------|
 | Connection Name | A name to identify the connection                                                                 |
 | Subdomain  | The subdomain portion of your Zendesk account URL (e.g. if your URL is `https://yourcompany.zendesk.com`, enter `yourcompany`) |
-| Username   | Your Zendesk agent email address followed by the literal text `/token` (e.g. `yourname@example.com/token`) |
+| Username   | Your Zendesk agent email address |
 | API Token  | The API token generated from your Zendesk Admin Center                                                |
 
 ### Step-by-Step Guide
@@ -28,16 +28,33 @@ You'll be asked to fill in the following details:
 #### 1. Generate an API Token in Zendesk
 
 1. Log in to your Zendesk account and open **Admin Center**.
-2. Go to **Apps and integrations** > **APIs** > **Zendesk API**.
-3. Enable **Token Access** if it isn't already enabled.
-4. Click **Add API token**, give it a description, and copy the generated token immediately — Zendesk only shows it once.
+
+<img src="/img/credentials/zendesk/credential-admin.png" alt="Zendesk Admin Center navigation" width="700"/>
+
+2. Go to **Apps and integrations** > **APIs** > **API configuration**, then enable **Allow API token access** if it isn't already enabled.
+
+<img src="/img/credentials/zendesk/api-token-enable.png" alt="Zendesk enable API token access" width="700"/>
+
+3. Go to the **API tokens** tab and click **Add API token**.
+
+<img src="/img/credentials/zendesk/api-token-generate.png" alt="Zendesk add API token button" width="700"/>
+
+4. Give the token a description, click **Save**, and copy the generated token immediately — Zendesk only shows it once.
+
+<img src="/img/credentials/zendesk/api-token-generate-2.png" alt="Zendesk generate and save API token" width="700"/>
+
+:::caution
+The API token is displayed only once. If you lose it, you will have to generate a new one.
+:::
 
 #### 2. Configure the Credential in appse ai
 
 1. Click **Select a Credential** and choose **Zendesk**, then add a **Connection Name**.
 2. Enter your **Subdomain** — the part of your Zendesk URL before `.zendesk.com`.
-3. In **Username**, enter the email address of the agent account that generated the token, suffixed with `/token` (e.g. `yourname@example.com/token`).
+3. In **User Email**, enter the email address of the agent account.
 4. Paste the generated token into the **API Token** field.
+
+<img src="/img/credentials/zendesk/credential-1.png" alt="appse ai Zendesk credential form" width="700"/>
 
 :::warning
 
@@ -104,4 +121,4 @@ Every application has a pre-defined set of triggers and actions that allow users
 
 ## Need Help?
 
-If you're unsure about any field or face connection issues, reach out to our support team at hello@appse.ai
+If you're unsure about any field or face connection issues, reach out to our support team at support@appse.ai
