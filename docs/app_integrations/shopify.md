@@ -4900,175 +4900,177 @@ Click on **Continue**, then click **Run** node.
 ##### Result
 
 ```json
-{
-  "draftOrder": {
-    "id": "gid://shopify/DraftOrder/1140832501932",
-    "name": "#D583",
-    "status": "OPEN",
-    "email": "hilsy33@yopmail.com",
-    "phone": "+919080034561",
-    "poNumber": "PO-109302",
-    "note2": "Test Note",
-    "tags": [],
-    "createdAt": "2026-07-27T08:22:36Z",
-    "updatedAt": "2026-07-27T08:22:36Z",
-    "invoiceUrl": "https://aecqa.myshopify.com/65225425068/invoices/5c39a715858db5d86d1e004893ee58e2",
-    "completedAt": null,
-    "taxExempt": false,
-    "visibleToCustomer": true,
-    "presentmentCurrencyCode": "USD",
-    "acceptAutomaticDiscounts": true,
-    "allowDiscountCodesInCheckout": true,
-    "discountCodes": [],
-    "paymentTerms": null,
-    "billingAddress": {
-      "firstName": "Hilsy",
-      "lastName": "Update",
-      "company": null,
-      "address1": "10 Downing Street",
-      "address2": null,
-      "city": "Hollister",
-      "province": "California",
-      "provinceCode": "CA",
-      "countryCodeV2": "US",
-      "zip": "95023",
-      "phone": "+919080034561"
-    },
-    "shippingAddress": {
-      "firstName": "Hilsy",
-      "lastName": "Update",
-      "company": null,
-      "address1": "10 Downing Street",
-      "address2": null,
-      "city": "Hollister",
-      "province": "California",
-      "provinceCode": "CA",
-      "countryCodeV2": "US",
-      "zip": "95023",
-      "phone": "+919080034561"
-    },
-    "customer": {
-      "id": "gid://shopify/Customer/9536366674092",
-      "firstName": "Hilsy",
-      "lastName": "Update",
+[
+  {
+    "draftOrder": {
+      "id": "gid://shopify/DraftOrder/1140832501932",
+      "name": "#D583",
+      "status": "OPEN",
       "email": "hilsy33@yopmail.com",
-      "phone": "+919080034561"
-    },
-    "lineItems": {
-      "nodes": [
-        {
-          "id": "gid://shopify/DraftOrderLineItem/57997144424620",
-          "name": "128 meg SDRAM",
-          "sku": "128 SDRAM",
-          "quantity": 1,
-          "originalUnitPriceSet": {
-            "presentmentMoney": {
-              "amount": "150.0"
-            }
-          },
-          "discountedUnitPriceSet": {
-            "presentmentMoney": {
-              "amount": "150.0"
-            }
-          },
-          "appliedDiscount": null,
-          "taxLines": [
-            {
-              "title": "Federal Tax",
-              "rate": 0.1,
-              "priceSet": {
-                "presentmentMoney": {
-                  "amount": "14.7"
-                }
+      "phone": "+919080034561",
+      "poNumber": "PO-109302",
+      "note2": "Test Note",
+      "tags": [],
+      "createdAt": "2026-07-27T08:22:36Z",
+      "updatedAt": "2026-07-27T08:22:36Z",
+      "invoiceUrl": "https://aecqa.myshopify.com/65225425068/invoices/5c39a715858db5d86d1e004893ee58e2",
+      "completedAt": null,
+      "taxExempt": false,
+      "visibleToCustomer": true,
+      "presentmentCurrencyCode": "USD",
+      "acceptAutomaticDiscounts": true,
+      "allowDiscountCodesInCheckout": true,
+      "discountCodes": [],
+      "paymentTerms": null,
+      "billingAddress": {
+        "firstName": "Hilsy",
+        "lastName": "Update",
+        "company": null,
+        "address1": "10 Downing Street",
+        "address2": null,
+        "city": "Hollister",
+        "province": "California",
+        "provinceCode": "CA",
+        "countryCodeV2": "US",
+        "zip": "95023",
+        "phone": "+919080034561"
+      },
+      "shippingAddress": {
+        "firstName": "Hilsy",
+        "lastName": "Update",
+        "company": null,
+        "address1": "10 Downing Street",
+        "address2": null,
+        "city": "Hollister",
+        "province": "California",
+        "provinceCode": "CA",
+        "countryCodeV2": "US",
+        "zip": "95023",
+        "phone": "+919080034561"
+      },
+      "customer": {
+        "id": "gid://shopify/Customer/9536366674092",
+        "firstName": "Hilsy",
+        "lastName": "Update",
+        "email": "hilsy33@yopmail.com",
+        "phone": "+919080034561"
+      },
+      "lineItems": {
+        "nodes": [
+          {
+            "id": "gid://shopify/DraftOrderLineItem/57997144424620",
+            "name": "128 meg SDRAM",
+            "sku": "128 SDRAM",
+            "quantity": 1,
+            "originalUnitPriceSet": {
+              "presentmentMoney": {
+                "amount": "150.0"
               }
             },
-            {
-              "title": "State Tax",
-              "rate": 0.06,
-              "priceSet": {
-                "presentmentMoney": {
-                  "amount": "8.82"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "id": "gid://shopify/DraftOrderLineItem/57997144457388",
-          "name": "Dove Body Wash",
-          "sku": "AS569",
-          "quantity": 1,
-          "originalUnitPriceSet": {
-            "presentmentMoney": {
-              "amount": "30.0"
-            }
-          },
-          "discountedUnitPriceSet": {
-            "presentmentMoney": {
-              "amount": "30.0"
-            }
-          },
-          "appliedDiscount": null,
-          "taxLines": [
-            {
-              "title": "Federal Tax",
-              "rate": 0.1,
-              "priceSet": {
-                "presentmentMoney": {
-                  "amount": "2.94"
-                }
+            "discountedUnitPriceSet": {
+              "presentmentMoney": {
+                "amount": "150.0"
               }
             },
-            {
-              "title": "State Tax",
-              "rate": 0.06,
-              "priceSet": {
-                "presentmentMoney": {
-                  "amount": "1.76"
+            "appliedDiscount": null,
+            "taxLines": [
+              {
+                "title": "Federal Tax",
+                "rate": 0.1,
+                "priceSet": {
+                  "presentmentMoney": {
+                    "amount": "14.7"
+                  }
+                }
+              },
+              {
+                "title": "State Tax",
+                "rate": 0.06,
+                "priceSet": {
+                  "presentmentMoney": {
+                    "amount": "8.82"
+                  }
                 }
               }
-            }
-          ]
+            ]
+          },
+          {
+            "id": "gid://shopify/DraftOrderLineItem/57997144457388",
+            "name": "Dove Body Wash",
+            "sku": "AS569",
+            "quantity": 1,
+            "originalUnitPriceSet": {
+              "presentmentMoney": {
+                "amount": "30.0"
+              }
+            },
+            "discountedUnitPriceSet": {
+              "presentmentMoney": {
+                "amount": "30.0"
+              }
+            },
+            "appliedDiscount": null,
+            "taxLines": [
+              {
+                "title": "Federal Tax",
+                "rate": 0.1,
+                "priceSet": {
+                  "presentmentMoney": {
+                    "amount": "2.94"
+                  }
+                }
+              },
+              {
+                "title": "State Tax",
+                "rate": 0.06,
+                "priceSet": {
+                  "presentmentMoney": {
+                    "amount": "1.76"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "appliedDiscount": {
+        "title": "Discount",
+        "description": "Discount In Percentage",
+        "value": 2,
+        "valueType": "PERCENTAGE"
+      },
+      "shippingLine": {
+        "title": "Freight",
+        "originalPriceSet": {
+          "presentmentMoney": {
+            "amount": "10.0"
+          }
         }
-      ]
-    },
-    "appliedDiscount": {
-      "title": "Discount",
-      "description": "Discount In Percentage",
-      "value": 2,
-      "valueType": "PERCENTAGE"
-    },
-    "shippingLine": {
-      "title": "Freight",
-      "originalPriceSet": {
+      },
+      "subtotalPriceSet": {
         "presentmentMoney": {
-          "amount": "10.0"
+          "amount": "176.4"
+        }
+      },
+      "totalPriceSet": {
+        "presentmentMoney": {
+          "amount": "214.62"
+        }
+      },
+      "totalTaxSet": {
+        "presentmentMoney": {
+          "amount": "28.22"
+        }
+      },
+      "totalDiscountsSet": {
+        "presentmentMoney": {
+          "amount": "3.6"
         }
       }
     },
-    "subtotalPriceSet": {
-      "presentmentMoney": {
-        "amount": "176.4"
-      }
-    },
-    "totalPriceSet": {
-      "presentmentMoney": {
-        "amount": "214.62"
-      }
-    },
-    "totalTaxSet": {
-      "presentmentMoney": {
-        "amount": "28.22"
-      }
-    },
-    "totalDiscountsSet": {
-      "presentmentMoney": {
-        "amount": "3.6"
-      }
-    }
-  },
-  "userErrors": []
-}
+    "userErrors": []
+  }
+]
 ```
 ---------------------------------------
 
