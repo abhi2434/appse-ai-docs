@@ -2334,6 +2334,313 @@ Click on **Continue**, then **Run** node.
 ```
 ---
 
+### Sales Credit Memo Actions
+
+#### Create a New Sales Credit Memo
+
+Create a New Sales Credit Memo action is used to create a new sales credit memo for a customer with item details, pricing, and shipping information.
+
+##### Configuration Fields
+
+| Field | Description |
+|-------|-------------|
+| Customer Number | Enter the customer number. (e.g., "DEMO-888") |
+| Optional Fields | Additional credit memo and line details that can be configured. |
+| Credit Memo Number | Number of the sales credit memo. Auto-assigned by Business Central if left blank. (e.g., "SCM-1001") |
+| External Document Number | External document or reference number. (e.g., "SCM-REF1") |
+| Credit Memo Date | The credit memo date. (e.g., "2026-07-29") |
+| Posting Date | The date the sales credit memo is posted. (e.g., "2026-07-29") |
+| Due Date | The date the sales credit memo is due. (e.g., "2026-08-08") |
+| Customer ID (GUID) | The unique GUID of the customer in Business Central. (e.g., "a99e63e6-6b48-f111-a820-7ced8d9feb00") |
+| Bill To Name | Name of the customer to bill to. (e.g., "Frankle") |
+| Bill To Customer ID (GUID) | GUID of the customer to bill to, if different from the sell-to customer. |
+| Bill To Customer Number | Number of the customer to bill to, if different from the sell-to customer. |
+| Sell To Address Line 1 | First line of the sell-to address. (e.g., "Wave Rock Lane") |
+| Sell To Address Line 2 | Second line of the sell-to address. (e.g., "Jubilee Hills") |
+| Sell To City | City of the sell-to address. (e.g., "Hyderabad") |
+| Sell To Country Code | ISO country code of the sell-to address. (e.g., "IN") |
+| Sell To State Code | State or province code of the sell-to address. (e.g., "TS") |
+| Sell To Post Code | Postal or ZIP code of the sell-to address. (e.g., "500036") |
+| Bill To Address Line 1 | First line of the bill-to address. (e.g., "Wave Rock Lane") |
+| Bill To Address Line 2 | Second line of the bill-to address. (e.g., "Jubilee Hills") |
+| Bill To City | City of the bill-to address. (e.g., "Hyderabad") |
+| Bill To Country Code | ISO country code of the bill-to address. (e.g., "IN") |
+| Bill To State Code | State or province code of the bill-to address. (e.g., "TS") |
+| Bill To Post Code | Postal or ZIP code of the bill-to address. (e.g., "500036") |
+| Currency Code | The ISO currency code for the credit memo. Uses company default if blank. (e.g., "USD") |
+| Payment Terms ID (GUID) | GUID of the payment terms to apply to the credit memo. |
+| Shipment Method ID (GUID) | GUID of the shipment method for this credit memo. |
+| Salesperson Code | Code of the salesperson responsible for this credit memo. (e.g., "BC") |
+| Shortcut Dimension 1 Code | Value for the first shortcut dimension on the credit memo. |
+| Shortcut Dimension 2 Code | Value for the second shortcut dimension on the credit memo. |
+| Discount Amount | Credit memo-level discount amount applied before tax. |
+| Discount Applied Before Tax | Specifies whether the discount is applied before tax. |
+| Applies-to Invoice Number | The sales invoice number that this credit memo is linked to, if any. (e.g., "102580") |
+| Customer Return Reason ID (GUID) | GUID of the return reason code explaining why the credit memo was issued. |
+| Phone Number | Contact phone number for the credit memo. (e.g., "6789098767") |
+| Email | Contact email address for the credit memo. (e.g., "denna.josh3@yopmail.com") |
+| Sales Credit Memo Lines | Add one or more line items for the credit memo. |
+| Line Item No (SKU) | The item number or account number for this line. (e.g., "NAYASAAA") |
+| Line Type | Choose the line type based on the nature of the product or service being credited. (e.g., "Item") |
+| Quantity | Quantity of the item being credited. (e.g., "2") |
+| Unit Price | Price per unit of the item. (e.g., "30000") |
+| Line Optional Fields | Additional line-level details. |
+| Description | Description of the line item. (e.g., "Return - Demo Purpose Invoice") |
+| Description 2 | Second description line for the line item. |
+| Unit of Measure Code | Unit of measure code. (e.g., "PCS") |
+| Unit of Measure ID (GUID) | GUID referencing the Unit of Measure entity in Business Central. (e.g., "62dedcf8-b3d3-ee11-904f-6045bde9c6f5") |
+| Item ID (GUID) | GUID of the item in Business Central. (e.g., "8495d7dc-2949-f111-a820-6045bdad25d1") |
+| Item Variant ID (GUID) | GUID of the item variant in Business Central. |
+| Discount Amount (Line) | Discount amount applied to this line. |
+| Discount Percent | Discount percentage applied to this line item. |
+| Discount Applied Before Tax (Line) | Specifies whether the discount is applied before tax for this line. |
+| Tax Code | Tax code applied to this line item. (e.g., "STANDARD") |
+| Location ID (GUID) | GUID of the inventory location for this line item. |
+| Expand child entities in response ($expand) | Expand related data in the response. (e.g., "salesCreditMemoLines" to include the created credit memo lines) |
+
+:::note
+Customer Number, Line Item No, Line Type, Quantity, and Unit Price are mandatory. Other fields are optional and can be configured based on requirements. When `$expand` is set to `salesCreditMemoLines`, the response includes the created line items nested under the `salesCreditMemoLines` property.
+:::
+
+Click on **Continue**, then **Run** node.
+
+---
+
+##### Result
+
+```json
+[
+  {
+    "@odata.context": "https://api.businesscentral.dynamics.com/v2.0/cba9a7a6-9a96-4d39-929f-d285ffa3b5b6/Production/api/v2.0/$metadata#companies(7ace90d9-b3d3-ee11-904f-6045bde9c6f5)/salesCreditMemos/$entity",
+    "@odata.etag": "W/\"JzIwOzE2MDkzODIwNzUxNDQyNjczMDg1MTswMDsn\"",
+    "id": "f983ee87-cb84-f011-b419-7c1e5232b65d",
+    "number": "SCM-1001",
+    "externalDocumentNumber": "SCM-REF1",
+    "creditMemoDate": "2026-07-29",
+    "postingDate": "2026-07-29",
+    "dueDate": "2026-08-08",
+    "customerId": "a99e63e6-6b48-f111-a820-7ced8d9feb00",
+    "customerNumber": "DEMO-888",
+    "customerName": "Frankle",
+    "billToName": "Frankle",
+    "billToCustomerId": "a99e63e6-6b48-f111-a820-7ced8d9feb00",
+    "billToCustomerNumber": "DEMO-888",
+    "sellToAddressLine1": "Wave Rock Lane",
+    "sellToAddressLine2": "Jubilee Hills",
+    "sellToCity": "Hyderabad",
+    "sellToCountry": "IN",
+    "sellToState": "TS",
+    "sellToPostCode": "500036",
+    "billToAddressLine1": "Wave Rock Lane",
+    "billToAddressLine2": "Jubilee Hills",
+    "billToCity": "Hyderabad",
+    "billToCountry": "IN",
+    "billToState": "TS",
+    "billToPostCode": "500036",
+    "shortcutDimension1Code": "",
+    "shortcutDimension2Code": "",
+    "currencyId": "00000000-0000-0000-0000-000000000000",
+    "currencyCode": "USD",
+    "paymentTermsId": "c9dbdcf8-b3d3-ee11-904f-6045bde9c6f5",
+    "shipmentMethodId": "00000000-0000-0000-0000-000000000000",
+    "salesperson": "BC",
+    "discountAmount": 0,
+    "discountAppliedBeforeTax": false,
+    "invoiceId": "e7048e16-3349-f111-a820-6045bdad25d1",
+    "invoiceNumber": "102580",
+    "customerReturnReasonId": "00000000-0000-0000-0000-000000000000",
+    "totalAmountExcludingTax": 60000,
+    "totalTaxAmount": 0,
+    "totalAmountIncludingTax": 60000,
+    "status": "Draft",
+    "lastModifiedDateTime": "2026-07-29T09:46:03.387Z",
+    "phoneNumber": "6789098767",
+    "email": "denna.josh3@yopmail.com",
+    "salesCreditMemoLines": [
+      {
+        "@odata.etag": "W/\"JzIwOzE2MTI5Nzc2NDk0OTI0Mzg2MDI2MTswMDsn\"",
+        "id": "cd7b3ba0-bde3-ea11-aa60-000d3ad7cacb",
+        "documentId": "f983ee87-cb84-f011-b419-7c1e5232b65d",
+        "sequence": 10000,
+        "itemId": "8495d7dc-2949-f111-a820-6045bdad25d1",
+        "accountId": "00000000-0000-0000-0000-000000000000",
+        "lineType": "Item",
+        "lineObjectNumber": "NAYASAAA",
+        "description": "Return - Demo Purpose Invoice",
+        "description2": "",
+        "unitOfMeasureId": "62dedcf8-b3d3-ee11-904f-6045bde9c6f5",
+        "unitOfMeasureCode": "PCS",
+        "quantity": 2,
+        "unitPrice": 30000,
+        "discountAmount": 0,
+        "discountPercent": 0,
+        "discountAppliedBeforeTax": false,
+        "taxCode": "STANDARD",
+        "locationId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
+]
+```
+
+:::note
+Since `$expand` defaults to `salesCreditMemoLines`, the response includes the created line items nested under the `salesCreditMemoLines` property, as shown above.
+:::
+---
+
+#### Update a Sales Credit Memo
+
+Update a Sales Credit Memo action is used to modify an existing sales credit memo record with updated customer, address, and document details.
+
+##### Configuration Fields
+
+| Field | Description |
+|-------|-------------|
+| Credit Memo ID | The unique identifier of the sales credit memo to update. (e.g., "f983ee87-cb84-f011-b419-7c1e5232b65d") |
+| Optional Fields | Additional credit memo details that can be updated. |
+| Customer Number | The customer number from Business Central. (e.g., "DEMO-888") |
+| Credit Memo Number | Specifies the number of the sales credit memo. |
+| External Document Number | External document or reference number. |
+| Credit Memo Date | The credit memo date. |
+| Posting Date | The date the sales credit memo is posted. |
+| Due Date | The date the sales credit memo is due. |
+| Customer ID (GUID) | The unique GUID of the customer in Business Central. |
+| Bill To Name | Name of the customer to bill to. |
+| Bill To Customer ID (GUID) | GUID of the customer to bill to, if different from the sell-to customer. |
+| Bill To Customer Number | Number of the customer to bill to, if different from the sell-to customer. |
+| Sell To Address Line 1 | First line of the sell-to address. |
+| Sell To Address Line 2 | Second line of the sell-to address. |
+| Sell To City | City of the sell-to address. |
+| Sell To Country Code | ISO country code of the sell-to address. |
+| Sell To State Code | State or province code of the sell-to address. |
+| Sell To Post Code | Postal or ZIP code of the sell-to address. |
+| Bill To Address Line 1 | First line of the bill-to address. |
+| Bill To Address Line 2 | Second line of the bill-to address. |
+| Bill To City | City of the bill-to address. |
+| Bill To Country Code | ISO country code of the bill-to address. |
+| Bill To State Code | State or province code of the bill-to address. |
+| Bill To Post Code | Postal or ZIP code of the bill-to address. |
+| Currency Code | The ISO currency code for the credit memo. (e.g., "USD") |
+| Payment Terms ID (GUID) | GUID of the payment terms to apply to the credit memo. |
+| Shipment Method ID (GUID) | GUID of the shipment method for this credit memo. |
+| Salesperson Code | Code of the salesperson responsible for this credit memo. |
+| Shortcut Dimension 1 Code | Value for the first shortcut dimension on the credit memo. |
+| Shortcut Dimension 2 Code | Value for the second shortcut dimension on the credit memo. |
+| Discount Amount | Credit memo-level discount amount applied before tax. |
+| Discount Applied Before Tax | Specifies whether the discount is applied before tax. |
+| Applies-to Invoice Number | The sales invoice number that this credit memo is linked to, if any. |
+| Customer Return Reason ID (GUID) | GUID of the return reason code explaining why the credit memo was issued. |
+| Phone Number | Contact phone number for the credit memo. |
+| Email | Contact email address for the credit memo. |
+
+:::note
+Credit Memo ID is mandatory. Only the provided optional fields will be updated. The `If-Match` header is sent automatically as `*` and does not need to be configured.
+:::
+
+Click on **Continue**, then **Run** node.
+
+---
+
+##### Result
+
+```json
+[
+  {
+    "@odata.context": "https://api.businesscentral.dynamics.com/v2.0/cba9a7a6-9a96-4d39-929f-d285ffa3b5b6/Production/api/v2.0/$metadata#companies(7ace90d9-b3d3-ee11-904f-6045bde9c6f5)/salesCreditMemos/$entity",
+    "@odata.etag": "W/\"JzIwOzE2MTI5Nzc2NDk0OTI0Mzg2MDI2MTswMDsn\"",
+    "id": "f983ee87-cb84-f011-b419-7c1e5232b65d",
+    "number": "SCM-1001",
+    "externalDocumentNumber": "SCM-REF1",
+    "creditMemoDate": "2026-07-29",
+    "postingDate": "2026-07-29",
+    "dueDate": "2026-08-08",
+    "customerId": "a99e63e6-6b48-f111-a820-7ced8d9feb00",
+    "customerNumber": "DEMO-888",
+    "customerName": "Frankle",
+    "billToName": "Frankle",
+    "sellToCity": "Hyderabad",
+    "billToCity": "Hyderabad",
+    "currencyCode": "USD",
+    "salesperson": "BC",
+    "status": "Draft",
+    "lastModifiedDateTime": "2026-07-29T10:05:24.083Z",
+    "phoneNumber": "6789098767",
+    "email": "denna.josh3@yopmail.com"
+  }
+]
+```
+---
+
+### Sales CreditMemoLine Actions
+
+#### Update a Sales Credit Memo Line
+
+Update a Sales Credit Memo Line action is used to modify an existing sales credit memo line record. Only the fields provided in the request are updated.
+
+##### Configuration Fields
+
+| Field | Description |
+|-------|-------------|
+| Sales Credit Memo ID | The unique identifier of the parent sales credit memo. (e.g., "cd7b3ba0-bde3-ea11-aa60-000d3ad7cacb") |
+| Sales Credit Memo Line ID | The unique identifier of the sales credit memo line to update. (e.g., "cd7b3ba0-bde3-ea11-aa60-000d3ad7cacb") |
+| Optional Fields | Additional line details that can be updated. |
+| Item ID | The GUID of the item on the sales credit memo line. (e.g., "fca5738a-44e3-ea11-bb43-000d3a2feca1") |
+| Account ID | The GUID of the G/L account related to the line, when Line Type is Account. |
+| Line Type | The type of the sales credit memo line. (e.g., "Item") |
+| Line Object Number | The item number or account number on the line. (e.g., "1896-S") |
+| Description | Description of the sales credit memo line. |
+| Description 2 | Secondary description of the sales credit memo line. |
+| Unit of Measure ID | The GUID of the unit of measure. |
+| Unit of Measure Code | The unit of measure code. (e.g., "PCS") |
+| Quantity | Quantity being credited for the line. |
+| Unit Price | Unit price for the line item. |
+| Discount Amount | Line discount amount. |
+| Discount Percent | Line discount percentage. (e.g., "10" for 10%) |
+| Discount Applied Before Tax | Set true if the line discount is applied before tax. |
+| Tax Code | Tax code applied to the line. |
+| Shipment Date | Date the item in the line is expected to ship. (Format: YYYY-MM-DD) |
+| Item Variant ID | GUID of the item variant. |
+| Location ID | GUID of the location. |
+
+:::note
+Sales Credit Memo ID and Sales Credit Memo Line ID are mandatory. Only the provided optional fields will be updated. The `If-Match`, `Content-Type`, and `Accept` headers are sent automatically and do not need to be configured.
+:::
+
+Click on **Continue**, then **Run** node.
+
+---
+
+##### Result
+
+```json
+[
+  {
+    "@odata.etag": "W/\"JzIwOzE2MTI5Nzc2NDk0OTI0Mzg2MDI2MTswMDsn\"",
+    "id": "cd7b3ba0-bde3-ea11-aa60-000d3ad7cacb",
+    "documentId": "f983ee87-cb84-f011-b419-7c1e5232b65d",
+    "sequence": 10000,
+    "itemId": "fca5738a-44e3-ea11-bb43-000d3a2feca1",
+    "accountId": "00000000-0000-0000-0000-000000000000",
+    "lineType": "Item",
+    "lineObjectNumber": "1896-S",
+    "description": "Return - Demo Purpose Invoice",
+    "description2": "",
+    "unitOfMeasureId": "62dedcf8-b3d3-ee11-904f-6045bde9c6f5",
+    "unitOfMeasureCode": "PCS",
+    "quantity": 2,
+    "unitPrice": 30000,
+    "discountAmount": 0,
+    "discountPercent": 0,
+    "discountAppliedBeforeTax": false,
+    "taxCode": "STANDARD",
+    "shipmentDate": "2026-07-29",
+    "itemVariantId": "00000000-0000-0000-0000-000000000000",
+    "locationId": "00000000-0000-0000-0000-000000000000"
+  }
+]
+```
+---
+
 ### Generic Actions
 
 #### Search Records
