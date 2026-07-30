@@ -82,24 +82,67 @@ Here is a list of the available triggers and actions for Amazon Seller Central:
 
 ### Triggers
 
-- **Feed Created or Updated** — Initiates the workflow when a feed is submitted or its processing status changes. This trigger is useful for monitoring the outcome of bulk data uploads in real time.
+All triggers below are **polling-based** — appse ai periodically checks Amazon for new or changed data since the last run.
+
+**Orders**
+
+- **New Orders Search (All Details)** — Initiates the workflow for new or updated orders and returns full order, buyer, shipping, and item details in a single event.
+
+**Feeds & Reports**
+
+- **Feed Created or Updated** — Initiates the workflow when a feed is submitted or its processing status changes. Useful for monitoring the outcome of bulk data uploads in real time.
+- **New Report** — Initiates the workflow when a new report matching your filters is generated.
+
+**Inventory & Shipments (FBA)**
+
+- **Inbound Shipment Created** — Initiates the workflow when a new FBA inbound shipment is created, for tracking shipped vs. received quantities.
+- **Inbound Shipment Updated** — Initiates the workflow when an FBA inbound shipment is created or updated, for tracking consignment status and mismatches.
+- **Inventory Level Changed** — Initiates the workflow when FBA inventory levels change for a SKU, useful for syncing stock to an ERP, WMS, or storefront.
+- **Inventory Reconciliation** — Initiates the workflow with a full FBA inventory quantity breakdown, useful for reconciling stock discrepancies.
+
+**Financial Events**
 
 - **New Sales Order Financial Event** — Initiates the workflow when a new sales order financial event is recorded in your account, such as a charge, refund, or fee associated with a completed order.
-
 - **New Return Financial Event** — Initiates the workflow when a return-related financial event is logged, such as a customer refund or return adjustment that impacts your account balance.
 
 ### Actions
 
+**Orders**
+
 | Action | Description |
 |---|---|
-| **Create Feed Document** | Creates a new feed document and returns a secure upload URL. This is the required first step before submitting a feed to Amazon. A **Content Type** for the feed data must be specified. |
-| **Create Feed** | Submits a feed to Amazon Seller Central for processing. To be performed after uploading your data to the URL returned by the **Create Feed Document** action. Requires a **Feed Type** and the **Feed Document ID**. |
-| **Get Feed** | Retrieves the details and current processing status of a specific feed. Requires a **Feed ID** returned from the **Create Feed** action. |
-| **Get Order Items** | Retrieves the line items associated with a specific order, including product details, quantities, and pricing information. Requires an **Order ID**. |
-| **Get Order Buyer Info** | Retrieves buyer information associated with a specific order, such as the buyer's name and email address. Requires an **Order ID**. |
-| **Get Orders** | Retrieves a list of orders based on specified filters such as order status, marketplace, and date range. Useful for monitoring recent sales activity across your account. |
-| **Get Order Address** | Retrieves the shipping address associated with a specific order. Requires an **Order ID**. Note: address data may be obfuscated for certain marketplace regions in accordance with Amazon's data protection policies. |
-| **Get Shipment Items** | Retrieves the items included in a specific inbound shipment to an Amazon fulfillment center. Requires a **Shipment ID**. |
+| **Get Order** | Retrieves a single order by its **Order ID**. |
+| **Get Order Metrics** | Retrieves aggregated sales metrics (units, orders, average price, total sales) for a marketplace over a date range and granularity. |
+
+**Feeds**
+
+| Action | Description |
+|---|---|
+| **Submit Feed Data** | A guided, multi-step action that submits a feed for a price update, inventory update, or shipment confirmation, then pairs with **Get Feed Result** to confirm processing. Required fields vary by **Feed Type**. |
+| **Get Feed** | Retrieves the details and current processing status of a specific feed. Requires a **Feed ID**. |
+| **Get Feed Document** | Downloads and decodes the contents of a processed feed document. Requires a **Feed Document ID**. |
+| **Get Feed Result** | Checks the processing status/result of a submitted feed. Requires a **Feed ID** and **Feed Type**. |
+
+**Reports**
+
+| Action | Description |
+|---|---|
+| **Get Report** | Retrieves the details and status of a specific report. Requires a **Report ID**. |
+
+**Catalog & Listings**
+
+| Action | Description |
+|---|---|
+| [**Create or Replace Listings Item**](/app-integrations/amazon-seller-central-create-or-replace-listings-item/) | Creates a new listing or fully replaces an existing one. Requires **Seller ID**, **SKU**, **Marketplace**, **Product Type**, and the item's **Attributes**. See the [detailed guide](/app-integrations/amazon-seller-central-create-or-replace-listings-item/) for request/response examples. |
+| **Update Item Price** | Partially updates a listing's price without submitting a feed. Requires **Seller ID**, **SKU**, **Marketplace**, **Product Type**, **Currency**, and **Price**. |
+| **Update Item Inventory** | Updates a listing's available inventory quantity synchronously, without submitting a feed. Requires **Seller ID**, **SKU**, **Marketplace**, **Product Type**, **Fulfillment Channel Code**, and **Quantity**. |
+
+**Inventory & Fulfillment (FBA)**
+
+| Action | Description |
+|---|---|
+| **Get FBA Inventory Summaries** | Retrieves FBA inventory summaries, including fulfillable, reserved, and researching quantities. Requires a **Granularity Type**, **Granularity ID**, and **Marketplace**. |
+| **Get Shipment Items** | Retrieves the items included in a specific inbound shipment. Requires a **Shipment ID** and **Marketplace**. |
 
 ---
 
