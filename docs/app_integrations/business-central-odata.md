@@ -1676,9 +1676,9 @@ Create Sales Return Order action is used to create a new sales return order for 
 | Order Date | Enter the order date. (e.g., `"2026-07-29"`) |
 | External Document No | Enter the customer's own order or reference number. (e.g., `"RMA-1001"`) |
 | Your Reference | Enter the customer's own reference number or note for this return order. |
-| Salesperson Code | Specify the salesperson code responsible for the return order. (e.g., `"BC"`) |
-| Location Code | Specify the inventory location code for the return order. (e.g., `"BLUE"`) |
-| Payment Terms Code | Specify the payment terms code. (e.g., `"1M(8D)"`) |
+| Salesperson Code | Select the salesperson responsible for the return order from the dropdown. (e.g., `"BC"`) |
+| Location Code | Select the inventory location for the return order from the dropdown. (e.g., `"BLUE"`) |
+| Payment Terms Code | Select the payment terms for the return order from the dropdown. (e.g., `"1M(8D)"`) |
 | Currency Code | Specify the currency code. Leave blank for local currency. |
 | Shortcut Dimension 1 Code | Specify the first shortcut dimension code. |
 | Shortcut Dimension 2 Code | Specify the second shortcut dimension code. (e.g., `"MEDIUM"`) |
@@ -1696,6 +1696,18 @@ Create Sales Return Order action is used to create a new sales return order for 
 :::note
 `Sell-to Customer No` is a mandatory field. All other fields are optional and can be configured based on business requirements.
 :::
+
+:::info
+`Salesperson Code`, `Location Code`, and `Payment Terms Code` are dynamic dropdown fields — their options are fetched live from your connected Business Central company, so the list always reflects what is currently set up there.
+:::
+
+To populate these dropdowns, publish the following pages as web services in Business Central using the exact **Service Name** shown below:
+
+| Field | Object Name | Service Name |
+|-------|-------------|--------------|
+| Salesperson Code | Salespersons/Purchasers | `SalesPeoplePurchasers` |
+| Location Code | Locations | `Locations` |
+| Payment Terms Code | Payment Terms | `PaymentTerms` |
 
 Click on **Continue**, then **Run** node.
 
@@ -1754,7 +1766,7 @@ Create Sales Return Order Line action is used to add a new line to an existing s
 | No | Specify the item, G/L account, resource, or fixed asset number for this line, depending on Type. (e.g., `"03WTDR"`) |
 | Description | Enter the description of the line item. |
 | Description 2 | Enter an additional description line for the item. |
-| Location Code | Specify the inventory location code for the line. (e.g., `"BLUE"`) |
+| Location Code | Select the inventory location for the line from the dropdown. (e.g., `"BLUE"`) |
 | Quantity | Enter the quantity being returned for the line. (e.g., `"5"`) |
 | Unit of Measure Code | Specify the unit of measure code. (e.g., `"PCS"`) |
 | Unit Price | Enter the price per unit of the item. |
@@ -1765,6 +1777,10 @@ Create Sales Return Order Line action is used to add a new line to an existing s
 
 :::note
 `Document No`, `Type`, `No`, and `Quantity` are mandatory fields. All other fields are optional and can be configured based on business requirements.
+:::
+
+:::info
+`Location Code` is a dynamic dropdown field — its options are fetched live from your connected Business Central company. Publish the **Locations** page as a web service with the Service Name `Locations` to populate this field.
 :::
 
 Click on **Continue**, then **Run** node.
