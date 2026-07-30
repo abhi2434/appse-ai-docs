@@ -79,7 +79,7 @@ Every application has a pre-defined set of triggers and actions that allow users
 
 - **New Ticket Created** — Fires when a new support ticket is created in Zendesk.
 - **Ticket Updated** — Fires when an existing ticket is updated (status, priority, assignee, comments, or any other field change).
-- **New Ticket Comment / Activity** — Fires on new ticket activity (comments, status changes, and field updates) across all tickets. Ideal for driving an AI agent that reads new customer replies and posts an automated response back to the ticket.
+- **New Ticket Comment / Activity** — Fires on new ticket activity (comments, status changes, and field updates) across all tickets. Ideal for driving an AI agent that reads new customer replies and posts an automated response back to the ticket. Each event's `child_events` array may contain a `Comment` entry — filter on `event_type == "Comment"` (and `public == true` for customer-visible replies only) downstream if you want to react to replies specifically.
 - **New User Created** — Fires when a new user (end-user, agent, or admin) is created in Zendesk.
 
 ### Actions
