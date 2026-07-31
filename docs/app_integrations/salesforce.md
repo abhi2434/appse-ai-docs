@@ -88,6 +88,67 @@ Paste both back in appse ai. If you followed all the steps right, your credentia
 
 ---
 
+## Triggers and Actions
+
+Here is a list of the available actions and triggers for Salesforce:
+
+### Triggers
+
+- **New Account Created** — Triggers when a new account is created.
+- **Accounts Updated** — Triggers when an existing account is updated.
+- **New Contact Created** — Triggers when a new contact is created.
+- **Contacts Updated** — Triggers when an existing contact is updated.
+- **New Quotations Created** — Triggers when a new quotation is created.
+
+---
+
+### Actions
+
+> Account Actions
+
+- **Create Account** — Create a new account record.
+- **Update Account** — Update an existing account record.
+- **Get Account by Email** — Retrieve an account using its email address.
+
+---
+
+> Contact Actions
+
+- **Create Contact** — Create a new contact record.
+- **Update Contact** — Update an existing contact record.
+- **Get Contact by Email** — Retrieve a contact using its email address.
+
+---
+
+> Product Actions
+
+- **Create Product** — Create a new product record.
+- **Update Product** — Update an existing product record.
+- **Get Product by ID** — Retrieve a product using its unique identifier.
+
+---
+
+> Pricebook Actions
+
+- **Get Standard Pricebook** — Retrieve the org's standard pricebook.
+- **Create Pricebook Entry** — Add a new pricebook entry, linking a product to a pricebook along with its price.
+- **Update Pricebook Entry** — Update an existing pricebook entry — for example, to change its unit price or active status — by providing the Pricebook Entry ID along with the fields to modify.
+
+---
+
+> Order Actions
+
+- **Create Order** — Create a new order record.
+- **Get Order by ID** — Retrieve an order using its unique identifier.
+
+---
+
+> Quote Actions
+
+- **Get Quote Line Items by Quote ID** — Retrieve the line items associated with a quote.
+
+---
+
 ## Support
 
-Need help? Contact our support team at hello@appse.ai
+Need help? Contact our support team at support.appse.ai
