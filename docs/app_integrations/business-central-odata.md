@@ -825,6 +825,153 @@ Click on **Continue**, then **Run** node.
 
 ### Customer Actions
 
+#### Create Customer
+
+Create Customer action is used to create a new customer record in Business Central with address, contact, and sales information.
+
+:::note
+This action uses the **Customers** endpoint. Make sure the `Customers` page is published as a web service (see [Web Services to Publish](#web-services-to-publish)).
+:::
+
+-----------------------------
+
+##### Select Credentials and Action Events
+
+Select your Business Central oData Rest credential, choose the **Create Customer** action event, then click on **Continue** button.
+
+-----------------------------
+
+##### Configuration
+
+| Field | Description |
+|------|-------------|
+| Customer Name | Enter the customer name. (e.g., `"Mercy Joe"`) |
+| Customer No | Specify the customer number. Leave blank to let Business Central assign it from the number series. (e.g., `"C-10045"`) |
+| Address | Primary address line. (e.g., `"ICP Awfis"`) |
+| Address 2 | Secondary address line. (e.g., `"Road. No.36, Jubille"`) |
+| City | City name. (e.g., `"Hyderabad"`) |
+| State / County | Specify the state or county code. (e.g., `"TS"`) |
+| Postal Code | ZIP / Postal code. (e.g., `"500039"`) |
+| Country / Region Code | Specify the country or region code. (e.g., `"IN"`) |
+| Phone Number | Customer contact number. (e.g., `"8909876545"`) |
+| Email | Customer email address. (e.g., `"mercy.joe3@yopmail.com"`) |
+| Salesperson Code | Specify the salesperson code. (e.g., `"BC"`) |
+| Blocked | Select the blocked status from available options: `All`, `Invoice`, `Ship`, or `None`. (e.g., `"None"`) |
+
+:::note
+`Customer Name` is mandatory field. All other fields are optional and can be configured based on business requirements.
+:::
+
+Click on **Continue**, then **Run** node.
+
+-----------------------------
+
+##### Result
+
+```json
+[
+  {
+    "@odata.context": "https://api.businesscentral.dynamics.com/v2.0/{Tenant_Id}/Production/ODataV4/$metadata#Company('CRONUS%20IN')/Customers/$entity",
+    "@odata.etag": "W/\"JzIwOzE0OTQ2NjA0MjgzNzQ4MjI4ODk3MTswMDsn\"",
+    "No": "C-10045",
+    "Name": "Mercy Joe",
+    "Name_2": "",
+    "Search_Name": "MERCY JOE",
+    "IC_Partner_Code": "",
+    "Balance_LCY": 0,
+    "BalanceAsVendor": 0,
+    "Balance_Due_LCY": 0,
+    "Credit_Limit_LCY": 0,
+    "Blocked": " ",
+    "Privacy_Blocked": false,
+    "Salesperson_Code": "BC",
+    "Responsibility_Center": "",
+    "Service_Zone_Code": "",
+    "Document_Sending_Profile": "",
+    "Last_Date_Modified": "2026-05-07",
+    "WebId": "",
+    "Disable_Search_by_Name": false,
+    "Priority": 0,
+    "Statistics_Group": 0,
+    "State_Code": "",
+    "Address": "ICP Awfis",
+    "Address_2": "Road. No.36, Jubille",
+    "Country_Region_Code": "IN",
+    "City": "Hyderabad",
+    "County": "TS",
+    "Post_Code": "500039",
+    "ShowMap": "Show on Map",
+    "Phone_No": "8909876545",
+    "MobilePhoneNo": "",
+    "E_Mail": "mercy.joe3@yopmail.com",
+    "Fax_No": "",
+    "Home_Page": "",
+    "Language_Code": "",
+    "Format_Region": "",
+    "Primary_Contact_No": "",
+    "ContactName": "",
+    "Bill_to_Customer_No": "",
+    "VAT_Registration_No": "",
+    "EORI_Number": "",
+    "GLN": "",
+    "Use_GLN_in_Electronic_Document": false,
+    "Copy_Sell_to_Addr_to_Qte_From": "Company",
+    "Tax_Liable": false,
+    "Tax_Area_Code": "",
+    "Registration_Number": "",
+    "Gen_Bus_Posting_Group": "",
+    "VAT_Bus_Posting_Group": "",
+    "Customer_Posting_Group": "",
+    "Allow_Multiple_Posting_Groups": false,
+    "Currency_Code": "",
+    "Price_Calculation_Method": " ",
+    "Customer_Price_Group": "",
+    "Customer_Disc_Group": "",
+    "Allow_Line_Disc": false,
+    "Invoice_Disc_Code": "C-10045",
+    "Prices_Including_VAT": false,
+    "Prepayment_Percent": 0,
+    "Application_Method": "Manual",
+    "Partner_Type": " ",
+    "Intrastat_Partner_Type": " ",
+    "Payment_Terms_Code": "",
+    "Payment_Method_Code": "",
+    "Reminder_Terms_Code": "",
+    "Fin_Charge_Terms_Code": "",
+    "Cash_Flow_Payment_Terms_Code": "",
+    "Print_Statements": false,
+    "Last_Statement_No": 0,
+    "Block_Payment_Tolerance": false,
+    "Preferred_Bank_Account_Code": "",
+    "Exclude_from_Pmt_Practices": false,
+    "Ship_to_Code": "",
+    "Location_Code": "",
+    "Combine_Shipments": false,
+    "Combine_Service_Shipments": false,
+    "Reserve": "Optional",
+    "Shipping_Advice": "Partial",
+    "Shipment_Method_Code": "",
+    "Shipping_Agent_Code": "",
+    "Shipping_Agent_Service_Code": "",
+    "Shipping_Time": "",
+    "Base_Calendar_Code": "",
+    "Customized_Calendar": "No",
+    "Assessee_Code": "",
+    "P_A_N_No": "",
+    "P_A_N_Status": " ",
+    "P_A_N_Reference_No": "",
+    "Aggregate_Turnover": "Less than 10 Crores",
+    "Govt_Undertaking": false,
+    "GST_customer_Type": " ",
+    "GST_Registration_Type": " ",
+    "GST_Registration_No": "",
+    "E_Commerce_Operator": false,
+    "ARN_No": ""
+  }
+]
+```
+--------------------
+
 #### Update Customer
 
 Update Customer action is used to modify existing customer details including address, contact, and sales information.
