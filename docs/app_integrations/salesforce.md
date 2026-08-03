@@ -88,68 +88,9 @@ Paste both back in appse ai. If you followed all the steps right, your credentia
 
 --- 
 
-## Triggers and Actions
-
-Here is a list of the available actions and triggers for Salesforce:
-
-### Triggers
-
-- **New Account Created** — Triggers when a new account is created.
-- **Accounts Updated** — Triggers when an existing account is updated.
-- **New Contact Created** — Triggers when a new contact is created.
-- **Contacts Updated** — Triggers when an existing contact is updated.
-- **New Quotations Created** — Triggers when a new quotation is created.
-
----
-
-### Actions
-
-> Account Actions
-
-- **Create Account** — Create a new account record.
-- **Update Account** — Update an existing account record.
-- **Get Account by Email** — Retrieve an account using its email address.
-
----
-
-> Contact Actions
-
-- **Create Contact** — Create a new contact record.
-- **Update Contact** — Update an existing contact record.
-- **Get Contact by Email** — Retrieve a contact using its email address.
-
----
-
-> Product Actions
-
-- **Create Product** — Create a new product record.
-- **Update Product** — Update an existing product record.
-- **Get Product by ID** — Retrieve a product using its unique identifier.
-
----
-
-> Pricebook Actions
-
-- **Get Standard Pricebook** — Retrieve the org's standard pricebook.
-- **Create Pricebook Entry** — Add a new pricebook entry, linking a product to a pricebook along with its price.
-- **Update Pricebook Entry** — Update an existing pricebook entry — for example, to change its unit price or active status — by providing the Pricebook Entry ID along with the fields to modify.
-
----
-
-> Order Actions
-
-- **Create Order** — Create a new order record.
-- **Get Order by ID** — Retrieve an order using its unique identifier.
-
----
-
-> Quote Actions
-
-- **Get Quote Line Items by Quote ID** — Retrieve the line items associated with a quote.
-=======
 ## Triggers
 
-All Salesforce triggers poll for newly created or updated records and fire once per record found. 
+All Salesforce triggers poll for newly created or updated records and fire once per record found.
 
 Here is the list of available triggers for Salesforce:
 
@@ -163,7 +104,9 @@ Here is the list of available triggers for Salesforce:
 | **New opportunities created** | Triggers when a new Opportunity record is created in Salesforce. |
 | **New orders created** | Triggers when a new Order record is created in Salesforce. |
 | **New quotations created** | Triggers when a new Quote record is created in Salesforce. |
-| **New Case Created** | Triggers when a new Case record is created in Salesforce. |
+| **New case created** | Triggers when a new Case record is created in Salesforce. |
+
+---
 
 ## Actions
 
@@ -223,4 +166,4 @@ Here is the list of available actions for Salesforce:
 
 ## Support
 
-Need help? Contact our support team at support.appse.ai
+Need help? Contact our support team at [hello@appse.ai](mailto:hello@appse.ai)
