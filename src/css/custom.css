@@ -29,12 +29,6 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-/* Hide the "#" direct-link anchor that the theme appends to every heading.
-   Heading ids are untouched, so existing #anchor URLs still resolve. */
-.hash-link {
-  display: none;
-}
-
 .theme-code-block[class*="language-json"],
 .theme-code-block pre[class*="language-json"],
 .markdown pre[class*="language-json"] {
