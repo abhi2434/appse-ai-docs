@@ -166,4 +166,4 @@ Here is the list of available actions for Salesforce:
 
 ## Support
 
-Need help? Contact our support team at [hello@appse.ai](mailto:hello@appse.ai)
+Need help? Contact our support team at [support@appse.ai](mailto:support@appse.ai)
