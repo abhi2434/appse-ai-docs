@@ -1,4 +1,8 @@
-# Lightspeed
+---
+title: "Lightspeed"
+description: Step-by-step guide to set up Lightspeed X-Series credentials and automate retail, POS, and inventory workflows in appse ai.
+slug: /app-integrations/lightspeed/
+---
 
 **Lightspeed** is a cloud-based POS and retail management platform for managing products, customers, sales, and inventory across physical and online stores.
 
