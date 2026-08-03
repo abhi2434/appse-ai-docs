@@ -1,265 +1,74 @@
 ---
-title: Gmail
-description: Step-by-step guide to set up Gmail credentials for Appse.ai integration
+title: "Gmail"
+description: Step-by-step guide to set up Gmail credentials for appse ai integration
 slug: /app-integrations/gmail/
+unlisted: true
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import ConnectAccountButton from '@site/src/components/ConnectAccountButton';
 
-## Introduction
-
-Gmail is Google’s email service that allows users to send, receive, search, and manage emails efficiently. By integrating Gmail with Appse.ai, you can automate email-based workflows such as sending notifications, reading inbox messages, monitoring threads, and triggering actions based on email events. This guide explains how to configure **Gmail OAuth 2.0 credentials** so Appse.ai can securely connect to your Gmail account.
-
----
-
-## Key Features
-
-- **Send Emails**: Automatically send emails using Gmail.
-- **Read Inbox Messages**: Fetch incoming emails and threads.
-- **Search Emails**: Query emails using Gmail search operators.
-- **Attachment Handling**: Download and upload email attachments.
-- **Workflow Automation**: Trigger workflows based on email activity.
-- **Secure OAuth Access**: Uses Google OAuth 2.0 for safe authentication.
-
----
-
-## Setup Credential
-
-Follow the steps below to configure Gmail credentials in Appse.ai.
-
-### Required Fields
-
-The following fields are required to connect Gmail with Appse.ai.
-
-| Field             | Description                                             |
-| ----------------- | ------------------------------------------------------- |
-| Authorization URL | Google OAuth authorization endpoint                     |
-| Token URL         | Google OAuth token endpoint                             |
-| Client ID         | OAuth Client ID generated from Google Cloud Console     |
-| Client Secret     | OAuth Client Secret generated from Google Cloud Console |
-| API Access Scope  | Gmail API scopes required for email access              |
-| Base API URL      | Gmail API base endpoint                                 |
-
-:::info
-All required fields must be configured correctly to successfully authorize Gmail with Appse.ai.
-:::
-
----
-
-## Step-by-Step Guide
-
-To get started, click **Select a credential** and choose **Create New Credential**.
-
-<img src="/img/credentials/gmail/new_credential.png" alt="Create Gmail credential" width="700"/>
-
-This opens the Gmail credential configuration form.
-
-<img src="/img/credentials/gmail/credential_form.png" alt="Gmail credential form" width="700"/>
-
----
-
-## Step 1: Create a Google Cloud Project
-
-1. Open **Google Cloud Console**  
-   https://console.cloud.google.com/
-
-2. Click the **project selector** in the top-left corner.
-
-3. Click **New Project**.
-
-4. Enter the following details:
-   - **Project Name**  
-     Example: `AppseAI Gmail Integration`
-   - **Organization** (optional)
-   - **Billing Account** (recommended for production use)
-
-5. Click **Create**.
-
-6. Wait until the project is created and selected.
-
----
-
-## Step 2: Enable the Gmail API
-
-1. In Google Cloud Console, go to:
-
-   **APIs & Services → Library**
-
-2. Search for **Gmail API**.
-
-3. Click **Gmail API**.
-
-4. Click **Enable**.
-
-:::info
-The Gmail API must be enabled before OAuth authentication can work.
-:::
-
----
-
-## Step 3: Configure OAuth Consent Screen
-
-The OAuth consent screen defines what users see when granting Gmail access.
-
----
-
-### 3.1 Choose User Type
-
-1. Navigate to:
-
-   **APIs & Services → OAuth consent screen**
-
-2. Select **External**.
-
-3. Click **Create**.
+Gmail is Google’s email service that allows users to send, receive, search, and manage emails efficiently. By integrating Gmail with appse ai, you can send emails, read inbox messages and threads, search mail with Gmail operators, and automate workflows based on email activity—all through secure Google OAuth 2.0 access.
 
 :::note
-External is required for SaaS and client-facing applications like Appse.ai.
+Gmail uses OAuth 2.0 authentication only. Install and connect the app directly through the OAuth flow. Users do not need to manually enter client IDs or client secrets.
 :::
 
----
+<ConnectAccountButton
+  appName="Gmail"
+  authorizeUrl="https://workflow.insync.top/credentials?appCode=gmail&credentialTypeCode=gmail_oauth2_public"
+/>
 
-### 3.2 App Information
-
-Fill in the following details:
-
-- **App name**  
-  (Displayed to users during Gmail authorization)
-
-- **User support email**
-
-- **Developer contact email**
-
-Click **Save and Continue**.
+Click **Connect your Gmail Account** above to open the Public App authorization page and start the OAuth connection. If you are not signed in to appse ai, you will be prompted to log in or register first.
 
 ---
 
-### 3.3 Configure Gmail Scopes
+### Add Credential in appse ai
 
-1. Click **Add or Remove Scopes**.
+- Click **Save & Authorize**.
 
-2. Search for **Gmail API**.
+<img src="/img/credentials/gmail/gm36.png" alt="Gmail Save and Authorize screen" width="700"/>
 
-3. Select the following required scope:
+- You will be redirected to the Google authentication page. Select the Gmail account you want to connect.
 
-4. Click **Update**.
+<img src="/img/credentials/gmail/gm37.png" alt="Gmail account selection screen" width="700"/>
 
-5. Click **Save and Continue**.
+- Click **Continue**.
 
-:::warning
-The `https://mail.google.com/` scope provides full Gmail access and is required for sending and reading emails.
-:::
+<img src="/img/credentials/gmail/gm38.png" alt="Gmail continue authorization screen" width="700"/>
 
----
+- Review the requested permissions, select all the required scope checkboxes, and click **Continue**.
 
-### 3.4 Add Test Users
+<img src="/img/credentials/gmail/gm57.png" alt="Gmail OAuth scopes consent screen" width="700"/>
 
-While the app is in **Testing mode**, only test users can authorize it.
+- Once connected, you will be automatically redirected back to the appse ai platform, and the Gmail credential will be saved successfully.
 
-1. Navigate to:
+- Ensure the credential shows **Successfully Validated**.
 
-   **APIs & Services → OAuth consent screen**
-
-2. Scroll to the **Audience** section.
-
-3. Locate **Test users**.
-
-4. Click **Add Users**.
-
-5. Enter one or more Gmail addresses.
-
-:::important
-You must add your own Gmail address (or the user connecting Gmail).  
-If your email is not added here, OAuth login will fail.
-:::
-
-6. Click **Save**.
+<img src="/img/credentials/gmail/gm51.png" alt="Gmail credential successfully validated" width="700"/>
 
 ---
 
-## Step 4: Create OAuth 2.0 Credentials
+## Triggers and Actions
 
-1. Go to:
+Here is a list of the available actions for Gmail:
 
-   **APIs & Services → Credentials**
+### Actions
 
-2. Click **Create Credentials**.
-
-3. Select **OAuth Client ID**.
-
----
-
-### 4.1 Configure OAuth Client
-
-Fill in the following details:
-
-- **Application type**: `Web application`
-- **Name**: `AppseAI Gmail Client`
-
-#### Authorized Redirect URI
-
-Add the callback URL exactly as shown below:
-
-:::warning
-The redirect URI must match exactly.  
-Any mismatch will cause OAuth authorization failure.
-:::
-
-4. Click **Create**.
-
----
-
-### 4.2 Copy OAuth Credentials
-
-After creation, Google will generate:
-
-- **Client ID**
-- **Client Secret**
-
-Copy and store them securely.
-
-<img src="/img/credentials/gmail/client_credentials.png" alt="Gmail client credentials" width="700"/>
-
----
-
-## Configure Credential in Appse.ai
-
-Return to Appse.ai and enter:
-
-- **Client ID**
-- **Client Secret**
-- **Authorization URL**
-- **Token URL**
-- **Base API URL**
-- **Scopes**
-
-Then click **Save and Authorize**.
-
----
-
-## Final Authorization
-
-1. Sign in with your Gmail account.
-2. Review requested permissions.
-3. Click **Allow**.
-
-If the configuration is correct, Appse.ai will complete authorization and securely store the credential.
-
----
-
-## Common Gmail OAuth URLs
-
-| Type              | URL                                          |
-| ----------------- | -------------------------------------------- |
-| Authorization URL | https://accounts.google.com/o/oauth2/v2/auth |
-| Token URL         | https://oauth2.googleapis.com/token          |
-| Base API URL      | https://gmail.googleapis.com                 |
+| Action | Description |
+| ------ | ----------- |
+| **Send Email** | Send an email using the Gmail API. |
+| **Reply to Email** | Send a reply to an existing email message in Gmail, keeping the reply within the same conversation thread. |
+| **Get Mail message attachment** | Retrieve a specific attachment from an email message in the user's Gmail account. |
+| **Modify Gmail Message Set as Read** | Modify a Gmail message (for example, mark as read/unread, or add/remove labels). |
+| **Get Mail messages unread** | Retrieve unread emails from the user's Gmail account. |
+| **Get mail message details** | Retrieve detailed information about a specific email message from the user's Gmail account. |
+| **Search mail message** | Search and retrieve mail messages from the user's Gmail account using a filter query. |
+| **Get unread Email received in last 24 hours** | Retrieve unread emails that arrived in the user's Gmail account within the last 24 hours. |
 
 ---
 
 ## Support
 
-Need help? Contact our support team at hello@appse.ai
+Need help? Contact our support team at [support@appse.ai](mailto:support@appse.ai)
 
 ---

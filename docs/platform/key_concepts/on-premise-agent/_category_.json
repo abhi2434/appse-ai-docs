@@ -1,0 +1,13 @@
+{
+  "label": "On-Prem Connectors",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "title": "On-Prem Connectors",
+    "description": "Learn about the on-premise connectors in appse ai.",
+    "slug": "/platform/key-concepts/on-premise-agent/"
+  },
+  "collapsed": true
+}
+ 
+ 
