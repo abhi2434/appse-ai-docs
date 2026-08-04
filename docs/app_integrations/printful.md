@@ -127,7 +127,7 @@ Store this token securely. Printful will not display it again. If you lose it, y
 4. **Confirmation**  
    Once validated, the credential will be saved and appear on the **Credentials** page with a green checkmark indicating successful validation.
 
-   <img src="/img/credentials/printful/p10.png" alt="Credential Listing Page" width="700"/>
+   <img src="/img/credentials/printful/p10.jpg" alt="Credential Listing Page" width="700"/>
 
 You can now use this credential for the required workflow integrations.
 
@@ -218,6 +218,8 @@ Click on **Continue**, then click **Run** node.
 ##### Example Configuration
 
 <img src="/img/credentials/printful/AC-GO4.jpg" alt="Printful Get Orders action example configuration" width="700"  />
+
+<img src="/img/credentials/printful/AC-GO5.jpg" alt="Printful Get Orders action example result" width="700"  />
 
 ---
 
