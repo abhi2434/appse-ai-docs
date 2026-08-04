@@ -427,23 +427,6 @@ Click on **Continue** button
 
 -----------------
 
-##### Configuration Fields
-
-| Field | Description |
-|------|-------------|
-| Page Size | Number of categories to fetch per request (1-100, default 20). |
-| Skip Count | Number of categories to skip for pagination. |
-
-Click on **Continue**, then click **Run** node.
-
------------------
-
-##### Example Configuration
-
-<img src="/img/credentials/printful/AC-GCC18.jpg" alt="Printful Get Catalog Categories action example configuration" width="700"  />
-
----
-
 #### Get Catalog Product by ID
 
 Get Catalog Product by ID action retrieves detailed information about a specific product from Printful's catalog, including all available variants.
@@ -472,34 +455,6 @@ Click on **Continue**, then click **Run** node.
 
 ---
 
-#### Get Catalog Category by ID
-
-Get Catalog Category by ID action retrieves details about a specific product category.
-
-##### Select Credentials and Action Events
-
-<img src="/img/credentials/printful/C-GCCBI21.jpg" alt="Printful Get Catalog Category by ID action configuration" width="700"  />
-
-Click on **Continue** button
-
------------------
-
-##### Configuration Fields
-
-| Field | Description |
-|------|-------------|
-| Category ID | The Printful catalog category ID (e.g., "24"). |
-
-Click on **Continue**, then click **Run** node.
-
------------------
-
-##### Example Configuration
-
-<img src="/img/credentials/printful/AC-GCCBI22.jpg" alt="Printful Get Catalog Category by ID action example configuration" width="700"  />
-
----
-
 #### Get Catalog Variant by ID
 
 Get Catalog Variant by ID action retrieves information about a specific product variant including pricing and available options.
@@ -525,34 +480,6 @@ Click on **Continue**, then click **Run** node.
 ##### Example Configuration
 
 <img src="/img/credentials/printful/AC-GCVBI24.jpg" alt="Printful Get Catalog Variant by ID action example configuration" width="700"  />
-
----
-
-#### Get Catalog Product Sizes
-
-Get Catalog Product Sizes action retrieves the available sizes for a specific product in Printful's catalog.
-
-##### Select Credentials and Action Events
-
-<img src="/img/credentials/printful/C-GCPS25.jpg" alt="Printful Get Catalog Product Sizes action configuration" width="700"  />
-
-Click on **Continue** button
-
------------------
-
-##### Configuration Fields
-
-| Field | Description |
-|------|-------------|
-| Product ID | The Printful catalog product ID (e.g., "23"). |
-
-Click on **Continue**, then click **Run** node.
-
------------------
-
-##### Example Configuration
-
-<img src="/img/credentials/printful/AC-GCPS26.jpg" alt="Printful Get Catalog Product Sizes action example configuration" width="700"  />
 
 ---
 
@@ -679,39 +606,6 @@ Click on **Continue**, then click **Run** node.
 
 ---
 
-#### Delete Store Product
-
-Delete Store Product action removes a synced product from your Printful store.
-
-##### Select Credentials and Action Events
-
-<img src="/img/credentials/printful/C-DSP35.jpg" alt="Printful Delete Store Product action configuration" width="700"  />
-
-Click on **Continue** button
-
------------------
-
-##### Configuration Fields
-
-| Field | Description |
-|------|-------------|
-| Store Id | Select your Printful store from the available list. |
-| Product ID | The product to delete (Printful ID or your external ID with @). |
-
-:::caution
-Deleting a product cannot be undone. Ensure you want to remove this product before proceeding.
-:::
-
-Click on **Continue**, then click **Run** node.
-
------------------
-
-##### Example Configuration
-
-<img src="/img/credentials/printful/AC-DSP36.jpg" alt="Printful Delete Store Product action example configuration" width="700"  />
-
----
-
 ### Store Variants (Sync) Actions
 
 #### Create Store Variant
@@ -806,74 +700,10 @@ Click on **Continue**, then click **Run** node.
 
 ---
 
-#### Delete Store Variant
-
-Delete Store Variant action removes a variant from a store product.
-
-##### Select Credentials and Action Events
-
-<img src="/img/credentials/printful/C-DSV43.jpg" alt="Printful Delete Store Variant action configuration" width="700"  />
-
-Click on **Continue** button
-
------------------
-
-##### Configuration Fields
-
-| Field | Description |
-|------|-------------|
-| Store Id | Select your Printful store from the available list. |
-| Variant ID | The variant to delete (Printful ID or your external ID with @). |
-
-:::caution
-Deleting a variant cannot be undone. Ensure you want to remove this variant before proceeding.
-:::
-
-Click on **Continue**, then click **Run** node.
-
------------------
-
-##### Example Configuration
-
-<img src="/img/credentials/printful/AC-DSV44.jpg" alt="Printful Delete Store Variant action example configuration" width="700"  />
-
----
-
-### Store Statistics Action
-
-#### Get Store Statistics
-
-Get Store Statistics action retrieves general statistics about your Printful store, including order counts and fulfillment metrics.
-
-##### Select Credentials and Action Events
-
-<img src="/img/credentials/printful/C-GSS45.jpg" alt="Printful Get Store Statistics action configuration" width="700"  />
-
-Click on **Continue** button
-
------------------
-
-##### Configuration Fields
-
-| Field | Description |
-|------|-------------|
-| Store Id | Select your Printful store from the available list. |
-
-Click on **Continue**, then click **Run** node.
-
------------------
-
-##### Example Configuration
-
-<img src="/img/credentials/printful/AC-GSS46.jpg" alt="Printful Get Store Statistics action example configuration" width="700"  />
-
----
-
 </TabItem>
 
 </Tabs>
 
----
 
 ## Support
 
