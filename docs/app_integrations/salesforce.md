@@ -86,11 +86,11 @@ Go to the Settings tab and find the link to view your "Consumer Key and Secret".
 #### 10. Add the Key and Secret back in appse ai
 Paste both back in appse ai. If you followed all the steps right, your credential should be connected!
 
----
+--- 
 
 ## Triggers
 
-All Salesforce triggers poll for newly created or updated records and fire once per record found. 
+All Salesforce triggers poll for newly created or updated records and fire once per record found.
 
 Here is the list of available triggers for Salesforce:
 
@@ -104,7 +104,9 @@ Here is the list of available triggers for Salesforce:
 | **New opportunities created** | Triggers when a new Opportunity record is created in Salesforce. |
 | **New orders created** | Triggers when a new Order record is created in Salesforce. |
 | **New quotations created** | Triggers when a new Quote record is created in Salesforce. |
-| **New Case Created** | Triggers when a new Case record is created in Salesforce. |
+| **New case created** | Triggers when a new Case record is created in Salesforce. |
+
+---
 
 ## Actions
 
@@ -164,4 +166,4 @@ Here is the list of available actions for Salesforce:
 
 ## Support
 
-Need help? Contact our support team at hello@appse.ai
+Need help? Contact our support team at [support@appse.ai](mailto:support@appse.ai)
