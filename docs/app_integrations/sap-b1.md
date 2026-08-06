@@ -44,7 +44,7 @@ If you have selected **Service Layer (Cloud)** on the Select Authentication scre
 | Field       | Description                                  |
 |-------------|----------------------------------------------|
 | Host URL    | The server URL where your SAP B1 is hosted   |
-| Port        | The port number for the SAP B1 service layer |
+| Port        | Optional. Default is `50000`. Leave blank if your Service Layer URL has no explicit port. Example URL: `https://example.com:50000/b1s/v1/` → port is `50000`. |
 | Username    | Your SAP B1 username                         |
 | Password    | Your SAP B1 password                         |
 | Company DB  | The company database name used in SAP B1     |
@@ -68,9 +68,9 @@ Provide a name for your credential in the `Connection Name` field. This will be 
 - Locate the base URL used to access the Service Layer API. Go to _Services_ -> _Service Layer_
 <img src="/img/credentials/sap-b1/sap-b1-cred-host-url.png" alt="SAP B1 Step-by-Step Guide step 2 of 5 screenshot" />
 
-- Add your Host URL and Port. With respect to the image you will be adding:
+- Add your Host URL and Port. The Port field is optional; the default is `50000`. Leave it blank if your Service Layer URL has no explicit port. With respect to the image you will be adding:
 > - **Host URL**: `https://10.0.2.68`
-> - **Port**: `50000`
+> - **Port**: `50000` (or leave blank if your Service Layer URL has no explicit port)
 
 ##### 3. Find Your Company DB Name
 
@@ -94,7 +94,7 @@ Depending on your setup, you might see `https://insync.pro` instead of `https://
 
 ##### Configure Credentials in Portal
 
-<img src="/img/credentials/sap-b1/Portal-CredsConfig.jpg" width="700"  alt="SAP B1 Cloud credential configuration form" />
+<img src="/img/credentials/sap-b1/Portal-CredsConfig.png" width="700"  alt="SAP B1 Cloud credential configuration form" />
 <img src="/img/credentials/sap-b1/Portal-CredConfig2.png" width="700"  alt="SAP B1 Cloud credential fields including Host URL, Port, Username, Password, and Company DB" />
 
 </TabItem>
@@ -121,7 +121,7 @@ After selecting a connector, fill in the Service Layer credential fields:
 | Field       | Description                                  |
 |-------------|----------------------------------------------|
 | Host URL    | The server URL where your SAP B1 is hosted   |
-| Port        | The port number for the SAP B1 service layer |
+| Port        | Optional. Default is `50000`. Leave blank if your Service Layer URL has no explicit port. Example URL: `https://example.com:50000/b1s/v1/` → port is `50000`. |
 | Username    | Your SAP B1 username                         |
 | Password    | Your SAP B1 password                         |
 | Company DB  | The company database name used in SAP B1     |
@@ -145,9 +145,9 @@ Provide a name for your credential in the `Connection Name` field. This will be 
 - Locate the base URL used to access the Service Layer API. Go to _Services_ -> _Service Layer_
 <img src="/img/credentials/sap-b1/sap-b1-cred-host-url.png" alt="SAP B1 Step-by-Step Guide step 2 of 5 screenshot" />
 
-- Add your Host URL and Port. With respect to the image you will be adding:
+- Add your Host URL and Port. The Port field is optional; the default is `50000`. Leave it blank if your Service Layer URL has no explicit port. With respect to the image you will be adding:
 > - **Host URL**: `https://10.0.2.68`
-> - **Port**: `50000`
+> - **Port**: `50000` (or leave blank if your Service Layer URL has no explicit port)
 
 ##### 3. Find Your Company DB Name
 
@@ -171,7 +171,7 @@ Depending on your setup, you might see `https://insync.pro` instead of `https://
 
 ##### Configure Credentials in Portal
 
-<img src="/img/credentials/sap-b1/Portal-CredsConfig.jpg" width="700"  alt="SAP B1 On-Premises Agent credential configuration form" />
+<img src="/img/credentials/sap-b1/Portal-CredsConfig.png" width="700"  alt="SAP B1 On-Premises Agent credential configuration form" />
 <img src="/img/credentials/sap-b1/Portal-CredConfig2.png" width="700"  alt="SAP B1 On-Premises Agent credential fields including Host URL, Port, Username, Password, and Company DB" />
 
 </TabItem>
