@@ -102,6 +102,8 @@ Get Customer action is used to retrieve a single customer record from Priority E
 
 Select your Priority REST credential, choose the **Get Customer** action event, then click on **Continue** button.
 
+<img src="/img/credentials/priority/ac-gtcustmr1.jpg" alt="Priority Get Customer action example configuration" width="700" />
+
 -----------------------------
 
 ##### Configuration
@@ -120,7 +122,7 @@ Click on **Continue**, then **Run** node.
 
 ##### Example Configuration
 
-<img src="/img/credentials/priority/AC-GTCUSTMR1.jpg" alt="Priority Get Customer action example configuration" width="700" />
+<img src="/img/credentials/priority/ac-gtcustomer2.jpg" alt="Priority Get Customer action example configuration" width="700" />
 
 -----------------------------
 
