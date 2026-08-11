@@ -18,9 +18,9 @@ Before you create a credential for Amazon Vendor Central using appse ai, ensure 
 
 ### Required Fields
 
-| Field                         | Description                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Connection Name**           | A label to identify this credential within appse ai.                                                                                                                                                                                                                                                                                                                                                             |
+| Field                         | Description                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Connection Name**           | A label to identify this credential within appse ai.                                                                                                                                                                                                                                                                                                                                                          |
 | **Select Marketplace Region** | The Amazon Selling Partner API region your vendor account operates in:<ul><li>**NA** — North America: US, CA, MX, BR</li><li>**EU** — Europe, Middle East, Africa and India: UK, IE, DE, FR, IT, ES, NL, SE, PL, BE, TR, ZA, EG, SA, AE, IN</li><li>**FE** — Far East: JP, AU, SG</li></ul>See Amazon's [SP-API endpoints](https://developer-docs.amazon/sp-api/docs/sp-api-endpoints) for the complete list. |
 
 :::note
@@ -39,7 +39,7 @@ This opens the Amazon Vendor Central credential form. Add your **Connection Name
 
 #### 2. Select Your Region
 
-Choose the region your vendor account operates in from the **Select Region** dropdown — **NA**, **EU**, or **FE**. This sets the Selling Partner API endpoint appse ai calls, so choosing the wrong region will prevent appse ai from accessing your account data. Amazon India stores are served by the **EU** endpoint, not FE.
+Choose the region your vendor account operates in from the **Select Region** dropdown — **NA**, **EU**, or **FE**. This sets the Selling Partner API endpoint appse ai calls, so choosing the wrong region will prevent appse ai from accessing your account data.
 
 <img src="/img/credentials/amazon-vendor-central/select-region-vendor-central.png" alt="appse ai Amazon Vendor Central region and marketplace selector" width="700"/>
 
@@ -87,10 +87,8 @@ Here is a list of the available triggers and actions for Amazon Vendor Central:
 
 ### Triggers
 
-| Trigger | Description |
-| ------- | ----------- |
-| **New Purchase Order (Retail)** | Triggers when Amazon creates a new wholesale purchase order for a vendor. Fires once per PO so downstream steps can acknowledge, plan fulfilment, or sync order details to ERP and WMS systems. |
-| **New Direct Fulfillment Purchase Order** | Triggers when Amazon creates a new direct fulfillment purchase order for a vendor. Fires once per PO so downstream steps can accept, ship, or sync order details to warehouse and logistics systems. |
+- **New Purchase Order (Retail)** — Triggers when Amazon creates a new wholesale purchase order for a vendor. Fires once per PO so downstream steps can acknowledge, plan fulfilment, or sync order details to ERP and WMS systems.
+- **New Direct Fulfillment Purchase Order** — Triggers when Amazon creates a new direct fulfillment purchase order for a vendor. Fires once per PO so downstream steps can accept, ship, or sync order details to warehouse and logistics systems.
 
 ### Actions
 
