@@ -411,9 +411,10 @@ Click on **Continue** button.
 |------|-------------|
 | Customer Number | The customer this order is placed for. Must match an existing Priority customer number (`CUSTNAME`). Example: `CUST001` |
 | Reference | External reference number for the order, for example a customer PO number. Example: `PO-2026-4417` |
+| Order Items | Line items to create together with the order in the same request (deep insert), via the `ORDERITEMS_SUBFORM` subform. Each item needs at least `PARTNAME` and `DUEDATE`. Example: `[{"PARTNAME": "SKU-100", "DUEDATE": "2026-08-25T00:00:00+00:00"}]` |
 
 :::note
-`Customer Number` is a mandatory field. Any other Priority `ORDERS` field required by your instance can be supplied as an additional field.
+`Customer Number` is a mandatory field. `Order Items` only works on **create** — per the Priority REST API, deep insert is not supported via `PATCH` to an existing order; to add, update, or delete items on an order that already exists, use a dedicated order-item action instead (not yet added to this app). Add other Priority `ORDERITEMS` fields (e.g. `TQUANT` for quantity) inside each item object as needed. Any other Priority `ORDERS` field required by your instance can be supplied as an additional field.
 :::
 
 Click on **Continue**, then **Run** node.
@@ -439,15 +440,24 @@ Click on **Continue**, then **Run** node.
   "CURDATE": "2026-08-11T13:10:27+00:00",
   "ORDSTATUSDES": "New Order",
   "CODE": "USD",
-  "QPRICE": 0,
-  "TOTPRICE": 0
+  "QPRICE": 450,
+  "TOTPRICE": 450,
+  "ORDERITEMS_SUBFORM": [
+    {
+      "PARTNAME": "SKU-100",
+      "PDES": "Industrial Pump Model XZ",
+      "TQUANT": 1,
+      "DUEDATE": "2026-08-25T00:00:00+00:00",
+      "PRICE": 450
+    }
+  ]
 }
 ```
 -----------------------------
 
 #### Update Order
 
-Update Order action is used to update an existing sales order in Priority ERP by order name — commonly used for status/flag updates and web-ID sync-back.
+Update Order action is used to update header-level fields on an existing sales order in Priority ERP by order name — commonly used for status/flag updates and web-ID sync-back. It does not modify order line items; Priority requires a separate call to the `ORDERITEMS_SUBFORM` subform for that.
 
 -----------------------------
 
