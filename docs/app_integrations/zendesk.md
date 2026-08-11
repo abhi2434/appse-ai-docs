@@ -1,6 +1,6 @@
 ---
 title: "Zendesk"
-slug : /app-integrations/zendesk/
+slug: /app-integrations/zendesk/
 description: Learn how to setup and use Zendesk on appse ai.
 ---
 
@@ -121,4 +121,4 @@ Every application has a pre-defined set of triggers and actions that allow users
 
 ## Need Help?
 
-If you're unsure about any field or face connection issues, reach out to our support team at support@appse.ai
+If you're unsure about any field or face connection issues, reach out to our support team at [support@appse.ai](mailto:support@appse.ai)
