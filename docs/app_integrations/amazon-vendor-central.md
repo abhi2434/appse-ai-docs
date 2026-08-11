@@ -18,17 +18,10 @@ Before you create a credential for Amazon Vendor Central using appse ai, ensure 
 
 ### Required Fields
 
-<<<<<<< HEAD
 | Field                         | Description                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Connection Name**           | A label to identify this credential within appse ai.                                                                                                                                                                                                                                                                                                                                                             |
 | **Select Marketplace Region** | The Amazon Selling Partner API region your vendor account operates in:<ul><li>**NA** — North America: US, CA, MX, BR</li><li>**EU** — Europe, Middle East, Africa and India: UK, IE, DE, FR, IT, ES, NL, SE, PL, BE, TR, ZA, EG, SA, AE, IN</li><li>**FE** — Far East: JP, AU, SG</li></ul>See Amazon's [SP-API endpoints](https://developer-docs.amazon/sp-api/docs/sp-api-endpoints) for the complete list. |
-=======
-| Field               | Description                                                                                   |
-| ------------------- | --------------------------------------------------------------------------------------------- |
-| **Connection Name** | A label to identify this credential within appse ai.                                          |
-| **Select Region**   | The Amazon Selling Partner API region your vendor account operates in. Options: **NA** — North America (US, CA, MX, BR), **EU** — Europe, Middle East, Africa and India (UK, DE, FR, IT, ES, NL, SE, PL, TR, IN, and other EMEA stores), **FE** — Far East (JP, AU, SG). See Amazon's [SP-API endpoints](https://developer-docs.amazon.com/sp-api/docs/sp-api-endpoints) for the full list. |
->>>>>>> a1f42861b6aec34b83b64a2d35d3cd3435c7d5e4
 
 :::note
 You will also need your Amazon Vendor Central login credentials and access to your registered two-step verification device during the authorization flow.
