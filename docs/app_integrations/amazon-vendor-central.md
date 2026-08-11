@@ -1,5 +1,6 @@
 ---
 title: "Amazon Vendor Central"
+description: Step-by-step guide to set up Amazon Vendor Central credentials and automate purchase order, shipment, and invoice workflows in appse ai.
 slug: /app-integrations/amazon-vendor-central/
 ---
 
@@ -20,7 +21,7 @@ Before you create a credential for Amazon Vendor Central using appse ai, ensure 
 | Field               | Description                                                                                   |
 | ------------------- | --------------------------------------------------------------------------------------------- |
 | **Connection Name** | A label to identify this credential within appse ai.                                          |
-| **Select Region**   | The Amazon Selling Partner API region your vendor account operates in. Options: **NA** — North America (US, CA, MX, BR), **EU** — Europe (UK, DE, FR, IT, ES, NL, SE, PL, TR), **FE** — Far East (JP, AU, SG, IN). |
+| **Select Region**   | The Amazon Selling Partner API region your vendor account operates in. Options: **NA** — North America (US, CA, MX, BR), **EU** — Europe, Middle East, Africa and India (UK, DE, FR, IT, ES, NL, SE, PL, TR, IN, and other EMEA stores), **FE** — Far East (JP, AU, SG). See Amazon's [SP-API endpoints](https://developer-docs.amazon.com/sp-api/docs/sp-api-endpoints) for the full list. |
 
 :::note
 You will also need your Amazon Vendor Central login credentials and access to your registered two-step verification device during the authorization flow.
@@ -38,7 +39,7 @@ This opens the Amazon Vendor Central credential form. Add your **Connection Name
 
 #### 2. Select Your Region
 
-Choose the region your vendor account operates in from the **Select Region** dropdown — **NA**, **EU**, or **FE**. This sets the Selling Partner API endpoint appse ai calls, so choosing the wrong region will prevent appse ai from accessing your account data.
+Choose the region your vendor account operates in from the **Select Region** dropdown — **NA**, **EU**, or **FE**. This sets the Selling Partner API endpoint appse ai calls, so choosing the wrong region will prevent appse ai from accessing your account data. Amazon India stores are served by the **EU** endpoint, not FE.
 
 <img src="/img/credentials/amazon-vendor-central/select-region-vendor-central.png" alt="appse ai Amazon Vendor Central region and marketplace selector" width="700"/>
 
