@@ -98,6 +98,10 @@ If authorization fails, confirm the Callback API URL was added exactly as shown 
 
 Here is a list of the available triggers and actions for Slack:
 
+:::note
+Your Slack App must be a member of a channel before it can post to it or read from it. In Slack, open the channel and run the command `/invite @YourAppName` (use the app name you gave it in [Step 1](#1-create-a-slack-app)) to add it. This is required for **Send Channel Message**, **New Message Posted**, and any other action that targets a specific channel — public or private.
+:::
+
 ### Triggers
 
 - **New Message Posted** — Fires when a new message is posted in the selected Slack channel. Requires a **Channel** and a starting **Fetch messages since** date/time. Note: the app must be a member of private channels before it can read messages from them.
