@@ -105,4 +105,4 @@ Here is a list of the available triggers and actions for Amazon Seller Central:
 
 ## Support
 
-Need help? Contact our support team at [hello@appse.ai](mailto:hello@appse.ai)
+Need help? Contact our support team at [support@appse.ai](mailto:support@appse.ai)
