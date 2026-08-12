@@ -1,5 +1,6 @@
 ---
 title: "Amazon Seller Central"
+description: Step-by-step guide to set up Amazon Seller Central credentials and automate order, feed, and financial workflows in appse ai.
 slug: /app-integrations/amazon-seller-central/
 ---
 
@@ -11,16 +12,16 @@ Amazon Seller Central is the marketplace for managing your Amazon selling accoun
 
 :::info
 
-Before you create a credential for Amazon Seller Central using appse ai, ensure you have an Amazon Seller Central account and have registered as a developer (or authorized a developer app). You can register at the [Amazon SP-API Developer Registration page](https://developer.amazonservices.com/).
+Before you create a credential for Amazon Seller Central using appse ai, ensure you have an [Amazon Seller Central](https://sellercentral.amazon.com/) account with permission to authorize applications. appse ai connects through its own registered Selling Partner API application, so you do not need to register as a developer or supply a client ID or client secret.
 
 :::
 
 ### Required Fields
 
-| Field | Description |
-|---|---|
-| **Connection Name** | A label to identify this credential within appse ai. |
-| **Marketplace Region** | The Amazon region your seller account operates in (e.g., North America, Europe, Far East). |
+| Field                         | Description                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Connection Name**           | A label to identify this credential within appse ai.                                                                                                                                                                                                                                                                                                                                                          |
+| **Select Marketplace Region** | The Amazon Selling Partner API region your seller account operates in:<ul><li>**NA** — North America: US, CA, MX, BR</li><li>**EU** — Europe, Middle East, Africa and India: UK, IE, DE, FR, IT, ES, NL, SE, PL, BE, TR, ZA, EG, SA, AE, IN</li><li>**FE** — Far East: JP, AU, SG</li></ul>See Amazon's [SP-API endpoints](https://developer-docs.amazon/sp-api/docs/sp-api-endpoints) for the complete list. |
 
 :::note
 You will also need your Amazon Seller Central login credentials and access to your registered two-step verification device during the authorization flow.
@@ -36,9 +37,9 @@ Click **Select a Credential** and choose **Amazon Seller Central** from the appl
 
 This opens the Amazon Seller Central credential form. Add your **Connection Name**.
 
-#### 2. Select Your Region / Marketplace
+#### 2. Select Your Region
 
-Select the correct Amazon marketplace region for your seller account (e.g., North America, Europe, Far East). Choosing the wrong region will prevent appse ai from accessing your account data.
+Choose the region your seller account operates in from the **Select Region** dropdown — **NA**, **EU**, or **FE**. This sets the Selling Partner API endpoint appse ai calls, so choosing the wrong region will prevent appse ai from accessing your account data.
 
 <img src="/img/credentials/amazon-seller-central/select-region-seller-central.png" alt="appse ai Amazon Seller Central region and marketplace selector" width="700"/>
 
@@ -71,7 +72,7 @@ Click **Save and Authorize** in appse ai to complete the connection.
 Once the verification is successfully completed, your credentials will be validated and saved within appse ai. You will see a confirmation message once the connection is successful.
 
 :::tip
-If the authorization flow fails, ensure your Amazon account has Seller Central access and that your developer app has been approved for SP-API.
+If the authorization flow fails, ensure the Amazon account you signed in with has Seller Central access and permission to authorize applications.
 :::
 
 ---
