@@ -116,6 +116,7 @@ Your Slack App must be a member of a channel before it can post to it or read fr
 | **Delete Message** | Deletes a message the app previously posted to a channel. Requires the **Channel** and the message's **Message Timestamp (ts)**. |
 | **Create Channel** | Creates a new public or private Slack channel. Channel names must use lowercase letters, numbers, hyphens, and underscores only (max 80 characters, no spaces). |
 | **Invite User to Channel** | Invites one or more workspace members to a Slack channel. Accepts a comma-separated list of up to 1000 Slack user IDs. |
+| **Search Records** | Looks up a Slack conversation, user, or user group by a known identifier. Select a **Search In** type — Conversation (by ID), Conversations for a User, User (by ID), User (by Email), or User Groups — and fill in the matching field (**Conversation ID**, **User ID**, or **Email Address**). Slack has no name-based lookup for conversations, only by ID. User Groups has no single-record lookup in Slack's API, so it always returns the full list. |
 
 ---
 
