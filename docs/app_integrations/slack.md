@@ -122,4 +122,4 @@ Your Slack App must be a member of a channel before it can post to it or read fr
 
 ## Support
 
-Need help? Contact our support team at [hello@appse.ai](mailto:hello@appse.ai)
+Need help? Contact our support team at [support@appse.ai](mailto:support@appse.ai)
