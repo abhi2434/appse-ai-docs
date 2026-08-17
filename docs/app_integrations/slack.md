@@ -1,5 +1,6 @@
 ---
 title: "Slack"
+description: "Step by step guide to configure Slack app in appse ai to automate communication and notification in workflows"
 slug: /app-integrations/slack/
 ---
 
@@ -45,7 +46,7 @@ Give the app a name and select the Slack workspace you want to connect it to, th
 In your new app, open **OAuth & Permissions** from the left sidebar. Under **Scopes → Bot Token Scopes**, click **Add an OAuth Scope** and add the scopes your workflows will need:
 
 ```
-chat:write, chat:write.public, channels:read, channels:history, groups:read, im:read, im:history, users:read, users:read.email, files:read, files:write, reactions:write, pins:write
+chat:write,chat:write.public,channels:read,channels:history,groups:read,im:read,im:history,mpim:read,users:read,users:read.email,usergroups:read,files:read,files:write,reactions:write,pins:write
 ```
 
 <img src="/img/credentials/slack/add_bot_scopes.png" alt="appse ai Slack add Bot Token Scopes under OAuth and Permissions" width="700"/>
