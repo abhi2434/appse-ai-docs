@@ -1,0 +1,7 @@
+{
+  // Use the TypeScript pinned in package.json (~5.6.3) instead of the version bundled with
+  // VS Code. The bundled compiler is newer and reports "baseUrl" as deprecated, but this
+  // project still needs it and cannot accept "ignoreDeprecations": "6.0".
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}
