@@ -88,6 +88,29 @@ The Dynamics 365 Finance and Operations integration currently supports the follo
 | **New Sales Invoice Created** | Fetches data records when new sales invoices are created in D365 F&O. |
 | **Sales invoices created by date range** | Fetches sales invoice records created within a specified date range in D365 F&O. |
 
+## Tools
+
+AI tools expose D365 F&O operations for an AI agent to call autonomously within an appse ai agentic workflow — the agent picks the tool and fills its parameters based on conversation context, rather than a workflow builder configuring it upfront.
+
+Here is the list of available tools for Dynamics 365 Finance and Operations:
+
+| Tool | Description |
+| ---- | ----------- |
+| **Search customers** | Searches customer accounts within a legal entity by email or company name. |
+| **Search sales orders** | Looks up sales orders by the F&O sales order number or the customer's own PO / order reference. |
+| **Search customer invoices** | Searches posted sales invoices by customer account, date range, or sales order number. |
+| **Get sales order lines** | Retrieves the line items of a sales order, including ordered vs. remaining quantity, to determine shipment completeness. |
+| **Get packing slip headers by order** | Retrieves packing slip (delivery) headers for a sales order — one row per shipment made against it. |
+| **Get packing slip lines by order** | Retrieves the shipped quantity per item per packing slip for a sales order. |
+| **Get customer ledger transactions (AR / payments)** | Retrieves posted customer ledger transactions — use to confirm whether a payment was received or to check overdue AR balances. |
+| **Get contact person info** | Looks up a contact person by filter (e.g. email) and returns the customer/party they belong to, plus name and phone. |
+| **Get salesperson (Worker) by email** | Checks whether an email address belongs to an internal D365 F&O worker or sales rep. |
+| **Get internal user directory** | Looks up internal D365 F&O system users — useful for routing a request to the right person or department. |
+
+:::note
+Two additional tools — **Get item on-hand availability (ATP)** and **Get item preferred vendor and lead time** — are still in development and not yet enabled for use.
+:::
+
 ## Actions
 
 The Dynamics 365 Finance and Operations integration currently supports the following actions. Use these actions in workflows to create, update, query, and retrieve D365 F&O records.
@@ -137,8 +160,13 @@ The Dynamics 365 Finance and Operations integration currently supports the follo
 | **Get vendor transactions** | Retrieves vendor transaction records from D365 F&O. |
 | **Get vendors** | Retrieves vendor records from D365 F&O. |
 | **Get warehouse by site ID** | Retrieves warehouse details for a specified site ID in D365 F&O. |
+| **Search records** | Runs a generic OData search across the most commonly queried D365 F&O entities (Customer, Sales Order, Invoice, Vendor, Item, Inventory, Purchase Order, Customer Transaction, and more) for a selected legal entity, using a free-form `$filter` condition you supply. Use it for ad hoc lookups that don't have a dedicated action. |
 | **Update a customer** | Updates an existing customer account record in D365 F&O. |
 | **Update exchange rate** | Updates an existing exchange rate entry in D365 F&O. |
+
+:::note
+For **Search records**, the **Legal entity (company)** you select is automatically ANDed into the `$filter` — add your own conditions in the **Filter** field on top of that. The **Inventory (on-hand)** entity's collection name can differ by D365 F&O version; confirm it against your environment's `/data/$metadata` before relying on it in a live workflow.
+:::
 
 ## Troubleshooting
 
