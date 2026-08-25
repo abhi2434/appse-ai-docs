@@ -99,17 +99,24 @@ Here is the list of available tools for Dynamics 365 Finance and Operations:
 | **Search customers** | Searches customer accounts within a legal entity by email or company name. |
 | **Search sales orders** | Looks up sales orders by the F&O sales order number or the customer's own PO / order reference. |
 | **Search customer invoices** | Searches posted sales invoices by customer account, date range, or sales order number. |
+| **Search items (released products)** | Searches released products by item number, name, or description. |
+| **Search purchase orders** | Searches purchase orders by vendor, status, or PO number, including drafts raised from a shortfall. |
+| **Search return orders** | Searches customer return orders (RMAs) by customer account or the original sales order. |
+| **Search sales quotations** | Searches sales quotations by quotation number, customer, or quotation status. |
+| **Search vendors** | Searches vendor accounts by account number or company name. |
+| **Search vendor invoices** | Searches posted vendor invoices by vendor account or purchase order number. |
 | **Get sales order lines** | Retrieves the line items of a sales order, including ordered vs. remaining quantity, to determine shipment completeness. |
 | **Get packing slip headers by order** | Retrieves packing slip (delivery) headers for a sales order — one row per shipment made against it. |
 | **Get packing slip lines by order** | Retrieves the shipped quantity per item per packing slip for a sales order. |
 | **Get customer ledger transactions (AR / payments)** | Retrieves posted customer ledger transactions — use to confirm whether a payment was received or to check overdue AR balances. |
+| **Get vendor ledger transactions** | Retrieves posted vendor ledger transactions — use to confirm whether a payment was sent to a vendor or to list open purchase-invoice transactions. |
+| **Get special prices (trade agreements)** | Searches customer- and item-specific sales price trade agreements — use for unit-price or bulk-order pricing questions. |
+| **Get sites** | Retrieves operational site records for a legal entity — use to resolve or validate a site ID or name referenced in shipping/warehouse context. |
+| **Get item on-hand availability (ATP)** | Retrieves per-warehouse on-hand inventory for an item to compute available-to-promise against a requested quantity. |
+| **Get item preferred vendor and lead time** | Retrieves the preferred vendor and purchasing lead time for a released product — use to populate a purchase order after an ATP shortfall. |
 | **Get contact person info** | Looks up a contact person by filter (e.g. email) and returns the customer/party they belong to, plus name and phone. |
 | **Get salesperson (Worker) by email** | Checks whether an email address belongs to an internal D365 F&O worker or sales rep. |
 | **Get internal user directory** | Looks up internal D365 F&O system users — useful for routing a request to the right person or department. |
-
-:::note
-Two additional tools — **Get item on-hand availability (ATP)** and **Get item preferred vendor and lead time** — are still in development and not yet enabled for use.
-:::
 
 ## Actions
 
