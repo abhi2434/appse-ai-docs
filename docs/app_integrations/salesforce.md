@@ -1,5 +1,6 @@
 ---
 title: "Salesforce"
+description: "Step-by-step guide to set up Salesforce credentials for appse ai integration"
 slug : /app-integrations/salesforce/
 ---
 
