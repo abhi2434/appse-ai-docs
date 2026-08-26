@@ -108,21 +108,6 @@ Here is the list of available triggers for Salesforce:
 
 ---
 
-## Tools
-
-AI tools expose Salesforce operations for an AI agent to call autonomously within an appse ai agentic workflow — the agent picks the tool and fills its parameters based on conversation context, rather than a workflow builder configuring it upfront.
-
-Here is the list of available tools for Salesforce:
-
-| Tool | Description |
-| ---- | ----------- |
-| **Query Salesforce records** | Runs a SOQL query against any Salesforce object (e.g. Contact, Group, Case) to look up records by a filter condition. |
-| **Create a support case** | Creates a new Salesforce Case to track a support request that needs human follow-up. |
-| **Add a case comment** | Adds an internal, non-public comment to an existing Case — useful for logging notes or an audit trail. |
-| **Update case status/owner** | Updates the Status, Priority, and/or Owner of an existing Case without touching its other fields. |
-
----
-
 ## Actions
 
 Here is the list of available actions for Salesforce:
