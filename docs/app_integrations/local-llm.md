@@ -203,4 +203,4 @@ If you only need valid JSON without enforcing an exact structure, check whether 
 
 ## Support
 
-Need help? Contact our support team at support@appse.ai
+Need help? Contact our support team at [support@appse.ai](mailto:support@appse.ai)
