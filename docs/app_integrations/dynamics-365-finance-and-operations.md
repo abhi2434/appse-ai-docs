@@ -137,6 +137,7 @@ The Dynamics 365 Finance and Operations integration currently supports the follo
 | **Get vendor transactions** | Retrieves vendor transaction records from D365 F&O. |
 | **Get vendors** | Retrieves vendor records from D365 F&O. |
 | **Get warehouse by site ID** | Retrieves warehouse details for a specified site ID in D365 F&O. |
+| **Search records** | Runs an ad hoc OData search across common D365 F&O entities (customer, sales order, invoice, vendor, item, inventory, purchase order, customer transaction, and more) within a selected legal entity, using a free-form `$filter` you supply. |
 | **Update a customer** | Updates an existing customer account record in D365 F&O. |
 | **Update exchange rate** | Updates an existing exchange rate entry in D365 F&O. |
 
