@@ -162,6 +162,7 @@ Here is the list of available actions for PrestaShop, grouped by area.
 | -------------------------------- | --------------------------------------------------------------------------------------- |
 | **Create Address**                | Creates a customer address in PrestaShop and returns the new address.                   |
 | **Update Address**                | Updates a customer address in PrestaShop. Only the fields you fill are changed.         |
+| **Get Address by ID**              | Gets one address from PrestaShop by its id.                                             |
 | **Get Addresses by Customer**     | Gets every address belonging to a PrestaShop customer. Returns no records when the customer has none. |
 
 ### Product Actions
@@ -202,7 +203,9 @@ Here is the list of available actions for PrestaShop, grouped by area.
 | Action                           | Description                                                                              |
 | ----------------------------------- | ----------------------------------------------------------------------------------------- |
 | **Find Countries by ISO Code**      | Finds PrestaShop countries whose ISO code matches exactly. Returns no records when there's no match. |
+| **Get Country by ID**               | Gets one country from PrestaShop by its id.                                              |
 | **Find States by ISO Code**         | Finds PrestaShop states whose ISO code matches exactly. Returns no records when there's no match.    |
+| **Get State by ID**                 | Gets one state from PrestaShop by its id.                                                |
 
 ---
 
