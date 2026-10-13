@@ -1,5 +1,6 @@
 ---
-title: "PrestaShop (Webservice)"
+title: "PrestaShop"
+sidebar_label: "PrestaShop-Webservice"
 description: "Step-by-step guide to set up PrestaShop Webservice API credentials for appse ai integration"
 slug: /app-integrations/prestashop-webservice/
 ---
@@ -27,7 +28,7 @@ You'll be asked to fill in the following details:
 | Field            | Description                                                                                                                                                                 |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Connection Name  | A name to help you identify this connection.                                                                                                                              |
-| Shop URL         | Your shop address with `https://` and any sub-folder, without `/api` and without a slash at the end, e.g. `https://shop.example.com` or `https://shop.example.com/store`. |
+| Shop URL         | The webservice **Main entry point** URL shown in **Advanced Parameters → Webservice** once the webservice is enabled. Paste it exactly as shown, including `/api`, without a trailing slash. |
 | Webservice Key   | The key generated under **Advanced Parameters → Webservice** in your PrestaShop back office. appse ai sends it as the `ws_key` query parameter.                          |
 
 ---
@@ -47,7 +48,6 @@ In the left menu, go to **Advanced Parameters → Webservice**.
 #### 3. Enable the webservice
 
 Set **Enable PrestaShop's webservice** to **Yes**, then click **Save**.
-
 
 #### 4. Add a new webservice key
 
@@ -97,7 +97,7 @@ Copy the key before leaving the page — PrestaShop keeps showing it on this pag
 In appse ai, open the PrestaShop **Configure Credentials** form and fill in:
 
 - **Connection Name:** a name to identify this connection.
-- **Shop URL:** your shop address with `https://`, no `/api`, no trailing slash.
+- **Shop URL:** 	The webservice Main entry point URL shown in Advanced Parameters → Webservice. Paste it exactly as shown, including /api, without a trailing slash.
 - **Webservice Key:** the key copied in Step 6.
 
 <img src="/img/credentials/prestashop-webservice/appseai-credential-form.png" alt="appse ai PrestaShop Webservice Configure Credentials form" width="700"/>
