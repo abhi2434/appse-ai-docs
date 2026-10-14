@@ -28,8 +28,8 @@ You'll be asked to fill in the following details:
 | Field            | Description                                                                                                                                                                 |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Connection Name  | A name to help you identify this connection.                                                                                                                              |
-| Shop URL         | The webservice **Main entry point** URL shown in **Advanced Parameters → Webservice** once the webservice is enabled. Paste it exactly as shown, including `/api`, without a trailing slash. |
-| Webservice Key   | The key generated under **Advanced Parameters → Webservice** in your PrestaShop back office. appse ai sends it as the `ws_key` query parameter.                          |
+| Shop URL         | The webservice **Main entry point** URL shown in **Advanced Parameters (Left menu Configure section) → Webservice** once the webservice is enabled. Paste it exactly as shown, including `/api`, without a trailing slash. |
+| Webservice Key   | The key generated under **Advanced Parameters (Left menu Configure section) → Webservice** in your PrestaShop back office. appse ai sends it as the `ws_key` query parameter.                          |
 
 ---
 
@@ -37,11 +37,11 @@ You'll be asked to fill in the following details:
 
 #### 1. Log in to the PrestaShop back office
 
-Open your PrestaShop back office and log in with an employee account that can access **Advanced Parameters**.
+Open your PrestaShop back office and log in with an employee account that can access **Advanced Parameters (Left menu Configure section)**.
 
 #### 2. Open the Webservice page
 
-In the left menu, go to **Advanced Parameters → Webservice**.
+In the left menu, go to **Advanced Parameters (Configure section) → Webservice**.
 
 <img src="/img/credentials/prestashop-webservice/ps-menu-webservice.png" alt="PrestaShop Advanced Parameters menu with Webservice" width="700"/>
 
