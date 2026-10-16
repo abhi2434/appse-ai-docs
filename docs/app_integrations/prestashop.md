@@ -97,7 +97,7 @@ Copy the key before leaving the page — PrestaShop keeps showing it on this pag
 In appse ai, open the PrestaShop **Configure Credentials** form and fill in:
 
 - **Connection Name:** a name to identify this connection.
-- **Shop URL:** 	The webservice Main entry point URL shown in Advanced Parameters → Webservice. Paste it exactly as shown, including /api, without a trailing slash.
+- **Shop URL:** The webservice Main entry point URL shown in Advanced Parameters → Webservice. Paste it exactly as shown, including `/api`, without a trailing slash.
 - **Webservice Key:** the key copied in Step 6.
 
 <img src="/img/credentials/prestashop-webservice/appseai-credential-form.png" alt="appse ai PrestaShop Webservice Configure Credentials form" width="700"/>
@@ -119,8 +119,8 @@ Click **Save**. On successful authorization, your credential is saved and your P
 
 :::warning Known limits
 
-- An email containing a `+` (e.g. `riya+shop@acme-corp.com`) can't be searched yet — the `+` turns into a space on the way to PrestaShop.
-- Records saved in the same second as the last record a trigger saw can be missed if a run ends exactly at its limit. Keep **Limit** at 50 or higher.
+- An email containing a `+` (e.g. `riya+shop@acme-corp.com`) can't be searched — the `+` turns into a space on the way to PrestaShop.
+- Records saved in the same second as the last record a trigger saw can be missed if a run ends exactly at its limit. **Limit** accepts 1–50 (default 10); set it to 50 to reduce how often this can happen.
 
 :::
 
