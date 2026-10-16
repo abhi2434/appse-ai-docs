@@ -11,7 +11,7 @@ This guide explains how to configure a PrestaShop credential in appse ai using t
 
 :::info
 
-The **Webservice API** (Advanced Parameters → Webservice) is PrestaShop's original REST API, secured with a single key sent as a query parameter. It is **not** the same as the newer [**Admin API**](/app-integrations/prestashop/), which uses OAuth 2.0 client credentials. This guide covers the Webservice key — if your store uses an API Client with a Client ID and Client Secret instead, see the Admin API guide.
+The **Webservice API** (Advanced Parameters → Webservice) is PrestaShop's original REST API, secured with a single key sent as a query parameter. It is **not** the same as the newer **Admin API**, which uses OAuth 2.0 client credentials. This guide covers the Webservice key.
 
 :::
 
