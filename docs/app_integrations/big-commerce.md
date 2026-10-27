@@ -2,7 +2,6 @@
 title: "BigCommerce"
 slug: /app-integrations/bigcommerce/
 description: Step-by-step guide to set up BigCommerce credentials and automate e-commerce workflows in appse ai.
-unlisted: true
 ---
 
 import Tabs from '@theme/Tabs';
@@ -19,7 +18,7 @@ BigCommerce Marketplace installations use OAuth 2.0 authentication only. Install
 
 <ConnectAccountButton
   appName="BigCommerce"
-  authorizeUrl="https://workflow.insync.top/credentials?appCode=bigcommerce&credentialTypeCode=bigcommerce_oauth2_public"
+  authorizeUrl="https://workflow.appse.ai/credentials?appCode=bigcommerce&credentialTypeCode=bigcommerce_oauth2_public"
 />
 
 Click **Connect your BigCommerce Account** above to open the Public App authorization page and start the OAuth connection. If you are not signed in to appse ai, you will be prompted to log in or register first.
