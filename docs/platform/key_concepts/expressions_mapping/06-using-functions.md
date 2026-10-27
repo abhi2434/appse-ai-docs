@@ -20,7 +20,7 @@ slug: /platform/key-concepts/expressions/using-functions
 
 # Using Functions
 
-Built-in functions for common data manipulation tasks in APPSeAI expressions.
+Built-in functions for common data manipulation tasks in appse ai expressions.
 
 ## Example Data
 
@@ -120,11 +120,18 @@ Built-in functions for common data manipulation tasks in APPSeAI expressions.
 "created_At": "2025-01-04T14:30:00"
 ```
 
+**_Scenario 3 (separator-less date)_**
+
+```JSON
+"order_date": "20260630"
+```
+
 | Function               | Expression                                                                  | Output                         | Use Case                                                                                 |
 | ---------------------- | --------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------- |
 | `now()`                | `{{ now() }}`                                                               | `2026-01-16T07:29:05.5390268Z` | Get current execution timestamp                                                          |
 | `get_unix_timestamp()` | `{{ get_unix_timestamp($payload.created_at) }}`                             | `1768392320000`                | Convert datetime field to Unix epoch (ms)                                                |
-| `formatDate()`         | `{{ formatDate($payload.updated_at, 'yyyy-MM-ddTHH:mm:ssZ') }}`             | `"2026-02-01T12:31:27Z"`       | Date Formatter                                                                           |
+| `formatDate()`         | `{{ formatDate($payload.updated_at, 'yyyy-MM-ddTHH:mm:ssZ') }}`             | `"2026-02-01T12:31:27Z"`       | Format a date using an output format (2 arguments)                                       |
+| `formatDate()`         | `{{ formatDate($payload.order_date, 'yyyyMMdd', 'yyyy-MM-dd') }}`           | `"2026-06-30"`                 | Parse a date with a known input format, then render it in an output format (3 arguments). Useful for separator-less formats like `20260630` |
 | `date_diff()`          | `{{ date_diff($payload.updated_at, $payload.created_at, 'days') }}`         | `18`                           | Return difference in days                                                                |
 | `date_diff()`          | `{{ date_diff($payload.updated_at, $payload.created_at, 'hours') }}`        | `432.4352777777778`            | Return difference in hours                                                               |
 | `date_diff()`          | `{{ date_diff($payload.updated_at, $payload.created_at, 'minutes') }}`      | `25946.116666666665`           | Return difference in minutes                                                             |
@@ -134,6 +141,30 @@ Built-in functions for common data manipulation tasks in APPSeAI expressions.
 | `date_add_days()`      | ``{{ date_add_days($payload.created_At, `-3`) }}``                          | `2025-01-01T14:30:00`          | Subtract days from payload date                                                          |
 | `date_add_days()`      | ``{{ date_add_days(now(), `7`) }}``                                         | `2026-01-23T07:29:05.539Z`     | Add days to current UTC time where output of now() = 2026-01-16T07:29:05.5390268Z        |
 | `date_add_days()`      | ``{{ date_add_days(now(), `-10`) }}``                                       | `2026-01-06T07:29:05.539Z`     | Subtract days from current UTC time where output of now() = 2026-01-16T07:29:05.5390268Z |
+
+### Date Format Tokens
+
+Used by `formatDate()` in both the 2-argument and 3-argument forms. Tokens are **case-sensitive**: `MM` is month, `mm` is minutes, and `HH` is the 24-hour clock.
+
+| Token  | Meaning                   | Example (`2026-06-30T14:05:09.123`) |
+| ------ | ------------------------- | ----------------------------------- |
+| `yyyy` | 4-digit year              | `2026`                              |
+| `yy`   | 2-digit year              | `26`                                |
+| `MMMM` | Full month name           | `June`                              |
+| `MMM`  | Abbreviated month name    | `Jun`                               |
+| `MM`   | Month, zero-padded        | `06`                                |
+| `M`    | Month, no padding         | `6`                                 |
+| `dd`   | Day of month, zero-padded | `30`                                |
+| `d`    | Day of month, no padding  | `30`                                |
+| `HH`   | Hour, 24-hour clock       | `14`                                |
+| `mm`   | Minutes                   | `05`                                |
+| `ss`   | Seconds                   | `09`                                |
+| `fff`  | Milliseconds              | `123`                               |
+| `tt`   | AM/PM designator          | `PM`                                |
+
+In the 3-argument form, `inputFormat` must describe the incoming value exactly. For example, `'yyyyMMdd'` matches `20260630`, while `'yyyy-MM-dd'` does not.
+
+> **Note:** If `formatDate()` is configured incorrectly, for example the `inputFormat` doesn't match the incoming value, the function fails to resolve and an empty output is produced.
 
 ## Utility Functions
 
@@ -294,14 +325,17 @@ Built-in functions for common data manipulation tasks in APPSeAI expressions.
 
 ### Example 6: Date and time Operations
 
+**Input:** Scenario 1 plus Scenario 3 from the [Date and Time Functions](#date-and-time-functions) sample payloads (`created_at`, `updated_at`, and `order_date`).
+
 ```js
 {
   "orderCreatedAtEpoch": "{{ get_unix_timestamp($payload.created_at) }}",
   "currentTime": "{{ now() }}",
   "isOrderPast": "{{ get_unix_timestamp($payload.created_at) < get_unix_timestamp(now()) }}",
-  "created_at": "{{ get_date_only($payload.updated_at) }}",
-  "created_at": "{{ get_time_only($payload.updated_at) }}",
+  "updatedDate": "{{ get_date_only($payload.updated_at) }}",
+  "updatedTime": "{{ get_time_only($payload.updated_at) }}",
   "updatedAt": "{{ formatDate($payload.updated_at, 'yyyy-MM-ddTHH:mm:ssZ') }}",
+  "orderDate": "{{ formatDate($payload.order_date, 'yyyyMMdd', 'yyyy-MM-dd') }}",
   "processingTimeHours": "{{ floor(date_diff($payload.updated_at, $payload.created_at, 'hours')) }}"
 }
 ```
@@ -312,9 +346,12 @@ Built-in functions for common data manipulation tasks in APPSeAI expressions.
 {
   "orderCreatedAtEpoch": "1768392320000",
   "currentTime": "2026-01-16T08:13:49.2091871Z",
-  "isOrderPast": "True"
-  "updated_at": "2026-02-01T12:31:27Z",
-  "processingTimeHours": 433
+  "isOrderPast": "True",
+  "updatedDate": "2026-02-01",
+  "updatedTime": "12:31:27",
+  "updatedAt": "2026-02-01T12:31:27Z",
+  "orderDate": "2026-06-30",
+  "processingTimeHours": 432
 }
 ```
 
