@@ -94,7 +94,7 @@ Scroll down and expand the **OAuth Policies** section. Under **OAuth Flows and E
 
 <img src="/img/credentials/salesforce/policy-run-as-username.png" alt="Salesforce enable client credentials flow" width="700"/>
 
-> **Note:** The username entered in **Run As** must belong to the Salesforce **execution (integration) user** for this integration. This user must have the **`API Enabled`** permission enabled and the required **object- and field-level** permissions configured through their assigned Profile and/or Permission Sets for the Salesforce data that Appse AI needs to read or write.
+> **Note:** The username entered in **Run As** must belong to the Salesforce **execution (integration) user** for this integration. This user must have the **`API Enabled`** permission enabled and the required **object- and field-level** permissions configured through their assigned Profile and/or Permission Sets for the Salesforce data that appse ai needs to read or write.
 
 #### 11. Save your changes
 
@@ -118,17 +118,19 @@ All Salesforce triggers poll for newly created or updated records and fire once 
 
 Here is the list of available triggers for Salesforce:
 
-| Trigger                       | Description                                                        |
-| ----------------------------- | ------------------------------------------------------------------ |
-| **New account created**       | Triggers when a new Account record is created in Salesforce.       |
-| **Accounts updated**          | Triggers when an existing Account record is updated in Salesforce. |
-| **New contact created**       | Triggers when a new Contact record is created in Salesforce.       |
-| **Contacts updated**          | Triggers when an existing Contact record is updated in Salesforce. |
-| **New leads created**         | Triggers when a new Lead record is created in Salesforce.          |
-| **New opportunities created** | Triggers when a new Opportunity record is created in Salesforce.   |
-| **New orders created**        | Triggers when a new Order record is created in Salesforce.         |
-| **New quotations created**    | Triggers when a new Quote record is created in Salesforce.         |
-| **New case created**          | Triggers when a new Case record is created in Salesforce.          |
+| Trigger                                | Description                                                                   |
+| -------------------------------------- | ----------------------------------------------------------------------------- |
+| **New account created**                | Triggers when a new Account record is created in Salesforce.                  |
+| **Accounts updated**                   | Triggers when an existing Account record is updated in Salesforce.            |
+| **New contact created**                | Triggers when a new Contact record is created in Salesforce.                  |
+| **Contacts updated**                   | Triggers when an existing Contact record is updated in Salesforce.            |
+| **New leads created**                  | Triggers when a new Lead record is created in Salesforce.                     |
+| **New opportunities created**          | Triggers when a new Opportunity record is created in Salesforce.              |
+| **New orders created**                 | Triggers when a new Order record is created in Salesforce.                    |
+| **New quotations created**             | Triggers when a new Quote record is created in Salesforce.                    |
+| **New case created**                   | Triggers when a new Case record is created in Salesforce.                     |
+| **New record created (custom object)** | Triggers when a new record is created in a selected Salesforce custom object. |
+| **Record updated (custom object)**     | Triggers when a record is updated in a selected Salesforce custom object.     |
 
 ---
 
@@ -185,6 +187,7 @@ Here is the list of available actions for Salesforce:
 | **Update a WorkOrder**                                  | Updates an existing work order in Salesforce by its ID.                                                                  |
 | **Get records with filter**                             | Queries Salesforce records from any object using SOQL, with dynamic field selection, filtering, sorting, and limits.     |
 | **Get records by id**                                   | Fetches a specific Salesforce record from any supported object using its record ID.                                      |
+| **Custom Objects**                                      | Creates, updates, gets by ID, searches, or upserts records in any Salesforce custom object.                              |
 
 ---
 
