@@ -66,6 +66,6 @@ Here is a list of the available actions for Google Gemini:
 
 ---
 
-## Need Help?
+## Support
 
-If you’re unsure about any field or face connection issues, reach out to our support team at [hello@appse.ai](mailto:hello@appse.ai)
+Need help? Contact our support team at [support@appse.ai](mailto:support@appse.ai)
