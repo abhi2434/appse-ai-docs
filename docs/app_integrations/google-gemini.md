@@ -51,7 +51,9 @@ Once generated, copy the API key string. Paste it into the **API Key** field in 
 
 Keep your API key secure. Do not share it publicly.
 
-## :::
+:::
+
+---
 
 ## Triggers and Actions
 
