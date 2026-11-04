@@ -57,7 +57,7 @@ Keep your API key secure. Do not share it publicly.
 
 ## Triggers and Actions
 
-Here is a list of the available actions and triggers for Google Gemini:
+Here is a list of the available actions for Google Gemini:
 
 ### Actions
 
