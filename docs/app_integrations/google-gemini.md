@@ -51,11 +51,13 @@ Once generated, copy the API key string. Paste it into the **API Key** field in 
 
 Keep your API key secure. Do not share it publicly.
 
-## :::
+:::
+
+---
 
 ## Triggers and Actions
 
-Here is a list of the available actions and triggers for Google Gemini:
+Here is a list of the available actions for Google Gemini:
 
 ### Actions
 
@@ -64,6 +66,6 @@ Here is a list of the available actions and triggers for Google Gemini:
 
 ---
 
-## Need Help?
+## Support
 
-If you’re unsure about any field or face connection issues, reach out to our support team at [hello@appse.ai](mailto:hello@appse.ai)
+Need help? Contact our support team at [support@appse.ai](mailto:support@appse.ai)

@@ -18,12 +18,12 @@ Before you create a credential for Lightspeed X-Series using appse ai, ensure yo
 
 You'll be asked to fill in the following details:
 
-| Field                | Description                                                                                                    |
-| -------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Connection Name      | A name to help you identify this connection                                                                    |
-| Client ID            | Your OAuth 2.0 Client ID from the Lightspeed Developer Portal                                                  |
-| Client Secret        | Your OAuth 2.0 Client Secret from the Lightspeed Developer Portal                                              |
-| Store Domain Prefix  | The subdomain of your Lightspeed store URL (e.g., `mystore` from `mystore.retail.lightspeed.app`)              |
+| Field               | Description                                                                                       |
+| ------------------- | ------------------------------------------------------------------------------------------------- |
+| Connection Name     | A name to help you identify this connection                                                       |
+| Client ID           | Your OAuth 2.0 Client ID from the Lightspeed Developer Portal                                     |
+| Client Secret       | Your OAuth 2.0 Client Secret from the Lightspeed Developer Portal                                 |
+| Store Domain Prefix | The subdomain of your Lightspeed store URL (e.g., `mystore` from `mystore.retail.lightspeed.app`) |
 
 ### Step-by-Step Guide
 
@@ -127,11 +127,11 @@ Unapproved apps can connect to a maximum of 30 stores. Submit your app for appro
 
 Here is the list of available triggers in Lightspeed:
 
-| Trigger | Description |
-| ------- | ----------- |
-| **New product created** | Triggers when a new product is created in Lightspeed after the specified date and time. |
-| **New customer created** | Triggers when a new customer is added to Lightspeed after the specified version checkpoint. |
-| **New sale created** | Triggers when a new sale is processed in Lightspeed after the specified version checkpoint. |
+| Trigger                           | Description                                                                                            |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| **New product created**           | Triggers when a new product is created in Lightspeed after the specified date and time.                |
+| **New customer created**          | Triggers when a new customer is added to Lightspeed after the specified version checkpoint.            |
+| **New sale created**              | Triggers when a new sale is processed in Lightspeed after the specified version checkpoint.            |
 | **Price book created or updated** | Triggers when a price book is created or updated in Lightspeed after the specified version checkpoint. |
 
 :::note
@@ -146,26 +146,27 @@ Triggers use an incremental sync cursor (**Fetch data since** for products, **Af
 
 Here is the list of available actions in Lightspeed:
 
-| Action | Description |
-| ------ | ----------- |
-| **Get Product** | Retrieves a single product by its product ID. |
-| **Update Product** | Updates an existing product by product ID. Only the fields provided are updated; family-level fields apply to every variant in the product family, while detail-level fields apply only to the product ID supplied. |
-| **Create Customer** | Creates a new customer record in Lightspeed. |
-| **Get Customer** | Retrieves a single customer by their customer ID. |
-| **Update Customer** | Updates an existing customer by customer ID. Only the fields provided are updated; all other fields remain unchanged. |
-| **Create Customer Address** | Adds a billing or shipping address to an existing customer. Requires the address type, address line 1, city, postcode and country code. A customer can hold multiple addresses of each type. |
-| **List Customer Addresses** | Retrieves all billing and shipping addresses held against a customer, including the **Address ID** required by **Update Customer Address**. |
-| **Update Customer Address** | Updates an existing address by customer ID and address ID. The full address must be supplied, as the address is replaced rather than merged. |
-| **Create Sale** | Creates a sale with one or more line items. Requires the author (cashier) and a state — `closed`, `pending` or `parked`. Each line item requires a product, quantity, unit price and tax. |
-| **Get Sale by ID** | Retrieves a single sale by its sale ID, including its customer, outlet, register and user references, line items, payments, pricing totals, state, invoice number, timestamps and any note. |
-| **Update Sale** | Updates an existing sale by sale ID. The author (cashier) and sale state must be supplied on every update. Supplying a line item or payment with an existing ID updates that entry instead of creating a new one. |
-| **Create Return** | Initiates a return against an existing closed sale. Creates a new return sale in the `parked` state with the original line items negated and no payments, linked back to the original sale. Multiple and partial returns are supported. |
-| **Fulfill Sale** | Completes every fulfillment on a sale in a single call, marking all its items as fulfilled. Fulfillments are created automatically when a sale carries a delivery or pickup attribute. The call is idempotent and safe to retry. |
-| **Get Quote** | Retrieves a single quote by its ID, including its customer, outlet and register references, product line items, pricing totals, status, timestamps and any note. |
-| **Create Gift Card** | Creates and activates a gift card with an initial balance. The card is returned in the `ACTIVE` state with a single `ACTIVATION` transaction recorded against it. The gift card number must be unique across the store. |
-| **Get Inventory by Product ID** | Retrieves the inventory records for a product across all outlets, including current stock level, average cost and reorder figures. Can optionally cover every variant of the product. |
-| **Get Inventory Levels by Product ID** | Retrieves the aggregated inventory levels for a product across all outlets, including stock count, costs and reorder figures. |
-| **Search Records** | Searches records in a Lightspeed module. Choose **Search (Products, Customers or Sales)** to query those record types by attribute — SKU, email, invoice number, date range and more — or select **Product Categories**, **Variant Attributes**, **Gift Cards**, **Outlets**, **Registers**, **Payment Types**, **Taxes**, **Users** or **Channels** to list that module's records. |
+| Action                                 | Description                                                                                                                                                                                                                                                                                                                                                                                                    |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Get Product**                        | Retrieves a single product by its product ID.                                                                                                                                                                                                                                                                                                                                                                  |
+| **Update Product**                     | Updates an existing product by product ID. Only the fields provided are updated; family-level fields apply to every variant in the product family, while detail-level fields apply only to the product ID supplied.                                                                                                                                                                                            |
+| **Create Customer**                    | Creates a new customer record in Lightspeed.                                                                                                                                                                                                                                                                                                                                                                   |
+| **Get Customer**                       | Retrieves a single customer by their customer ID.                                                                                                                                                                                                                                                                                                                                                              |
+| **Update Customer**                    | Updates an existing customer by customer ID. Only the fields provided are updated; all other fields remain unchanged.                                                                                                                                                                                                                                                                                          |
+| **Create Customer Address**            | Adds a billing or shipping address to an existing customer. Requires the address type, address line 1, city, postcode and country code. A customer can hold multiple addresses of each type.                                                                                                                                                                                                                   |
+| **List Customer Addresses**            | Retrieves all billing and shipping addresses held against a customer, including the **Address ID** required by **Update Customer Address**.                                                                                                                                                                                                                                                                    |
+| **Update Customer Address**            | Updates an existing address by customer ID and address ID. The full address must be supplied, as the address is replaced rather than merged.                                                                                                                                                                                                                                                                   |
+| **Create Sale**                        | Creates a sale with one or more line items. Requires the author (cashier) and a state — `closed`, `pending` or `parked`. Each line item requires a product, quantity, unit price and tax.                                                                                                                                                                                                                      |
+| **Get Sale by ID**                     | Retrieves a single sale by its sale ID, including its customer, outlet, register and user references, line items, payments, pricing totals, state, invoice number, timestamps and any note.                                                                                                                                                                                                                    |
+| **Update Sale**                        | Updates an existing sale by sale ID. The author (cashier) and sale state must be supplied on every update. Supplying a line item or payment with an existing ID updates that entry instead of creating a new one.                                                                                                                                                                                              |
+| **Create Return**                      | Initiates a return against an existing closed sale. Creates a new return sale in the `parked` state with the original line items negated and no payments, linked back to the original sale. Multiple and partial returns are supported.                                                                                                                                                                        |
+| **Fulfill Sale**                       | Completes every fulfillment on a sale in a single call, marking all its items as fulfilled. Fulfillments are created automatically when a sale carries a delivery or pickup attribute. The call is idempotent and safe to retry.                                                                                                                                                                               |
+| **Get Quote**                          | Retrieves a single quote by its ID, including its customer, outlet and register references, product line items, pricing totals, status, timestamps and any note.                                                                                                                                                                                                                                               |
+| **Create Gift Card**                   | Creates and activates a gift card with an initial balance. The card is returned in the `ACTIVE` state with a single `ACTIVATION` transaction recorded against it. The gift card number must be unique across the store.                                                                                                                                                                                        |
+| **Get Inventory by Product ID**        | Retrieves the inventory records for a product across all outlets, including current stock level, average cost and reorder figures. Can optionally cover every variant of the product.                                                                                                                                                                                                                          |
+| **Get Inventory Levels by Product ID** | Retrieves the aggregated inventory levels for a product across all outlets, including stock count, costs and reorder figures.                                                                                                                                                                                                                                                                                  |
+| **Get Filtered Records**               | Gets records from the listed Lightspeed modules, filtered by a query. Supported modules in the action's dropdown: **Product Categories**, **Variant Attributes**, **Outlets**, **Registers**, **Payment Types**, **Brands**, **Tags**, **Price Books** and **Customer Groups**. For the filters each module accepts, see the [Lightspeed API documentation](https://x-series-api.lightspeedhq.com/reference/). |
+| **Search Records**                     | Searches Lightspeed records by attribute, such as SKU, email, invoice number or date range. Supported modules in the action's dropdown: **Products**, **Customers** and **Sales**. For the search attributes each module accepts, see the [Lightspeed API documentation](https://x-series-api.lightspeedhq.com/reference/).                                                                                    |
 
 :::note
 
@@ -175,7 +176,13 @@ To finalise a refund, follow **Create Return** with **Update Sale** on the retur
 
 :::note
 
-Each **Search Records** module needs its matching read scope on the connection (for example `products:read`, `customers:read`, `sales:read`, `outlets:read`, `registers:read`, `payment_types:read`, `taxes:read`). Filters are entered as a URL query string; for the Search module, `type` is always required.
+The **Get Filtered Records** action needs these read scopes on the connection: `products:read`, `products:read:price_books`, `customers:read`, `outlets:read`, `registers:read`, `payment_types:read`. Enter the filters in the **Filter Query** field as a URL query string, for example `parent=none` for Product Categories, `currency=AUD&only_lspay=true` for Payment Types or `customer_group_id=<customer group ID>` for Price Books. Make sure you enter the correct filter for the module you choose. Refer to: **[Lightspeed API documentation](https://x-series-api.lightspeedhq.com/reference/)**.
+
+:::
+
+:::note
+
+The **Search Records** action needs these read scopes on the connection: `products:read`, `customers:read`, `sales:read`. Enter the search attributes in the **Filter Query** field as a URL query string, for example `sku=tshirt-001` for Products, `email=jane@example.com&first_name=Jane` for Customers or `invoice_number=INV-1001` for Sales. Make sure you enter the correct search attributes for the module you choose. Refer to: **[Lightspeed API documentation](https://x-series-api.lightspeedhq.com/reference/)**.
 
 :::
 
