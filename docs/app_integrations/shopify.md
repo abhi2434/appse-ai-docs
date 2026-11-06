@@ -103,7 +103,17 @@ Go to the **Admin API scope configuration** section.
 Select the scopes relevant to the APIs you want to use — such as customer, order, or product scopes — then **Save** the configuration.
 
 :::note
-Add all scopes relevant to the actions and triggers you plan to use in your workflows. After the credential is validated in appse ai, the scopes configured here in the Shopify Dev Dashboard overwrite the scopes in the **API Access Scope** field in the Shopify OAuth credential form. Those scopes are then used for workflow execution. By default, the scopes displayed in the **API Access Scope** field in appse ai are: `read_customers`, `write_customers`, `read_orders`, `write_orders`, `read_products`, `write_products`, `read_all_orders`. After authorization, these scopes are overwritten by the actual scopes that are configured in your shopify app.
+Add all scopes relevant to the actions and triggers you plan to use in your workflows. After the credential is validated in appse ai, the scopes configured here in the Shopify Dev Dashboard overwrite the scopes in the **API Access Scope** field in the Shopify OAuth credential form. Those scopes are then used for workflow execution. By default, the scopes displayed in the **API Access Scope** field in appse ai are: `read_customers`, `write_customers`, `read_orders`, `write_orders`, `read_products`, `write_products`, `read_all_orders`, `read_gift_cards`, `write_gift_cards`, `read_returns`, `write_returns`. After authorization, these scopes are overwritten by the actual scopes that are configured in your shopify app.
+
+Some actions need scopes beyond the defaults. Add them in the Shopify Dev Dashboard if you plan to use these actions:
+
+| Actions | Required Scopes |
+|------|-------------|
+| Draft Orders actions | `read_draft_orders`, `write_draft_orders` |
+| Returns actions | `read_returns`, `write_returns` |
+| Gift Cards actions | `read_gift_cards`, `write_gift_cards` |
+| Analytics actions | `read_reports` |
+| Payouts actions | `read_shopify_payments_payouts` |
 :::
 
 <img src="/img/credentials/shopify/s7.png" alt="Select scopes options" width="700"/>
@@ -268,7 +278,7 @@ Set a name for your custom app and click **"Create app"**.
 
 Click **"Configure Admin API scopes"** and enable the following scopes:
 
-`read_all_orders` `read_customers` `write_customers` `read_fulfillments` `write_fulfillments` `read_inventory` `write_inventory` `read_locations` `write_locations` `read_orders` `write_orders` `read_products` `write_products` `read_publications` `write_publications` `read_discounts` `write_discounts` `read_shipping` `write_shipping`
+`read_all_orders` `read_customers` `write_customers` `read_fulfillments` `write_fulfillments` `read_inventory` `write_inventory` `read_locations` `write_locations` `read_orders` `write_orders` `read_products` `write_products` `read_publications` `write_publications` `read_discounts` `write_discounts` `read_shipping` `write_shipping` `read_returns` `write_returns` `read_draft_orders` `write_draft_orders` `read_gift_cards` `write_gift_cards` `read_reports` `read_shopify_payments_payouts`
 
 <img src="/img/credentials/shopify/choose-scopes.png" alt="appse ai shopify choose scopes" width="700"/>
 
@@ -326,10 +336,14 @@ Every application has a pre-defined set of triggers and actions that allow users
 - [New Products Created](#new-products-created)
 - [Products Updated](#products-updated)
 - [New Orders Created](#new-orders-created)
+- [Orders Updated](#orders-updated)
 - [Orders Cancelled](#orders-cancelled)
 - [New Refund Created](#new-refund-created)
 - [New Return Created](#new-return-created)
 - [New Abandoned Checkout](#new-abandoned-checkout)
+- [Fulfillment Created](#fulfillment-created)
+- [New Draft Orders Created](#new-draft-orders-created)
+- [New Gift Cards Created](#new-gift-cards-created)
 
 #### New Company Created
 
@@ -1217,6 +1231,69 @@ The configuration fields are the same for all triggers — refer to the screensh
 ```
 ----------------
 
+#### Orders Updated
+
+Orders Updated trigger is activated whenever an existing order is modified in Shopify — for example a payment, fulfillment, tag, or address change. It helps keep downstream systems in sync with the latest order state.
+
+##### Configuration Fields
+
+| Field          | Description |
+|---------------|------------|
+| Fetch data since | Select the date and time to fetch updated orders from that point onward. (e.g., 27/03/2026 06:51) |
+| Limit | Set the maximum number of items to retrieve per run. (e.g., 10) |
+
+Click on **Continue**, then **Run** the node.
+
+--------------
+
+##### Result
+
+The result has the same structure as the [New Orders Created](#new-orders-created) trigger, with `displayFulfillmentStatus`, `legacyResourceId`, and `paymentTerms` included for each order.
+
+```json
+[
+  {
+    "id": "gid://shopify/Order/7240844705964",
+    "name": "#1768",
+    "legacyResourceId": "7240844705964",
+    "createdAt": "2026-04-24T17:44:48Z",
+    "updatedAt": "2026-04-25T09:14:33Z",
+    "currencyCode": "USD",
+    "displayFinancialStatus": "PAID",
+    "displayFulfillmentStatus": "FULFILLED",
+    "email": "john.doe@example.com",
+    "fullyPaid": true,
+    "tags": [],
+    "paymentTerms": null,
+    "customer": {
+      "id": "gid://shopify/Customer/9304242225324",
+      "firstName": "John",
+      "lastName": "Doe",
+      "displayName": "John Doe",
+      "email": "john.doe@example.com"
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "id": "gid://shopify/LineItem/17054211965100",
+          "sku": "RE021",
+          "quantity": 2,
+          "title": "Water Bottle",
+          "name": "Water Bottle",
+          "originalUnitPriceSet": {
+            "presentmentMoney": {
+              "amount": "45.0"
+            }
+          },
+          "taxLines": []
+        }
+      ]
+    }
+  }
+]
+```
+----------------
+
 #### Orders Cancelled
 
 Orders Cancelled trigger is activated whenever an order is cancelled in Shopify. It helps capture cancelled order records for automation and workflow processing.
@@ -2013,7 +2090,7 @@ The configuration fields are the same for all triggers — refer to the screensh
 [
   {
     "id": "gid://shopify/AbandonedCheckout/36270641348780",
-    "abandonedCheckoutUrl": "https://aecqa.myshopify.com/65225425068/checkouts/ac/hWN9BnOsWHe9H8pVWYacHHG5/recover?key=8a0dccedfd237694ea3d70fc4de33b83&locale=en-IN",
+    "abandonedCheckoutUrl": "https://example.myshopify.com/checkouts/ac/XXXX/recover?key=XXXX&locale=en-US",
     "createdAt": "2026-02-25T11:22:05Z",
     "updatedAt": "2026-02-25T21:24:01Z",
     "completedAt": null,
@@ -2043,6 +2120,164 @@ The configuration fields are the same for all triggers — refer to the screensh
         }
       ]
     }
+  }
+]
+```
+----------------
+
+#### Fulfillment Created
+
+Fulfillment Created trigger is activated whenever an order is fulfilled in Shopify. Choose whether to pick up partially fulfilled or fully fulfilled orders — useful for pushing shipment status to an ERP or notifying customers.
+
+##### Configuration Fields
+
+| Field          | Description |
+|---------------|------------|
+| Fulfillment Status | Select which orders to fetch: **Partially Fulfilled** or **Fully Fulfilled**. |
+| Fetch data since | Select the date and time to fetch fulfilled orders updated from that point onward. (e.g., 27/03/2026 06:51) |
+| Limit | Set the maximum number of items to retrieve per run. (e.g., 10) |
+
+Click on **Continue**, then **Run** the node.
+
+--------------
+
+##### Result
+
+Returns the fulfilled orders, with the same structure as the [Orders Updated](#orders-updated) trigger.
+
+```json
+[
+  {
+    "id": "gid://shopify/Order/7240844705964",
+    "name": "#1768",
+    "createdAt": "2026-04-24T17:44:48Z",
+    "updatedAt": "2026-04-25T08:02:10Z",
+    "currencyCode": "USD",
+    "displayFinancialStatus": "PAID",
+    "displayFulfillmentStatus": "FULFILLED",
+    "email": "john.doe@example.com",
+    "fullyPaid": true,
+    "lineItems": {
+      "nodes": [
+        {
+          "id": "gid://shopify/LineItem/17054211965100",
+          "sku": "RE021",
+          "quantity": 2,
+          "currentQuantity": 2,
+          "nonFulfillableQuantity": 0,
+          "title": "Water Bottle",
+          "name": "Water Bottle"
+        }
+      ]
+    }
+  }
+]
+```
+----------------
+
+#### New Draft Orders Created
+
+New Draft Orders Created trigger is activated whenever a new draft order is created in Shopify. It helps capture quotes and manually created carts for approval or ERP sync.
+
+##### Configuration Fields
+
+| Field          | Description |
+|---------------|------------|
+| Fetch data since | Select the date and time to fetch newly created draft orders from that point onward. (e.g., 27/03/2026 06:51) |
+| Limit | Set the maximum number of items to retrieve per run. (e.g., 10) |
+
+Click on **Continue**, then **Run** the node.
+
+--------------
+
+##### Result
+
+```json
+[
+  {
+    "id": "gid://shopify/DraftOrder/1157317255212",
+    "name": "#D12",
+    "legacyResourceId": "1157317255212",
+    "createdAt": "2026-04-24T10:12:05Z",
+    "updatedAt": "2026-04-24T10:12:05Z",
+    "status": "OPEN",
+    "email": "john.doe@example.com",
+    "currencyCode": "USD",
+    "invoiceUrl": "https://example.myshopify.com/invoices/XXXX",
+    "completedAt": null,
+    "tags": [],
+    "taxesIncluded": false,
+    "ready": true,
+    "totalQuantityOfLineItems": 2,
+    "customer": {
+      "id": "gid://shopify/Customer/9304242225324",
+      "displayName": "John Doe",
+      "email": "john.doe@example.com"
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "id": "gid://shopify/DraftOrderLineItem/58291044012",
+          "name": "Water Bottle",
+          "sku": "RE021",
+          "quantity": 2,
+          "custom": false,
+          "originalUnitPriceSet": {
+            "presentmentMoney": {
+              "amount": "75.0"
+            }
+          }
+        }
+      ]
+    }
+  }
+]
+```
+----------------
+
+#### New Gift Cards Created
+
+New Gift Cards Created trigger is activated whenever a new gift card is issued in Shopify. It helps capture gift card liabilities for finance or loyalty systems.
+
+##### Configuration Fields
+
+| Field          | Description |
+|---------------|------------|
+| Fetch data since | Select the date and time to fetch newly created gift cards from that point onward. (e.g., 27/03/2026 06:51) |
+| Limit | Set the maximum number of items to retrieve per run. (e.g., 10) |
+
+Click on **Continue**, then **Run** the node.
+
+--------------
+
+##### Result
+
+```json
+[
+  {
+    "id": "gid://shopify/GiftCard/612345678",
+    "maskedCode": "•••• •••• •••• 7k2d",
+    "lastCharacters": "7k2d",
+    "enabled": true,
+    "createdAt": "2026-04-24T11:30:00Z",
+    "updatedAt": "2026-04-24T11:30:00Z",
+    "expiresOn": "2027-04-24",
+    "deactivatedAt": null,
+    "note": "Loyalty reward",
+    "balance": {
+      "amount": "50.0",
+      "currencyCode": "USD"
+    },
+    "initialValue": {
+      "amount": "50.0",
+      "currencyCode": "USD"
+    },
+    "customer": {
+      "id": "gid://shopify/Customer/9304242225324",
+      "displayName": "John Doe"
+    },
+    "order": null,
+    "recipientAttributes": null
   }
 ]
 ```
@@ -3032,7 +3267,7 @@ Title is required to create the product. Additional details such as variants, pr
       "title": "OnePlus 13R",
       "handle": "oneplus-13r",
       "status": "ACTIVE",
-      "vendor": "AECQA",
+      "vendor": "Example Store",
       "tags": [],
       "unpublishedPublications": {
         "edges": [
@@ -3123,7 +3358,7 @@ Product ID is required to update a product. Any field left empty will remain unc
       "title": "OnePlus 13RRR",
       "handle": "oneplus-13r",
       "status": "ACTIVE",
-      "vendor": "AECQA",
+      "vendor": "Example Store",
       "tags": [],
       "createdAt": "2026-04-24T05:42:06Z",
       "updatedAt": "2026-04-24T06:41:12Z",
@@ -3312,7 +3547,7 @@ Click on **Continue** button.
 | Product Type | Specify the category or type of the product. (e.g., `T-Shirt`) |
 | Status | Define the product status in Shopify. (e.g., `ACTIVE`) |
 | Media | Configure one or more media items for the product. |
-| Source URL | Specify the Shopify file URL for the media asset. (e.g., `https://admin.shopify.com/store/aecqa/content/files/33353411887276?selectedView=all`) |
+| Source URL | Specify the Shopify file URL for the media asset. (e.g., `https://cdn.shopify.com/s/files/1/0000/0000/0000/files/example-product.jpg`) |
 | Media Content Type | Select the type of media content to upload. (e.g., `Image`) |
 | Alt Text | Specify alternative text for the media asset to improve accessibility and SEO. (e.g., `Mobileimg`) |
 
@@ -3341,7 +3576,7 @@ Click on **Continue**, then **Run** node.
       "title": "IQ-V1",
       "handle": "iq-v1",
       "status": "ACTIVE",
-      "vendor": "AECQA",
+      "vendor": "Example Store",
       "tags": [],
       "unpublishedPublications": {
         "edges": [
@@ -3485,6 +3720,61 @@ Variant ID is required. Only the provided optional fields are updated; other val
 ]
 ```
 
+#### Create Bulk Product Variants
+
+Create Bulk Product Variants action creates multiple variants for an existing product in one call, including price, SKU, barcode, option values, and starting inventory per location.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Product ID | The product to create variants for. (e.g., "gid://shopify/Product/8536686002348") |
+| Variants → Price | Selling price of the variant. (e.g., "150.00") |
+| Variants → Compare At Price | Original price shown as strikethrough. (e.g., "180.00") |
+| Variants → Barcode | Barcode (ISBN, UPC, GTIN, etc.). |
+| Variants → Taxable | Whether the variant is taxable. |
+| Variants → Inventory Item | SKU, cost, tracking flag, and weight (value and unit) for the variant. |
+| Variants → Inventory Quantities | Available quantity per Location ID. |
+| Variants → Option Values | Option name and value that define the variant. (e.g., Color: Red) |
+
+:::note
+Option names must already exist on the product. Each variant needs a unique combination of option values.
+:::
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+```json
+[
+  {
+    "id": "gid://shopify/ProductVariant/46203847594092",
+    "title": "Red",
+    "displayName": "Wireless Headphones - Red",
+    "price": "150.00",
+    "compareAtPrice": "180.00",
+    "taxable": true,
+    "barcode": "0123456789012",
+    "inventoryPolicy": "DENY",
+    "inventoryQuantity": 25,
+    "selectedOptions": [
+      {
+        "name": "Color",
+        "value": "Red"
+      }
+    ],
+    "inventoryItem": {
+      "id": "gid://shopify/InventoryItem/48264519991404",
+      "sku": "WH-RED-01",
+      "tracked": true
+    }
+  }
+]
+```
+-----------------
+
 ### Inventory Actions
 
 #### Activate Inventory Locations
@@ -3615,6 +3905,53 @@ All fields are required. `Quantities` supports multiple items; in this example, 
 ]
 ```
 ---------------
+
+#### Adjust Inventory Quantities
+
+Adjust Inventory Quantities action changes inventory levels by a delta for one or more inventory items at specific locations. Use it for stock corrections, cycle counts, or warehouse movements synced from an ERP or WMS.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Inventory Quantity Name | The quantity to adjust, such as **Available**, **On Hand**, **Incoming**, **Reserved**, **Committed**, **Damaged**, **Quality Control**, or **Safety Stock**. |
+| Reason | Reason for the adjustment, such as **Correction**, **Cycle Count**, **Damaged**, **Received**, **Restock**, **Shrinkage**, or **Other**. |
+| Reference Document URI | Optional link to the source document. (e.g., "gid://erp/StockAdjustment/1001") |
+| Changes → Inventory Item ID | Inventory item to adjust. (e.g., "gid://shopify/InventoryItem/45577551904940") |
+| Changes → Location ID | Location where the change applies. (e.g., "gid://shopify/Location/71018905772") |
+| Changes → Delta | Amount to add (positive) or remove (negative). (e.g., -2) |
+| Changes → Change From Quantity | The quantity you expect before the change. Shopify rejects the change if the current quantity differs. (e.g., 20) |
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+```json
+[
+  {
+    "id": "gid://shopify/InventoryAdjustmentGroup/31876214956",
+    "createdAt": "2026-04-25T10:05:44Z",
+    "reason": "correction",
+    "referenceDocumentUri": "gid://erp/StockAdjustment/1001",
+    "changes": [
+      {
+        "name": "available",
+        "delta": -2,
+        "quantityAfterChange": 18,
+        "item": {
+          "id": "gid://shopify/InventoryItem/45577551904940"
+        },
+        "location": {
+          "id": "gid://shopify/Location/71018905772"
+        }
+      }
+    ]
+  }
+]
+```
+-----------------
 
 ### Locations Actions
 
@@ -4134,6 +4471,131 @@ Percentage | Enter the discount percentage value. (e.g., "1") |
 
 ### Orders Actions
 
+#### Create Order
+
+Create Order action creates a real sales order in Shopify — not a draft awaiting checkout. Use it to record orders that already exist in another system, such as an ERP, marketplace, or POS. Only the fields you map are sent to Shopify; anything left unmapped is omitted.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Line Items | **Required.** At least one item. Map a Variant ID and Quantity for catalog items, or a Title, Quantity, and Price for custom items. Optional SKU, vendor, properties, and tax lines. |
+| Customer | Attach an existing customer (**Associate Customer → Customer ID**), or create/update one (**Upsert Customer** with email, name, phone, tags). |
+| Email / Phone | Contact details recorded on the order. |
+| Financial Status | Payment state, such as **Pending**, **Authorized**, **Paid**, or **Partially Paid**. Derived from Transactions when left unmapped. |
+| Fulfillment Status | **Fulfilled**, **Partial**, or **Restocked**. Defaults to unfulfilled. |
+| Processed At | When the order was placed in the source system. |
+| Currency / Presentment Currency | Order currency. Defaults to the store currency. |
+| Shipping Address / Billing Address | Name, company, address lines, city, province code, country code, ZIP, and phone. |
+| Shipping Lines | Shipping method title, price, carrier code, and tax lines. |
+| Tax Lines / Taxes Included | Order-level taxes, and whether line prices already include tax. |
+| Transactions | Payments recorded against the order: amount, kind (**Sale**, **Authorization**, **Capture**), status, and gateway. |
+| Fulfillment | Map only if the order has already shipped: location, tracking company, tracking number, and shipment status. |
+| Discount Code | One discount only: percentage, fixed amount, or free shipping. |
+| Note / Tags / PO Number | Internal note, tags, and purchase order reference. |
+| Custom Attributes / Metafields | Extra key-value data and structured metafields. |
+| Source Name / Source Identifier / Source URL | Origin channel and the order's ID in the source system — useful for de-duplication. |
+| Order Name | Order number shown in Shopify admin. Auto-generated when unmapped. |
+| Company Location ID | B2B company location buying on this order. |
+| Send Order Confirmation / Send Shipping Confirmation | Whether Shopify emails the customer. |
+| Inventory Behaviour | How the order affects stock. Defaults to **Bypass** (no inventory claimed). |
+
+:::note
+Shopify accepts only one discount code per order. A future **Processed At** value is clamped to the current time. Set **Inventory Behaviour** to decrement stock if the source system has not already done so.
+:::
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+```json
+[
+  {
+    "order": {
+      "id": "gid://shopify/Order/7241002647724",
+      "name": "#1772",
+      "legacyResourceId": "7241002647724",
+      "createdAt": "2026-04-25T11:02:31Z",
+      "processedAt": "2026-04-25T11:02:31Z",
+      "displayFinancialStatus": "PAID",
+      "displayFulfillmentStatus": "UNFULFILLED",
+      "email": "john.doe@example.com",
+      "customer": {
+        "id": "gid://shopify/Customer/9304242225324",
+        "firstName": "John",
+        "lastName": "Doe"
+      },
+      "lineItems": {
+        "nodes": [
+          {
+            "id": "gid://shopify/LineItem/17062418792620",
+            "title": "Water Bottle",
+            "quantity": 2,
+            "sku": "RE021",
+            "originalUnitPriceSet": {
+              "shopMoney": {
+                "amount": "45.0",
+                "currencyCode": "USD"
+              }
+            }
+          }
+        ]
+      },
+      "sourceName": "erp",
+      "sourceIdentifier": "SO-10045",
+      "totalPriceSet": {
+        "shopMoney": {
+          "amount": "90.0",
+          "currencyCode": "USD"
+        }
+      }
+    },
+    "userErrors": []
+  }
+]
+```
+-----------------
+
+#### Cancel Order
+
+Cancel Order action cancels an existing Shopify order. Choose the reason, whether to restock inventory, how to refund the customer, and whether to notify them. Cancellation runs asynchronously — the result returns a job ID and its status.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Order ID | The order to cancel. (e.g., "gid://shopify/Order/7240844705964") |
+| Cancellation Reason | **Customer Requested**, **Payment Declined**, **Fraudulent Order**, **Insufficient Inventory**, **Staff Error**, or **Other**. |
+| Restock Inventory | Whether to return the line items to inventory. |
+| Refund Method | **Original Payment Method**, **Store Credit**, or **No Refund**. Leave blank or choose **No Refund** to cancel without refunding. Store credit is issued without an expiry date. |
+| Notify Customer | Whether to email the customer a cancellation notice. |
+| Staff Note | Internal note about the cancellation. Not visible to the customer. |
+
+:::note
+The order must not already be cancelled, and must not have pending payment authorizations, open returns, or fulfillments that cannot be cancelled.
+:::
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+```json
+[
+  {
+    "job": {
+      "id": "gid://shopify/Job/4f6c2d1a-9b7e-4c3f-8a21-0d5e6f7a8b9c",
+      "done": false
+    },
+    "orderCancelUserErrors": []
+  }
+]
+```
+-----------------
+
 #### Get Order by Order ID
 
 Get Order by Order ID action is used to retrieve order details in Shopify using a specific order identifier.
@@ -4496,7 +4958,7 @@ Description | Enter the description for item (e.g., "Billing Address region is R
             }
           ],
           "provider": {
-            "title": "AEC-QA",
+            "title": "Example Risk Provider",
             "handle": null
           }
         },
@@ -4613,7 +5075,7 @@ Click on **Continue** button
                 }
               ],
               "provider": {
-                "title": "AEC-QA",
+                "title": "Example Risk Provider",
                 "handle": null
               }
             }
@@ -4840,240 +5302,6 @@ Click on **Continue**, then click **Run** node..
 ```
 ---------------------------------------
 
-#### Create Draft Order
-
-Create Draft Order action is used to create a draft order in Shopify with customer details, line items, billing and shipping addresses, discounts, and shipping information.
-
-##### Select Credentials and Action Events
-
-<img src="/img/credentials/shopify/create-draft-order.png" alt="Shopify Create Draft Order action configuration" width="700" />
-
-Click on **Continue** button.
-
----
-
-##### Configuration Fields
-
-| Field | Description |
-|------|--------------|
-| Line Items | Configure one or more products to include in the draft order. |
-| Quantity | Specify the quantity of the line item. (e.g., `1`) |
-| Variant ID (Optional) | Specify the Shopify product variant ID for the line item. (e.g., `gid://shopify/ProductVariant/44001881456812`) |
-| Title (Optional) | Specify the line item title. (e.g., `128 meg SDRAM`) |
-| Original Unit Price (Optional) Amount | Specify the unit price of the line item. (e.g., `150.0`) |
-| Currency Code | Specify the currency code for the unit price. (e.g., `USD`) |
-| SKU (Optional) | Specify the SKU of the line item. (e.g., `128 SDRAM`) |
-| Email (Optional) | Specify the customer's email address for the draft order. (e.g., `hilsy33@yopmail.com`) |
-| Phone (Optional) | Specify the customer's phone number. (e.g., `+919080034561`) |
-| PO Number (Optional) | Specify a purchase order/reference number for the draft order. (e.g., `PO-109302`) |
-| Note (Optional) | Add any additional notes for the draft order. (e.g., `Test Note`) |
-| Billing Address (Optional) First Name | Billing contact's first name. (e.g., `Hilsy`) |
-| Last Name | Billing contact's last name. (e.g., `Update`) |
-| Address 1 | Primary billing address line. (e.g., `10 Downing Street`) |
-| City | Billing city. (e.g., `Hollister`) |
-| Province Code | Billing state/province code. (e.g., `CA`) |
-| Country Code | Billing country code. (e.g., `US`) |
-| Zip | Billing postal code. (e.g., `95023`) |
-| Phone | Billing contact phone number. (e.g., `+919080034561`) |
-| Shipping Address (Optional) | Configure the shipping destination using the same fields as the Billing Address. |
-| Applied Discount (Optional) Title | Title of the discount applied on the draft order. (e.g., `Discount`) |
-| Description | Description of the discount. (e.g., `Discount In Percentage`) |
-| Value | Discount value. (e.g., `2`) |
-| Value Type | Type of the discount value. (e.g., `PERCENTAGE`) |
-| Shipping Line (Optional) Title | Shipping method title. (e.g., `Freight`) |
-| Price | Shipping price. (e.g., `10.0`) |
-
-:::note
-Line Items with Quantity is the only required field. All other fields are optional and can be configured as needed.
-:::
-
-Click on **Continue**, then click **Run** node.
-
----
-
-##### Example Configuration
-
-<img src="/img/credentials/shopify/draft-order-items.png" alt="Shopify Create Draft Order action example configuration" width="700" />
-
----
-
-##### Result
-
-```json
-[
-  {
-    "draftOrder": {
-      "id": "gid://shopify/DraftOrder/1140832501932",
-      "name": "#D583",
-      "status": "OPEN",
-      "email": "hilsy33@yopmail.com",
-      "phone": "+919080034561",
-      "poNumber": "PO-109302",
-      "note2": "Test Note",
-      "tags": [],
-      "createdAt": "2026-07-27T08:22:36Z",
-      "updatedAt": "2026-07-27T08:22:36Z",
-      "invoiceUrl": "https://aecqa.myshopify.com/65225425068/invoices/5c39a715858db5d86d1e004893ee58e2",
-      "completedAt": null,
-      "taxExempt": false,
-      "visibleToCustomer": true,
-      "presentmentCurrencyCode": "USD",
-      "acceptAutomaticDiscounts": true,
-      "allowDiscountCodesInCheckout": true,
-      "discountCodes": [],
-      "paymentTerms": null,
-      "billingAddress": {
-        "firstName": "Hilsy",
-        "lastName": "Update",
-        "company": null,
-        "address1": "10 Downing Street",
-        "address2": null,
-        "city": "Hollister",
-        "province": "California",
-        "provinceCode": "CA",
-        "countryCodeV2": "US",
-        "zip": "95023",
-        "phone": "+919080034561"
-      },
-      "shippingAddress": {
-        "firstName": "Hilsy",
-        "lastName": "Update",
-        "company": null,
-        "address1": "10 Downing Street",
-        "address2": null,
-        "city": "Hollister",
-        "province": "California",
-        "provinceCode": "CA",
-        "countryCodeV2": "US",
-        "zip": "95023",
-        "phone": "+919080034561"
-      },
-      "customer": {
-        "id": "gid://shopify/Customer/9536366674092",
-        "firstName": "Hilsy",
-        "lastName": "Update",
-        "email": "hilsy33@yopmail.com",
-        "phone": "+919080034561"
-      },
-      "lineItems": {
-        "nodes": [
-          {
-            "id": "gid://shopify/DraftOrderLineItem/57997144424620",
-            "name": "128 meg SDRAM",
-            "sku": "128 SDRAM",
-            "quantity": 1,
-            "originalUnitPriceSet": {
-              "presentmentMoney": {
-                "amount": "150.0"
-              }
-            },
-            "discountedUnitPriceSet": {
-              "presentmentMoney": {
-                "amount": "150.0"
-              }
-            },
-            "appliedDiscount": null,
-            "taxLines": [
-              {
-                "title": "Federal Tax",
-                "rate": 0.1,
-                "priceSet": {
-                  "presentmentMoney": {
-                    "amount": "14.7"
-                  }
-                }
-              },
-              {
-                "title": "State Tax",
-                "rate": 0.06,
-                "priceSet": {
-                  "presentmentMoney": {
-                    "amount": "8.82"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "id": "gid://shopify/DraftOrderLineItem/57997144457388",
-            "name": "Dove Body Wash",
-            "sku": "AS569",
-            "quantity": 1,
-            "originalUnitPriceSet": {
-              "presentmentMoney": {
-                "amount": "30.0"
-              }
-            },
-            "discountedUnitPriceSet": {
-              "presentmentMoney": {
-                "amount": "30.0"
-              }
-            },
-            "appliedDiscount": null,
-            "taxLines": [
-              {
-                "title": "Federal Tax",
-                "rate": 0.1,
-                "priceSet": {
-                  "presentmentMoney": {
-                    "amount": "2.94"
-                  }
-                }
-              },
-              {
-                "title": "State Tax",
-                "rate": 0.06,
-                "priceSet": {
-                  "presentmentMoney": {
-                    "amount": "1.76"
-                  }
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "appliedDiscount": {
-        "title": "Discount",
-        "description": "Discount In Percentage",
-        "value": 2,
-        "valueType": "PERCENTAGE"
-      },
-      "shippingLine": {
-        "title": "Freight",
-        "originalPriceSet": {
-          "presentmentMoney": {
-            "amount": "10.0"
-          }
-        }
-      },
-      "subtotalPriceSet": {
-        "presentmentMoney": {
-          "amount": "176.4"
-        }
-      },
-      "totalPriceSet": {
-        "presentmentMoney": {
-          "amount": "214.62"
-        }
-      },
-      "totalTaxSet": {
-        "presentmentMoney": {
-          "amount": "28.22"
-        }
-      },
-      "totalDiscountsSet": {
-        "presentmentMoney": {
-          "amount": "3.6"
-        }
-      }
-    },
-    "userErrors": []
-  }
-]
-```
----------------------------------------
-
 ### Fulfillment Actions
 
 #### Create Order Fulfillment
@@ -5274,6 +5502,56 @@ Click on **Continue** button
 ]
 ```
 --------------
+
+#### Get Order Fulfillment Line Items
+
+Get Order Fulfillment Line Items action retrieves every fulfillment on an order, with the line items and quantities shipped in each. Use it to reconcile shipments or to find the fulfillment line items needed for returns.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Order ID | The order to look up. (e.g., "gid://shopify/Order/7240844705964") |
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+```json
+[
+  {
+    "id": "gid://shopify/Order/7240844705964",
+    "name": "#1768",
+    "fulfillments": [
+      {
+        "id": "gid://shopify/Fulfillment/5612390138028",
+        "status": "SUCCESS",
+        "fulfillmentLineItems": {
+          "nodes": [
+            {
+              "id": "gid://shopify/FulfillmentLineItem/11523498262700",
+              "quantity": 2,
+              "lineItem": {
+                "id": "gid://shopify/LineItem/17054211965100",
+                "sku": "RE021",
+                "discountedUnitPriceAfterAllDiscountsSet": {
+                  "shopMoney": {
+                    "amount": "45.0",
+                    "currencyCode": "USD"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
+```
+-----------------
 
 ### Payment Terms Templates Actions
 
@@ -5708,18 +5986,26 @@ Click on **Continue**, then click **Run** node.
 
 ### Payouts Actions
 
-#### Get Payout
+#### Get Payouts by Status
 
-Get Payout action retrieves Shopify Payments payout details for the connected store. Use it to reconcile the amounts Shopify deposits into your bank account against the charges, refunds, and fees that make up each payout.
+Get Payouts by Status action retrieves Shopify Payments payouts for the connected store. Use it to reconcile the amounts Shopify deposits into your bank account against the charges, refunds, and fees that make up each payout.
 
 ##### Configuration Fields
 
 | Field | Description |
 |------|-------------|
-| Payout ID | Unique identifier of the payout to retrieve. (e.g., "gid://shopify/ShopifyPaymentsPayout/1234567890") |
+| Limit | **Required.** Maximum number of payouts to return. (e.g., 1) |
+| Payout Status | Optional filter: **Scheduled**, **Paid**, **Failed**, or **Canceled**. Leave blank to return payouts of every status. |
+| Payout ID | Optional. Return a single payout. Use the numeric payout ID (`legacyResourceId`), not the `gid://` form. (e.g., "1234567890") |
+| Sort Key | Optional. **Issued At** (default), **Amount**, **Status**, **ID**, **Adjustment Gross**, **Advance Gross**, **Charge Gross**, **Duties Gross**, **Fee Amount**, **Refund Gross**, or **Shipping Label Gross**. |
+| Sort Descending | Optional. **Yes** to return the newest first. |
+
+:::tip
+To get the latest released payout, set **Sort Key** to **Issued At**, **Sort Descending** to **Yes**, and **Limit** to `1`.
+:::
 
 :::note
-This action requires Shopify Payments to be enabled on the store and the `read_shopify_payments_payouts` scope on the credential.
+This action requires Shopify Payments to be enabled on the store and the `read_shopify_payments_payouts` scope on the credential. Bank account details are returned once at the account level under `bankAccounts` (see the sample result below), because Shopify deprecated the per-payout bank account field.
 :::
 
 Click on **Continue**, then click **Run** node.
@@ -5729,61 +6015,86 @@ Click on **Continue**, then click **Run** node.
 ##### Result
 
 ```json
-[
-  {
-    "id": "gid://shopify/ShopifyPaymentsPayout/1234567890",
-    "legacyResourceId": "1234567890",
-    "status": "PAID",
-    "transactionType": "DEPOSIT",
-    "issuedAt": "2026-04-24T00:00:00Z",
-    "net": {
-      "amount": "842.35",
-      "currencyCode": "USD"
-    },
-    "summary": {
-      "chargesGross": {
-        "amount": "900.00",
-        "currencyCode": "USD"
+{
+  "data": {
+    "shopifyPaymentsAccount": {
+      "payouts": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ShopifyPaymentsPayout/1234567890",
+            "legacyResourceId": "1234567890",
+            "status": "PAID",
+            "transactionType": "DEPOSIT",
+            "issuedAt": "2026-04-24T00:00:00Z",
+            "net": {
+              "amount": "842.35",
+              "currencyCode": "USD"
+            },
+            "summary": {
+              "chargesGross": {
+                "amount": "900.00",
+                "currencyCode": "USD"
+              },
+              "chargesFee": {
+                "amount": "-27.65",
+                "currencyCode": "USD"
+              },
+              "refundsFeeGross": {
+                "amount": "-30.00",
+                "currencyCode": "USD"
+              },
+              "refundsFee": {
+                "amount": "0.00",
+                "currencyCode": "USD"
+              },
+              "adjustmentsGross": {
+                "amount": "0.00",
+                "currencyCode": "USD"
+              },
+              "adjustmentsFee": {
+                "amount": "0.00",
+                "currencyCode": "USD"
+              },
+              "reservedFundsGross": {
+                "amount": "0.00",
+                "currencyCode": "USD"
+              },
+              "reservedFundsFee": {
+                "amount": "0.00",
+                "currencyCode": "USD"
+              },
+              "retriedPayoutsGross": {
+                "amount": "0.00",
+                "currencyCode": "USD"
+              },
+              "retriedPayoutsFee": {
+                "amount": "0.00",
+                "currencyCode": "USD"
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjoxMjM0NTY3ODkwfQ=="
+        }
       },
-      "chargesFee": {
-        "amount": "-27.65",
-        "currencyCode": "USD"
-      },
-      "refundsFeeGross": {
-        "amount": "-30.00",
-        "currencyCode": "USD"
-      },
-      "refundsFee": {
-        "amount": "0.00",
-        "currencyCode": "USD"
-      },
-      "adjustmentsGross": {
-        "amount": "0.00",
-        "currencyCode": "USD"
-      },
-      "adjustmentsFee": {
-        "amount": "0.00",
-        "currencyCode": "USD"
-      },
-      "reservedFundsGross": {
-        "amount": "0.00",
-        "currencyCode": "USD"
-      },
-      "reservedFundsFee": {
-        "amount": "0.00",
-        "currencyCode": "USD"
-      },
-      "retriedPayoutsGross": {
-        "amount": "0.00",
-        "currencyCode": "USD"
-      },
-      "retriedPayoutsFee": {
-        "amount": "0.00",
-        "currencyCode": "USD"
+      "bankAccounts": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ShopifyPaymentsBankAccount/1122334455",
+            "bankName": "Example Bank",
+            "accountNumberLastDigits": "6789",
+            "country": "US",
+            "currency": "USD",
+            "status": "VALIDATED",
+            "createdAt": "2025-01-15T09:30:00Z"
+          }
+        ]
       }
     }
   }
-]
+}
 ```
 -----------------
 
@@ -5795,7 +6106,10 @@ Get Payout Balance Transactions action retrieves the individual Shopify Payments
 
 | Field | Description |
 |------|-------------|
-| Payout ID | Unique identifier of the payout whose transactions you want to retrieve. (e.g., "gid://shopify/ShopifyPaymentsPayout/1234567890") |
+| Limit | **Required.** Maximum number of balance transactions to return. Shopify allows up to 250. (e.g., 50) |
+| Payout ID | Optional. The payout whose transactions you want to retrieve. Use the numeric payout ID (`legacyResourceId`) returned by **Get Payouts by Status**, not the `gid://` form. Leave blank to return transactions across all payouts. (e.g., "1234567890") |
+| Sort Key | Optional. **Processed At** (default), **Amount**, **Fee**, **Net**, **ID**, **Order Name**, **Payment Method Name**, **Payout Date**, **Payout Status**, or **Transaction Type**. |
+| Sort Descending | Optional. **Yes** (default) returns the newest first. |
 
 :::note
 This action requires Shopify Payments to be enabled on the store and the `read_shopify_payments_payouts` scope on the credential.
@@ -5844,9 +6158,243 @@ Click on **Continue**, then click **Run** node.
 
 ### Draft Orders Actions
 
-#### Complete Draft Order
+#### Create Draft Order
 
-Complete Draft Order action converts an existing draft order into a real order in Shopify. Use it to finalize quotes and manually created carts, either as a paid order or with payment left pending so the customer can be invoiced.
+Create Draft Order action is used to create a draft order in Shopify with customer details, line items, billing and shipping addresses, discounts, and shipping information.
+
+##### Select Credentials and Action Events
+
+<img src="/img/credentials/shopify/create-draft-order.png" alt="Shopify Create Draft Order action configuration" width="700" />
+
+Click on **Continue** button.
+
+---
+
+##### Configuration Fields
+
+| Field | Description |
+|------|--------------|
+| Line Items | Configure one or more products to include in the draft order. |
+| Quantity | Specify the quantity of the line item. (e.g., `1`) |
+| Variant ID (Optional) | Specify the Shopify product variant ID for the line item. (e.g., `gid://shopify/ProductVariant/44001881456812`) |
+| Title (Optional) | Specify the line item title. (e.g., `128 meg SDRAM`) |
+| Original Unit Price (Optional) Amount | Specify the unit price of the line item. (e.g., `150.0`) |
+| Currency Code | Specify the currency code for the unit price. (e.g., `USD`) |
+| SKU (Optional) | Specify the SKU of the line item. (e.g., `128 SDRAM`) |
+| Email (Optional) | Specify the customer's email address for the draft order. (e.g., `hilsy33@yopmail.com`) |
+| Phone (Optional) | Specify the customer's phone number. (e.g., `+919080034561`) |
+| PO Number (Optional) | Specify a purchase order/reference number for the draft order. (e.g., `PO-109302`) |
+| Note (Optional) | Add any additional notes for the draft order. (e.g., `Test Note`) |
+| Billing Address (Optional) First Name | Billing contact's first name. (e.g., `Hilsy`) |
+| Last Name | Billing contact's last name. (e.g., `Update`) |
+| Address 1 | Primary billing address line. (e.g., `10 Downing Street`) |
+| City | Billing city. (e.g., `Hollister`) |
+| Province Code | Billing state/province code. (e.g., `CA`) |
+| Country Code | Billing country code. (e.g., `US`) |
+| Zip | Billing postal code. (e.g., `95023`) |
+| Phone | Billing contact phone number. (e.g., `+919080034561`) |
+| Shipping Address (Optional) | Configure the shipping destination using the same fields as the Billing Address. |
+| Applied Discount (Optional) Title | Title of the discount applied on the draft order. (e.g., `Discount`) |
+| Description | Description of the discount. (e.g., `Discount In Percentage`) |
+| Value | Discount value. (e.g., `2`) |
+| Value Type | Type of the discount value. (e.g., `PERCENTAGE`) |
+| Shipping Line (Optional) Title | Shipping method title. (e.g., `Freight`) |
+| Price | Shipping price. (e.g., `10.0`) |
+
+:::note
+Line Items with Quantity is the only required field. All other fields are optional and can be configured as needed.
+:::
+
+Click on **Continue**, then click **Run** node.
+
+---
+
+##### Example Configuration
+
+<img src="/img/credentials/shopify/draft-order-items.png" alt="Shopify Create Draft Order action example configuration" width="700" />
+
+---
+
+##### Result
+
+```json
+[
+  {
+    "draftOrder": {
+      "id": "gid://shopify/DraftOrder/1140832501932",
+      "name": "#D583",
+      "status": "OPEN",
+      "email": "hilsy33@yopmail.com",
+      "phone": "+919080034561",
+      "poNumber": "PO-109302",
+      "note2": "Test Note",
+      "tags": [],
+      "createdAt": "2026-07-27T08:22:36Z",
+      "updatedAt": "2026-07-27T08:22:36Z",
+      "invoiceUrl": "https://example.myshopify.com/invoices/XXXX",
+      "completedAt": null,
+      "taxExempt": false,
+      "visibleToCustomer": true,
+      "presentmentCurrencyCode": "USD",
+      "acceptAutomaticDiscounts": true,
+      "allowDiscountCodesInCheckout": true,
+      "discountCodes": [],
+      "paymentTerms": null,
+      "billingAddress": {
+        "firstName": "Hilsy",
+        "lastName": "Update",
+        "company": null,
+        "address1": "10 Downing Street",
+        "address2": null,
+        "city": "Hollister",
+        "province": "California",
+        "provinceCode": "CA",
+        "countryCodeV2": "US",
+        "zip": "95023",
+        "phone": "+919080034561"
+      },
+      "shippingAddress": {
+        "firstName": "Hilsy",
+        "lastName": "Update",
+        "company": null,
+        "address1": "10 Downing Street",
+        "address2": null,
+        "city": "Hollister",
+        "province": "California",
+        "provinceCode": "CA",
+        "countryCodeV2": "US",
+        "zip": "95023",
+        "phone": "+919080034561"
+      },
+      "customer": {
+        "id": "gid://shopify/Customer/9536366674092",
+        "firstName": "Hilsy",
+        "lastName": "Update",
+        "email": "hilsy33@yopmail.com",
+        "phone": "+919080034561"
+      },
+      "lineItems": {
+        "nodes": [
+          {
+            "id": "gid://shopify/DraftOrderLineItem/57997144424620",
+            "name": "128 meg SDRAM",
+            "sku": "128 SDRAM",
+            "quantity": 1,
+            "originalUnitPriceSet": {
+              "presentmentMoney": {
+                "amount": "150.0"
+              }
+            },
+            "discountedUnitPriceSet": {
+              "presentmentMoney": {
+                "amount": "150.0"
+              }
+            },
+            "appliedDiscount": null,
+            "taxLines": [
+              {
+                "title": "Federal Tax",
+                "rate": 0.1,
+                "priceSet": {
+                  "presentmentMoney": {
+                    "amount": "14.7"
+                  }
+                }
+              },
+              {
+                "title": "State Tax",
+                "rate": 0.06,
+                "priceSet": {
+                  "presentmentMoney": {
+                    "amount": "8.82"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/DraftOrderLineItem/57997144457388",
+            "name": "Dove Body Wash",
+            "sku": "AS569",
+            "quantity": 1,
+            "originalUnitPriceSet": {
+              "presentmentMoney": {
+                "amount": "30.0"
+              }
+            },
+            "discountedUnitPriceSet": {
+              "presentmentMoney": {
+                "amount": "30.0"
+              }
+            },
+            "appliedDiscount": null,
+            "taxLines": [
+              {
+                "title": "Federal Tax",
+                "rate": 0.1,
+                "priceSet": {
+                  "presentmentMoney": {
+                    "amount": "2.94"
+                  }
+                }
+              },
+              {
+                "title": "State Tax",
+                "rate": 0.06,
+                "priceSet": {
+                  "presentmentMoney": {
+                    "amount": "1.76"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "appliedDiscount": {
+        "title": "Discount",
+        "description": "Discount In Percentage",
+        "value": 2,
+        "valueType": "PERCENTAGE"
+      },
+      "shippingLine": {
+        "title": "Freight",
+        "originalPriceSet": {
+          "presentmentMoney": {
+            "amount": "10.0"
+          }
+        }
+      },
+      "subtotalPriceSet": {
+        "presentmentMoney": {
+          "amount": "176.4"
+        }
+      },
+      "totalPriceSet": {
+        "presentmentMoney": {
+          "amount": "214.62"
+        }
+      },
+      "totalTaxSet": {
+        "presentmentMoney": {
+          "amount": "28.22"
+        }
+      },
+      "totalDiscountsSet": {
+        "presentmentMoney": {
+          "amount": "3.6"
+        }
+      }
+    },
+    "userErrors": []
+  }
+]
+```
+---------------------------------------
+
+#### Convert Draft Order to Order
+
+Convert Draft Order to Order action converts an existing draft order into a real order in Shopify. Use it to finalize quotes and manually created carts, either as a paid order or with payment left pending so the customer can be invoiced.
 
 ##### Configuration Fields
 
@@ -5891,7 +6439,266 @@ Click on **Continue**, then click **Run** node.
 ```
 -----------------
 
+#### Get Draft Order by ID
+
+Get Draft Order by ID action retrieves a single draft order with its customer, addresses, line items, discounts, taxes, payment terms, and totals.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Draft Order ID | The draft order to retrieve. (e.g., "gid://shopify/DraftOrder/1157317255212") |
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+Returns one draft order with the same structure as the [New Draft Orders Created](#new-draft-orders-created) trigger.
+
+```json
+[
+  {
+    "id": "gid://shopify/DraftOrder/1157317255212",
+    "name": "#D12",
+    "status": "OPEN",
+    "email": "john.doe@example.com",
+    "currencyCode": "USD",
+    "invoiceUrl": "https://example.myshopify.com/invoices/XXXX",
+    "totalQuantityOfLineItems": 2,
+    "customer": {
+      "id": "gid://shopify/Customer/9304242225324",
+      "displayName": "John Doe"
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "id": "gid://shopify/DraftOrderLineItem/58291044012",
+          "name": "Water Bottle",
+          "sku": "RE021",
+          "quantity": 2
+        }
+      ]
+    }
+  }
+]
+```
+-----------------
+
+#### Get Draft Orders by Customer ID
+
+Get Draft Orders by Customer ID action retrieves the draft orders that belong to a customer. Use it to find open quotes before creating a new one.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Customer ID | The customer whose draft orders to retrieve. (e.g., "gid://shopify/Customer/9304242225324") |
+| Limit | Maximum number of draft orders to return. (e.g., 10) |
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+Returns a list of draft orders with the same structure as [Get Draft Order by ID](#get-draft-order-by-id).
+
+-----------------
+
+#### Update Draft Order
+
+Update Draft Order action modifies an existing draft order — note, email, tags, custom attributes, line items, addresses, discounts, and metafields.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Draft Order ID | **Required.** The draft order to update. (e.g., "gid://shopify/DraftOrder/1157317255212") |
+| Email | Customer email for the draft order. |
+| Note | Internal note. |
+| Tax Exempt | Whether the draft order is tax exempt. |
+| Tags | Tags to apply. |
+| Custom Attributes | Key-value pairs stored on the draft order. |
+| Line Items | Variant ID and Quantity, with optional title, unit price, SKU, taxable, requires shipping, and a per-line discount. |
+| Applied Discount | Order-level discount: value, value type (**Percentage** or **Fixed Amount**), title, and description. |
+| Shipping Address / Billing Address | Name, company, address lines, city, province code, country code, ZIP, and phone. |
+| Metafields | Namespace, key, value, and type. |
+
+:::note
+Mapped **Line Items** replace the draft order's existing line items, so include every line you want to keep. Only `OPEN` or `INVOICE_SENT` draft orders can be updated.
+:::
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+```json
+[
+  {
+    "draftOrder": {
+      "id": "gid://shopify/DraftOrder/1157317255212",
+      "name": "#D12",
+      "status": "OPEN",
+      "email": "john.doe@example.com",
+      "note2": "Customer requested express shipping",
+      "tags": ["priority"],
+      "updatedAt": "2026-04-24T12:40:19Z",
+      "totalPriceSet": {
+        "presentmentMoney": {
+          "amount": "150.0"
+        }
+      }
+    },
+    "userErrors": []
+  }
+]
+```
+-----------------
+
 ### Returns Actions
+
+#### Get Returnable Items of an Order
+
+Get Returnable Items of an Order action retrieves the fulfilled line items on an order that can still be returned, together with the order's payment transactions and any existing returns. Use it as the first step of a returns flow: it gives you the **Fulfillment Line Item IDs** and returnable quantities for **Create Return**, and the transaction IDs for refunding in **Process Return**.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Order ID | The order to check for returnable items. (e.g., "gid://shopify/Order/7240844705964") |
+
+:::note
+Only fulfilled items appear under `returnableFulfillments`. The `quantity` on each item is what can still be returned — items already returned are excluded. Use `returns` to check for an open return before creating a new one.
+:::
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+```json
+[
+  {
+    "data": {
+      "order": {
+        "id": "gid://shopify/Order/7240844705964",
+        "name": "#1768",
+        "transactions": [
+          {
+            "id": "gid://shopify/OrderTransaction/8862900551852",
+            "kind": "SALE",
+            "status": "SUCCESS",
+            "gateway": "manual",
+            "amountSet": {
+              "presentmentMoney": {
+                "amount": "150.0",
+                "currencyCode": "USD"
+              }
+            }
+          }
+        ],
+        "returns": {
+          "nodes": []
+        }
+      },
+      "returnableFulfillments": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ReturnableFulfillment/5612390138028",
+            "returnableFulfillmentLineItems": {
+              "nodes": [
+                {
+                  "quantity": 2,
+                  "fulfillmentLineItem": {
+                    "id": "gid://shopify/FulfillmentLineItem/11523498262700",
+                    "lineItem": {
+                      "id": "gid://shopify/LineItem/17054211965100",
+                      "sku": "RE021",
+                      "name": "Water Bottle"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+]
+```
+-----------------
+
+#### Create Return
+
+Create Return action opens a return against an order for one or more fulfilled line items, with a reason and quantity for each. Optionally add exchange items to ship to the customer.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Order ID | The order to return items from. (e.g., "gid://shopify/Order/7240844705964") |
+| Return Line Items → Fulfillment Line Item ID | Fulfilled item being returned. Use **Get Returnable Items of an Order** to find it. (e.g., "gid://shopify/FulfillmentLineItem/11523498262700") |
+| Return Line Items → Quantity | Units to return. Cannot exceed the returnable quantity. (e.g., 1) |
+| Return Line Items → Return Reason | **Defective**, **Not As Described**, **Wrong Item**, **Size Too Large**, **Size Too Small**, **Style**, **Color**, **Unwanted**, **Unknown**, or **Other**. |
+| Return Line Items → Return Reason Note | Optional free-text detail. |
+| Exchange Line Items (Optional) → Variant ID | Replacement variant to send. (e.g., "gid://shopify/ProductVariant/46203847561324") |
+| Exchange Line Items → Quantity | Units of the replacement. (e.g., 1) |
+| Exchange Line Items → Applied Discount | Optional discount on the exchange item — a fixed amount and currency, or a percentage. |
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+```json
+[
+  {
+    "return": {
+      "id": "gid://shopify/Return/9628778560",
+      "name": "#1768-R1",
+      "status": "OPEN",
+      "totalQuantity": 1,
+      "createdAt": "2026-04-25T08:40:12Z",
+      "order": {
+        "id": "gid://shopify/Order/7240844705964",
+        "name": "#1768"
+      },
+      "returnLineItems": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ReturnLineItem/13953695808",
+            "quantity": 1,
+            "returnReasonNote": "Cap is cracked",
+            "processableQuantity": 1,
+            "processedQuantity": 0,
+            "refundableQuantity": 1,
+            "fulfillmentLineItem": {
+              "id": "gid://shopify/FulfillmentLineItem/11523498262700",
+              "lineItem": {
+                "id": "gid://shopify/LineItem/17054211965100",
+                "sku": "RE021",
+                "name": "Water Bottle"
+              }
+            }
+          }
+        ]
+      },
+      "exchangeLineItems": {
+        "nodes": []
+      }
+    },
+    "userErrors": []
+  }
+]
+```
+-----------------
 
 #### Process Return
 
@@ -6004,6 +6811,251 @@ Click on **Continue**, then click **Run** node.
 ```
 -----------------
 
+### Gift Cards Actions
+
+#### Create Gift Card
+
+Create Gift Card action issues a new gift card with an initial value, and optionally a custom code, customer, expiry date, and recipient.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Initial Value | **Required.** Starting balance in the store currency. (e.g., 50.00) |
+| Gift Card Code | Custom code (8–20 characters). Shopify generates one when left blank. |
+| Customer ID | Customer who owns the gift card. (e.g., "gid://shopify/Customer/9304242225324") |
+| Expires On | Expiry date. (e.g., "2027-04-24") |
+| Note | Internal note. |
+| Template Suffix | Theme template suffix for the gift card page. |
+| Recipient Attributes | Recipient Customer ID, plus optional message, preferred name, and the date and time to send the notification. |
+
+:::caution
+The full gift card code is returned only once, in `giftCardCode`. Store it securely — afterwards only the masked code is available.
+:::
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+```json
+[
+  {
+    "giftCard": {
+      "id": "gid://shopify/GiftCard/612345678",
+      "maskedCode": "•••• •••• •••• 7k2d",
+      "lastCharacters": "7k2d",
+      "enabled": true,
+      "expiresOn": "2027-04-24",
+      "balance": {
+        "amount": "50.0",
+        "currencyCode": "USD"
+      },
+      "initialValue": {
+        "amount": "50.0",
+        "currencyCode": "USD"
+      },
+      "customer": {
+        "id": "gid://shopify/Customer/9304242225324",
+        "displayName": "John Doe"
+      }
+    },
+    "giftCardCode": "x9p4w2m8q7k2d",
+    "userErrors": []
+  }
+]
+```
+-----------------
+
+#### Get Gift Card by ID
+
+Get Gift Card by ID action retrieves a gift card's balance, status, expiry, customer, originating order, and recipient details.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Gift Card ID | The gift card to retrieve. (e.g., "gid://shopify/GiftCard/612345678") |
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+Returns one gift card with the same structure as the [New Gift Cards Created](#new-gift-cards-created) trigger.
+
+-----------------
+
+#### Update Gift Card
+
+Update Gift Card action changes a gift card's customer, expiry date, note, template suffix, or recipient. The balance cannot be changed here — use **Debit Amount From Gift Card** instead.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Gift Card ID | **Required.** The gift card to update. (e.g., "gid://shopify/GiftCard/612345678") |
+| Customer ID | New owning customer. |
+| Expires On | New expiry date. (e.g., "2027-12-31") |
+| Note | Internal note. |
+| Template Suffix | Theme template suffix for the gift card page. |
+| Recipient Attributes | Recipient Customer ID, plus optional message, preferred name, and notification date and time. |
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+Returns `giftCard` (same structure as **Create Gift Card**) and `userErrors`.
+
+-----------------
+
+#### Debit Amount From Gift Card
+
+Debit Amount From Gift Card action deducts an amount from a gift card balance and records the transaction — for example, when the card is redeemed in an external POS.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Gift Card ID | The gift card to debit. (e.g., "gid://shopify/GiftCard/612345678") |
+| Debit Amount → Amount | Amount to deduct. (e.g., 20.00) |
+| Debit Amount → Currency Code | ISO 4217 currency code, matching the gift card currency. (e.g., "USD") |
+| Processed At | When the debit happened. Defaults to now. |
+| Note | Note recorded on the transaction. (e.g., "Redeemed at POS store 12") |
+
+:::note
+The debit cannot exceed the current balance, and the gift card must be enabled and not expired.
+:::
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+```json
+[
+  {
+    "id": "gid://shopify/GiftCardDebitTransaction/90123456",
+    "amount": {
+      "amount": "-20.0",
+      "currencyCode": "USD"
+    },
+    "processedAt": "2026-04-25T14:10:00Z",
+    "note": "Redeemed at POS store 12",
+    "giftCard": {
+      "id": "gid://shopify/GiftCard/612345678",
+      "lastCharacters": "7k2d",
+      "enabled": true,
+      "balance": {
+        "amount": "30.0",
+        "currencyCode": "USD"
+      }
+    }
+  }
+]
+```
+-----------------
+
+#### Deactivate Gift Card
+
+Deactivate Gift Card action disables a gift card so it can no longer be used.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Gift Card ID | The gift card to deactivate. (e.g., "gid://shopify/GiftCard/612345678") |
+
+:::caution
+Deactivation is permanent. A deactivated gift card cannot be re-enabled.
+:::
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+```json
+[
+  {
+    "id": "gid://shopify/GiftCard/612345678",
+    "enabled": false,
+    "deactivatedAt": "2026-04-25T15:00:00Z",
+    "lastCharacters": "7k2d",
+    "maskedCode": "•••• •••• •••• 7k2d",
+    "expiresOn": "2027-04-24",
+    "balance": {
+      "amount": "30.0",
+      "currencyCode": "USD"
+    }
+  }
+]
+```
+-----------------
+
+### Analytics Actions
+
+#### Get Analytics Data
+
+Get Analytics Data action runs a ShopifyQL query against the **Sales**, **Orders**, or **Customers** dataset and returns the result as a table. Use it for scheduled sales reports or KPI feeds.
+
+##### Configuration Fields
+
+| Field | Description |
+|------|-------------|
+| Table | Dataset to query: **Sales**, **Orders**, or **Customers**. Used as the `FROM` clause. |
+| ShopifyQL Query | The clauses after `FROM`, excluding `LIMIT`. (e.g., `SHOW total_sales BY day SINCE -7d`) |
+| Limit | Maximum number of rows to return. (e.g., 100) |
+
+:::note
+Requires the `read_reports` scope. If the query is invalid, `parseErrors` explains why and `tableData` is empty.
+:::
+
+Click on **Continue**, then click **Run** node.
+
+------------
+
+##### Result
+
+```json
+[
+  {
+    "tableData": {
+      "columns": [
+        {
+          "name": "day",
+          "dataType": "DAY_TIMESTAMP",
+          "displayName": "Day"
+        },
+        {
+          "name": "total_sales",
+          "dataType": "MONEY",
+          "displayName": "Total sales"
+        }
+      ],
+      "rows": [
+        {
+          "day": "2026-04-24",
+          "total_sales": "1045.00"
+        },
+        {
+          "day": "2026-04-25",
+          "total_sales": "390.00"
+        }
+      ]
+    },
+    "parseErrors": []
+  }
+]
+```
+-----------------
+
 </TabItem>
 
 <TabItem value="tools" label="Tools">
@@ -6093,6 +7145,64 @@ The search matches on the product title, so a partial name can return multiple p
         }
       ]
     }
+  }
+]
+```
+-----------------
+
+#### Get Order by Order ID
+
+`get_order_by_id_tool` retrieves a Shopify order by its ID. Use it when an agent needs the full order — addresses, customer, line items, transactions, discounts, fulfillment orders, taxes, and shipping lines — to answer a customer or decide the next step.
+
+##### Input Fields
+
+| Field | Description |
+|------|-------------|
+| Order ID | The order to retrieve. (e.g., "gid://shopify/Order/7240844705964") |
+
+##### Result
+
+Returns one order with the same structure as the **Get Order by Order ID** action.
+
+-----------------
+
+#### Create Order
+
+`create_order_tool` creates a real sales order in Shopify from line items an agent has collected — for example, an order taken over chat or phone.
+
+##### Input Fields
+
+| Field | Description |
+|------|-------------|
+| Line Items | **Required.** At least one item, each with a Variant ID and Quantity. (e.g., "gid://shopify/ProductVariant/46203847561324", 2) |
+| Customer → Customer To Associate → Customer ID | Existing customer to attach. (e.g., "gid://shopify/Customer/9304242225324") |
+| Shipping Address / Billing Address | Last name, address line 1, city, province code, country code, and ZIP. |
+
+:::caution
+Every order is created with `PENDING` payment. The tool writes to the store and cannot be undone from the tool, so the agent should confirm the line items with the user before calling it.
+:::
+
+##### Result
+
+```json
+[
+  {
+    "order": {
+      "id": "gid://shopify/Order/7241002647724",
+      "displayFinancialStatus": "PENDING",
+      "customer": {
+        "id": "gid://shopify/Customer/9304242225324"
+      },
+      "shippingAddress": {
+        "lastName": "Doe",
+        "address1": "123 Main Street",
+        "city": "Toronto",
+        "provinceCode": "ON",
+        "countryCodeV2": "CA",
+        "zip": "M5V 2T6"
+      }
+    },
+    "userErrors": []
   }
 ]
 ```
